@@ -7,7 +7,7 @@
         "moduleResolution": "node",
         "outDir": "dist",
         "rootDir": "sources",
-        "target": "es5",
+        "target": "es5"
     },
     "exclude": [
         "dist",
@@ -15,6 +15,8 @@
     ],
     "files": [
         "sources/bin/ordbok-assembler.ts",
-        "sources/lib/index.ts"
+        "sources/lib/index.ts",
+        "sources/plugin.ts",
+        "sources/text-plugin/ordbok-plugin.ts",
     ]
 }
