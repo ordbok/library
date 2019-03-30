@@ -126,3 +126,4 @@ define(["require", "exports", "./text"], function (require, exports, text_1) {
     }());
     exports.Markdown = Markdown;
 });
+//# sourceMappingURL=markdown.js.map
