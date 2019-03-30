@@ -25,8 +25,8 @@ Word: engelsk
 Grammar: noun
 ```
 
-The following example takes a Markdown source folder to build dictionary files into a
-`./build/dictionary` folder:
+The following example takes a Markdown source folder to build dictionary files
+into a `./build/dictionary` folder:
 ```sh
 $ npx ordbok-assembler ./markdown ./build/dictionary
 ```
@@ -48,19 +48,21 @@ console.log(theEntry.getSection('Norwegian').grammar); // = noun
 Plugins
 -------
 
-Create a `ordbok.json` in your project to register custom plugins for the assembling process:
+Create a `ordbok.json` in your project to register custom plugins for the
+assembling process. You can specify node modules and folders:
 ```json
 {
     "plugins": [
-        "ordbok-index",         // npm
-        "./tools/custom-plugin" // folder
+        "ordbok-index",
+        "./tools/custom-plugin"
     ]
 }
 ```
 
 
-If you like to create a custom plugin yourself, create a folder or package with a `ordbok-plugin.js`
-file somewhere inside. Here is how the corresponding TypeScript file looks like:
+If you like to create a custom plugin yourself, create a folder or package with
+a `ordbok-plugin.js` file somewhere inside. Here is how the corresponding
+TypeScript file looks like:
 ```ts
 const { IPlugin, IMarkdownPage, Markdown } = require('@ordbok/core');
 
