@@ -1,0 +1,11 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "module": "amd",
+        "outDir": "dist/client",
+        "rootDir": "sources/lib"
+    },
+    "files": [
+        "sources/lib/index.ts"
+    ]
+}

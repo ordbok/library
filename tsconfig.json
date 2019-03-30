@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "stripInternal": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "outDir": "dist",
+        "rootDir": "sources",
+        "target": "es5",
+    },
+    "exclude": [
+        "dist",
+        "node_modules"
+    ],
+    "files": [
+        "sources/bin/ordbok-assembler.ts",
+        "sources/lib/index.ts"
+    ]
+}
