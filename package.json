@@ -34,7 +34,7 @@
         "build-1": "tsc --build tsconfig.json tsconfig-client.json",
         "build-2": "r_js -o rjsconfig-client.js",
 		"clean": "rm -rf dist",
-		"watch": "tsc --build sources/bin sources/lib --watch"
+		"watch": "tsc --build tsconfig.json --watch"
 	},
-	"types": "dist/lib.d.ts"
+	"types": "dist/lib/index.d.ts"
 }
