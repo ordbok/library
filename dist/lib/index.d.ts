@@ -1,9 +1,8 @@
 /**
  * @license MIT
- * @author ORDBOK contributors
+ * @author Sophie Bremer
  */
 export * from './ajax';
 export * from './markdown';
-export * from './plugin';
 export * from './text';
 export * from './utilities';
