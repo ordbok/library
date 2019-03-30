@@ -13,16 +13,16 @@ The following example shows a Markdown source file named `english.md`:
 English
 =======
 
-Word: English
+Words: English, the English
 
-Grammar: noun
+Tags: Noun, Neuter
 
-Norwegian
-=========
+New Norwegian
+=============
 
-Word: engelsk
+Words: engelsk, engelsken
 
-Grammar: noun
+Tags: Noun, Masculine
 ```
 
 The following example takes a Markdown source folder to build dictionary files
@@ -39,8 +39,8 @@ const myDictionary = new Dictionary('build/dictionary');
 
 const theEntry = myDictionary.loadEntry('English');
 
-console.log(theEntry.getSection('Norwegian').word); // = engelsk
-console.log(theEntry.getSection('Norwegian').grammar); // = noun
+console.log(theEntry.getSection('New Norwegian').words); // = engelsk, engelsken
+console.log(theEntry.getSection('New Norwegian').tags); // = Noun, Masculine
 ```
 
 
