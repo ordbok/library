@@ -1,6 +1,6 @@
 /**
  * @license MIT
- * @author ORDBOK contributors
+ * @author Sophie Bremer
  */
 define(["require", "exports", "./ajax", "./markdown", "./text", "./utilities"], function (require, exports, ajax_1, markdown_1, text_1, utilities_1) {
     "use strict";

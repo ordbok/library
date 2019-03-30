@@ -1,7 +1,7 @@
 "use strict";
 /**
  * @license MIT
- * @author ORDBOK contributors
+ * @author Sophie Bremer
  */
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];

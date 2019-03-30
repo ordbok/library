@@ -6,8 +6,9 @@
  */
 
 import * as FS from 'fs';
-import * as Ordbok from '../lib/index';
 import * as Path from 'path';
+import { Markdown, Utilities } from '../lib/index';
+import { IPlugin } from '../plugin';
 
 /* *
  *
@@ -34,9 +35,9 @@ interface IConfig {
 const ARGV = process.argv.slice(2).map(mapArgv);
 
 /**
- * Default plugin path
+ * Default core plugin path
  */
-const PLUGIN = Path.join(__dirname, '..');
+const CORE_PLUGIN = Path.join(__dirname, '..');
 
 /**
  * Ordbok package configuration
@@ -65,7 +66,7 @@ Options:
  * Loaded configuration
  */
 let _config: IConfig = {
-    plugins: [PLUGIN]
+    plugins: [CORE_PLUGIN]
 };
 
 /* *
@@ -85,7 +86,7 @@ let _config: IConfig = {
  */
 function assemble (sourceFolder: string, targetFolder: string) {
 
-    const plugins: Array<Ordbok.IPlugin> = [];
+    const plugins: Array<IPlugin> = [];
 
     _config.plugins.forEach(pluginPath =>
         getFiles(pluginPath, /(?:^|\/)ordbok-plugin\.js$/).forEach(pluginFile =>
@@ -103,7 +104,7 @@ function assemble (sourceFolder: string, targetFolder: string) {
 
     getFiles(sourceFolder, /\.(?:md|markdown)$/).forEach(sourceFile => {
 
-        const markdown = new Ordbok.Markdown(
+        const markdown = new Markdown(
             FS.readFileSync(sourceFile).toString()
         );
 
@@ -113,7 +114,7 @@ function assemble (sourceFolder: string, targetFolder: string) {
 
             const targetFile = Path.join(
                 targetFolder,
-                (Ordbok.Utilities.getBaseName(sourceFile) + '-' + index)
+                (Utilities.getBaseName(sourceFile) + '-' + index)
             );
 
             plugins.forEach(plugin =>
@@ -185,7 +186,7 @@ function config (configPath: string) {
     if (!_config.plugins ||
         _config.plugins.length === 0
     ) {
-        _config.plugins = [PLUGIN];
+        _config.plugins = [CORE_PLUGIN];
     }
     else {
         _config.plugins = _config.plugins

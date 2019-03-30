@@ -7,8 +7,8 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 var FS = require("fs");
-var Ordbok = require("../lib/index");
 var Path = require("path");
+var index_1 = require("../lib/index");
 /* *
  *
  *  Constants
@@ -19,9 +19,9 @@ var Path = require("path");
  */
 var ARGV = process.argv.slice(2).map(mapArgv);
 /**
- * Default plugin path
+ * Default core plugin path
  */
-var PLUGIN = Path.join(__dirname, '..');
+var CORE_PLUGIN = Path.join(__dirname, '..');
 /**
  * Ordbok package configuration
  */
@@ -39,7 +39,7 @@ var HELP = "Ordbok v" + (PACKAGE.version || '0.0.0') + "\n\nordbok-assembler [op
  * Loaded configuration
  */
 var _config = {
-    plugins: [PLUGIN]
+    plugins: [CORE_PLUGIN]
 };
 /* *
  *
@@ -69,10 +69,10 @@ function assemble(sourceFolder, targetFolder) {
         return plugin.onAssembling(sourceFolder, targetFolder);
     });
     getFiles(sourceFolder, /\.(?:md|markdown)$/).forEach(function (sourceFile) {
-        var markdown = new Ordbok.Markdown(FS.readFileSync(sourceFile).toString());
+        var markdown = new index_1.Markdown(FS.readFileSync(sourceFile).toString());
         plugins.forEach(function (plugin) { return plugin.onReadFile(sourceFile, markdown); });
         markdown.pages.forEach(function (markdownPage, index) {
-            var targetFile = Path.join(targetFolder, (Ordbok.Utilities.getBaseName(sourceFile) + '-' + index));
+            var targetFile = Path.join(targetFolder, (index_1.Utilities.getBaseName(sourceFile) + '-' + index));
             plugins.forEach(function (plugin) {
                 return plugin.onWriteFile(targetFile, markdownPage);
             });
@@ -125,7 +125,7 @@ function config(configPath) {
     _config = JSON.parse(FS.readFileSync('ordbok.json').toString());
     if (!_config.plugins ||
         _config.plugins.length === 0) {
-        _config.plugins = [PLUGIN];
+        _config.plugins = [CORE_PLUGIN];
     }
     else {
         _config.plugins = _config.plugins
