@@ -1,8 +1,4 @@
 /**
- * @license MIT
- * @author Sophie Bremer
- */
-/**
  * Error during an Ajax request
  */
 export interface IAjaxError extends IAjaxResponse, Error {

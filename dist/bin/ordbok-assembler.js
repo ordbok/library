@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 "use strict";
-/**
- * @internal
- * @license MIT
- * @author Sophie Bremer
- */
+/*---------------------------------------------------------------------------*/
+/* Copyright (c) ORDBOK contributors. All rights reserved.                   */
+/* Licensed under the MIT License. See the LICENSE file in the project root. */
+/*---------------------------------------------------------------------------*/
 Object.defineProperty(exports, "__esModule", { value: true });
+/* @internal */
 var FS = require("fs");
 var Path = require("path");
 var index_1 = require("../lib/index");

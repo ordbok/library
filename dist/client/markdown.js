@@ -1,7 +1,7 @@
-/**
- * @license MIT
- * @author Sophie Bremer
- */
+/*---------------------------------------------------------------------------*/
+/* Copyright (c) ORDBOK contributors. All rights reserved.                   */
+/* Licensed under the MIT License. See the LICENSE file in the project root. */
+/*---------------------------------------------------------------------------*/
 define(["require", "exports", "./text"], function (require, exports, text_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
