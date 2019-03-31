@@ -33,14 +33,14 @@ $ npx ordbok-assembler ./markdown ./build/dictionary
 
 The following TypeScript code uses the dictionary files to find a translation:
 ```ts
-import { Dictionary } from `ordbok`;
+import { Dictionary, Utilities } from `ordbok`;
 
 const myDictionary = new Dictionary('build/dictionary');
 
-const theEntry = myDictionary.loadEntry('English');
+const theEntry = myDictionary.loadEntry(Utilities.getKey('English') + '-0');
 
-console.log(theEntry.getSection('New Norwegian').words); // = engelsk, engelsken
-console.log(theEntry.getSection('New Norwegian').tags); // = Noun, Masculine
+console.log(theEntry[Utilities.getKey('New Norwegian')].words); // = engelsk, engelsken
+console.log(theEntry[Utilities.getKey('New Norwegian')].tags); // = Noun, Masculine
 ```
 
 
