@@ -1,10 +1,12 @@
 "use strict";
-/**
- * @license MIT
- * @author Sophie Bremer
- */
+/*---------------------------------------------------------------------------*/
+/* Copyright (c) ORDBOK contributors. All rights reserved.                   */
+/* Licensed under the MIT License. See the LICENSE file in the project root. */
+/*---------------------------------------------------------------------------*/
 Object.defineProperty(exports, "__esModule", { value: true });
 var FS = require("fs");
+var index_1 = require("../lib/index");
+var plugin_1 = require("../plugin");
 /* *
  *
  *  Classes
@@ -26,33 +28,6 @@ var TextPlugin = /** @class */ (function () {
         this._sourceFolder = '';
         this._targetFolder = '';
     }
-    /* *
-     *
-     *  Static Functions
-     *
-     * */
-    /**
-     * Converts a Markdown page into a dictionary text.
-     *
-     * @param markdownPage
-     *        Markdown page
-     */
-    TextPlugin.stringify = function (markdownPage) {
-        var resultLines = [];
-        var section;
-        Object
-            .keys(markdownPage)
-            .forEach(function (headline) {
-            resultLines.push(headline);
-            section = markdownPage[headline];
-            Object
-                .keys(section)
-                .forEach(function (category) {
-                return resultLines.push(category + ':' + section[category].join(','));
-            });
-        });
-        return resultLines.join('\n');
-    };
     /* *
      *
      *  Functions
@@ -93,7 +68,9 @@ var TextPlugin = /** @class */ (function () {
      *        Logical file content
      */
     TextPlugin.prototype.onWriteFile = function (targetFile, markdownPage) {
-        FS.writeFileSync(targetFile + '.txt', TextPlugin.stringify(markdownPage));
+        var filePath = targetFile + '.txt';
+        plugin_1.PluginUtilities.makeFilePath(filePath);
+        FS.writeFileSync(filePath, index_1.Dictionary.stringify(markdownPage));
     };
     return TextPlugin;
 }());

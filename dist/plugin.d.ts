@@ -1,7 +1,3 @@
-/**
- * @license MIT
- * @author Sophie Bremer
- */
 import { IMarkdownPage, Markdown } from './lib/markdown';
 /**
  * Interface of an `ordbokPlugin` export
@@ -41,4 +37,13 @@ export interface IPlugin {
      *        File's markdown
      */
     onWriteFile(targetFile: string, markdownPage: IMarkdownPage): void;
+}
+export declare module PluginUtilities {
+    /**
+     * Creates all necessary folders for a given file path.
+     *
+     * @param filePath
+     *        File path to establish
+     */
+    function makeFilePath(filePath: string): void;
 }

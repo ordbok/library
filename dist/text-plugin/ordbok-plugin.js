@@ -1,8 +1,8 @@
 "use strict";
-/**
- * @license MIT
- * @author Sophie Bremer
- */
+/*---------------------------------------------------------------------------*/
+/* Copyright (c) ORDBOK contributors. All rights reserved.                   */
+/* Licensed under the MIT License. See the LICENSE file in the project root. */
+/*---------------------------------------------------------------------------*/
 Object.defineProperty(exports, "__esModule", { value: true });
 var index_1 = require("./index");
 /* *
