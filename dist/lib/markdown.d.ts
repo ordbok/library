@@ -1,8 +1,4 @@
 /**
- * @license MIT
- * @author Sophie Bremer
- */
-/**
  * Page with headline separated sections
  */
 export interface IMarkdownPage {

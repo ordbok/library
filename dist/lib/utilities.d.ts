@@ -1,7 +1,3 @@
-/**
- * @license MIT
- * @author Sophie Bremer
- */
 export declare module Utilities {
     /**
      * Returns the extension of a file path.
