@@ -1,20 +1,9 @@
-/**
- * @license MIT
- * @author Sophie Bremer
- */
 import { IMarkdownPage } from '../lib/index';
 import { IPlugin } from '../plugin';
 /**
  * Default plugin to create dictionary text files.
  */
 export declare class TextPlugin implements IPlugin {
-    /**
-     * Converts a Markdown page into a dictionary text.
-     *
-     * @param markdownPage
-     *        Markdown page
-     */
-    static stringify(markdownPage: IMarkdownPage): string;
     /**
      * Creates a plugin instance.
      */

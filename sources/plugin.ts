@@ -1,9 +1,13 @@
-/**
- * @license MIT
- * @author Sophie Bremer
- */
+/*---------------------------------------------------------------------------*/
+/* Copyright (c) ORDBOK contributors. All rights reserved.                   */
+/* Licensed under the MIT License. See the LICENSE file in the project root. */
+/*---------------------------------------------------------------------------*/
 
+/* @internal */
+
+import * as FS from 'fs';
 import { IMarkdownPage, Markdown } from './lib/markdown';
+import * as Path from 'path';
 
 /* *
  *
@@ -59,4 +63,43 @@ export interface IPlugin {
      *        File's markdown
      */
     onWriteFile (targetFile: string, markdownPage: IMarkdownPage): void;
+}
+
+/* *
+ *
+ *  Module
+ *
+ * */
+
+export module PluginUtilities {
+
+    /* *
+     *
+     *  Functions
+     *
+     * */
+
+    /**
+     * Creates all necessary folders for a given file path.
+     *
+     * @param filePath
+     *        File path to establish
+     */
+    export function makeFilePath (filePath: string) {
+
+        let currentPath = '';
+
+        Path
+            .normalize(Path.dirname(filePath))
+            .split(Path.sep)
+            .map((entry, index) => {
+                currentPath += (index ? Path.sep : '') + entry;
+                return currentPath;
+            })
+            .forEach((path) => {
+                if (!FS.existsSync(path)) {
+                    FS.mkdirSync(path);
+                }
+            });
+    }
 }

@@ -1,11 +1,11 @@
-/**
- * @license MIT
- * @author Sophie Bremer
- */
+/*---------------------------------------------------------------------------*/
+/* Copyright (c) ORDBOK contributors. All rights reserved.                   */
+/* Licensed under the MIT License. See the LICENSE file in the project root. */
+/*---------------------------------------------------------------------------*/
 
 import * as FS from 'fs';
-import { IMarkdownPage, IMarkdownSection } from '../lib/index';
-import { IPlugin } from '../plugin';
+import { Dictionary, IMarkdownPage } from '../lib/index';
+import { IPlugin, PluginUtilities } from '../plugin';
 
 /* *
  *
@@ -17,42 +17,6 @@ import { IPlugin } from '../plugin';
  * Default plugin to create dictionary text files.
  */
 export class TextPlugin implements IPlugin {
-
-    /* *
-     *
-     *  Static Functions
-     *
-     * */
-
-    /**
-     * Converts a Markdown page into a dictionary text.
-     *
-     * @param markdownPage
-     *        Markdown page
-     */
-    public static stringify(markdownPage: IMarkdownPage): string {
-
-        const resultLines = [] as Array<string>;
-
-        let section: IMarkdownSection;
-
-        Object
-            .keys(markdownPage)
-            .forEach(headline => {
-
-                resultLines.push(headline)
-
-                section = markdownPage[headline];
-
-                Object
-                    .keys(section)
-                    .forEach(category =>
-                        resultLines.push(category + ':' + section[category].join(','))
-                    );
-            });
-
-        return resultLines.join('\n');
-    }
 
     /* *
      *
@@ -133,6 +97,9 @@ export class TextPlugin implements IPlugin {
      */
     public onWriteFile (targetFile: string, markdownPage: IMarkdownPage) {
 
-        FS.writeFileSync(targetFile + '.txt', TextPlugin.stringify(markdownPage));
+        const filePath = targetFile + '.txt';
+
+        PluginUtilities.makeFilePath(filePath);
+        FS.writeFileSync(filePath, Dictionary.stringify(markdownPage));
     }
 }
