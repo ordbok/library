@@ -13,14 +13,14 @@ The following example shows a Markdown source file named `english.md`:
 English
 =======
 
-Words: English, the English
+Translation: English, the English
 
 Tags: Noun, Neuter
 
 New Norwegian
 =============
 
-Words: engelsk, engelsken
+Translation: engelsk, engelsken
 
 Tags: Noun, Masculine
 ```
@@ -39,7 +39,7 @@ const myDictionary = new Dictionary('build/dictionary');
 
 const theEntry = myDictionary.loadEntry(Utilities.getKey('English') + '-0');
 
-console.log(theEntry[Utilities.getKey('New Norwegian')].words); // = engelsk, engelsken
+console.log(theEntry[Utilities.getKey('New Norwegian')].translation); // = engelsk, engelsken
 console.log(theEntry[Utilities.getKey('New Norwegian')].tags); // = Noun, Masculine
 ```
 
