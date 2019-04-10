@@ -13,12 +13,12 @@
 	"homepage": "https://github.com/ordbok/core#readme",
 	"repository": "https://github.com/ordbok/core.git",
 	"devDependencies": {
-		"@types/node": "^11.11.6",
+		"@types/node": "^11.12.2",
 		"requirejs": "^2.3.6",
-		"typescript": "^3.4.2"
+		"typescript": "^3.4.3"
 	},
 	"engines": {
-		"node": ">=8.1.0"
+		"node": ">=10.0.0"
 	},
 	"bin": {
 		"ordbok-assembler": "dist/bin/ordbok-assembler.js"
