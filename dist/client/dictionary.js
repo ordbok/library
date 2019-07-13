@@ -40,23 +40,23 @@ define(["require", "exports", "./ajax", "./utilities"], function (require, expor
          *        Dictionary text
          */
         Dictionary.parse = function (stringified) {
-            var markdownPage = {};
+            var dictionaryPage = {};
             var categorySplit;
-            var markdownSection;
+            var dictionarySection;
             stringified
                 .split('\n')
                 .forEach(function (line) {
                 if (line.indexOf(':') === -1) {
-                    markdownPage[line] = markdownSection = {};
+                    dictionaryPage[line] = dictionarySection = {};
                     return;
                 }
-                if (!markdownSection) {
+                if (!dictionarySection) {
                     return;
                 }
                 categorySplit = line.split(':', 2);
-                markdownSection[categorySplit[0]] = categorySplit[1].split(',');
+                dictionarySection[categorySplit[0]] = categorySplit[1].split(',');
             });
-            return markdownPage;
+            return dictionaryPage;
         };
         /**
          * Converts a Markdown page into a dictionary text.
@@ -101,12 +101,7 @@ define(["require", "exports", "./ajax", "./utilities"], function (require, expor
                         response.serverStatus >= 400) {
                         return undefined;
                     }
-                    var responseFile = Dictionary.parse(response.result);
-                    if (responseFile &&
-                        !(responseFile instanceof Array)) {
-                        return responseFile;
-                    }
-                    return undefined;
+                    return Dictionary.parse(response.result);
                 })
                     .catch(function (error) {
                     console.error(error);

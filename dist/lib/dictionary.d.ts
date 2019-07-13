@@ -1,5 +1,17 @@
 import { Ajax } from './ajax';
-import { IMarkdownPage } from './markdown';
+import { IMarkdownPage, IMarkdownSection } from './markdown';
+/**
+ * Dictionary with sections
+ */
+export interface IDictionaryEntry extends IMarkdownPage {
+    [section: string]: IDictionarySection;
+}
+/**
+ * Dictionary section with categories
+ */
+export interface IDictionarySection extends IMarkdownSection {
+    [category: string]: Array<string>;
+}
 export declare class Dictionary extends Ajax {
     /**
      * Converts a dictionary text into a Markdown page.
@@ -7,7 +19,7 @@ export declare class Dictionary extends Ajax {
      * @param stringified
      *        Dictionary text
      */
-    static parse(stringified: string): IMarkdownPage;
+    static parse(stringified: string): IDictionaryEntry;
     /**
      * Converts a Markdown page into a dictionary text.
      *
@@ -21,5 +33,5 @@ export declare class Dictionary extends Ajax {
      * @param baseName
      *        Base name of the translation file
      */
-    loadEntry(baseName: string): Promise<IMarkdownPage | undefined>;
+    loadEntry(baseName: string): Promise<IDictionaryEntry>;
 }

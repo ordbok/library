@@ -5,7 +5,7 @@ export interface IMarkdownPage {
     [headline: string]: IMarkdownSection;
 }
 /**
- * Headlines following section
+ * Sections after a page headline
  */
 export interface IMarkdownSection {
     [key: string]: Array<string>;

@@ -13,7 +13,7 @@ define(["require", "exports"], function (require, exports) {
     /**
      * Non-character pattern
      */
-    var NON_CHARACTER_REGEXP = /[^0-9A-Za-z\u0080-\uFFFF- ]/g;
+    var NON_CHARACTER_REGEXP = /[^0-9A-Za-z\u0080-\uFFFF -]/g;
     /**
      * Path pattern
      */

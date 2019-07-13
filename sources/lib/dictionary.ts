@@ -9,6 +9,26 @@ import { Utilities } from './utilities';
 
 /* *
  *
+ *  Interfaces
+ *
+ * */
+
+/**
+ * Dictionary with sections
+ */
+export interface IDictionaryEntry extends IMarkdownPage {
+    [section: string]: IDictionarySection;
+}
+
+/**
+ * Dictionary section with categories
+ */
+export interface IDictionarySection extends IMarkdownSection {
+    [category: string]: Array<string>;
+}
+
+/* *
+ *
  *  Classes
  *
  * */
@@ -27,32 +47,32 @@ export class Dictionary extends Ajax {
      * @param stringified
      *        Dictionary text
      */
-    public static parse (stringified: string): IMarkdownPage {
+    public static parse (stringified: string): IDictionaryEntry {
 
-        const markdownPage = {} as IMarkdownPage;
+        const dictionaryPage = {} as IDictionaryEntry;
 
         let categorySplit: Array<string>;
-        let markdownSection: IMarkdownSection;
+        let dictionarySection: IMarkdownSection;
 
         stringified
             .split('\n')
             .forEach(line => {
 
                 if (line.indexOf(':') === -1) {
-                    markdownPage[line] = markdownSection = {};
+                    dictionaryPage[line] = dictionarySection = {};
                     return;
                 }
 
-                if (!markdownSection) {
+                if (!dictionarySection) {
                     return;
                 }
 
                 categorySplit = line.split(':', 2);
 
-                markdownSection[categorySplit[0]] = categorySplit[1].split(',');
+                dictionarySection[categorySplit[0]] = categorySplit[1].split(',');
             });
 
-        return markdownPage;
+        return dictionaryPage;
     }
 
     /**
@@ -99,7 +119,7 @@ export class Dictionary extends Ajax {
      * @param baseName
      *        Base name of the translation file
      */
-    public loadEntry (baseName: string): Promise<IMarkdownPage|undefined> {
+    public loadEntry (baseName: string): Promise<IDictionaryEntry> {
 
         return new Promise((resolve) => {
 
@@ -113,17 +133,7 @@ export class Dictionary extends Ajax {
                         return undefined;
                     }
 
-                    const responseFile = (
-                        Dictionary.parse(response.result) as IMarkdownPage
-                    );
-
-                    if (responseFile &&
-                        !(responseFile instanceof Array)
-                    ) {
-                        return responseFile;
-                    }
-
-                    return undefined;
+                    return Dictionary.parse(response.result);
                 })
                 .catch(error => {
 
