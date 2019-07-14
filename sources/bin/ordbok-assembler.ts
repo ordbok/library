@@ -41,6 +41,11 @@ const ARGV = process.argv.slice(2).map(mapArgv);
 const CORE_PLUGIN = Path.join(__dirname, '..');
 
 /**
+ * Current working directory
+ */
+const CWD = process.cwd();
+
+/**
  * Ordbok package configuration
  */
 const PACKAGE = require('../../package.json');
@@ -159,7 +164,7 @@ function cli () {
             throw new Error('Invalid arguments');
         }
 
-        config('ordbok.json');
+        config(Path.join(CWD, 'ordbok.json'));
         assemble(sourceDirectory, targetDirectory);
     }
     catch (catchedError) {
@@ -182,7 +187,7 @@ function config (configPath: string) {
 
     const configFolder = Path.dirname(configPath);
 
-    _config = JSON.parse(FS.readFileSync('ordbok.json').toString()) as IConfig;
+    _config = JSON.parse(FS.readFileSync(configPath).toString()) as IConfig;
 
     if (!_config.plugins ||
         _config.plugins.length === 0
@@ -192,7 +197,7 @@ function config (configPath: string) {
     else {
         _config.plugins = _config.plugins
             .map(pluginPath => (
-                pluginPath[0] === '.' ?
+                pluginPath[0] !== Path.sep ?
                     Path.join(configFolder, pluginPath) :
                     pluginPath
             ));
