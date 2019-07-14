@@ -79,7 +79,7 @@ var Markdown = /** @class */ (function () {
             match = PAIR_REGEXP.exec(paragraph);
             if (match) {
                 section[match[1]] = match[2]
-                    .split(',')
+                    .split(';')
                     .map(text_1.Text.trimSpaces);
             }
         });

@@ -19,7 +19,7 @@ export interface IMarkdownPage {
 }
 
 /**
- * Headlines following section
+ * Sections after a page headline
  */
 export interface IMarkdownSection {
     [key: string]: Array<string>;
@@ -99,7 +99,7 @@ export class Markdown {
 
                 if (match) {
                     section[match[1]] = match[2]
-                        .split(',')
+                        .split(';')
                         .map(Text.trimSpaces);
                 }
             })

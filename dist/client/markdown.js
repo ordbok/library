@@ -79,7 +79,7 @@ define(["require", "exports", "./text"], function (require, exports, text_1) {
                 match = PAIR_REGEXP.exec(paragraph);
                 if (match) {
                     section[match[1]] = match[2]
-                        .split(',')
+                        .split(';')
                         .map(text_1.Text.trimSpaces);
                 }
             });

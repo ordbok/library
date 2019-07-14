@@ -12,7 +12,7 @@
 /**
  * Non-character pattern
  */
-const NON_CHARACTER_REGEXP = /[^0-9A-Za-z\u0080-\uFFFF- ]/g;
+const NON_CHARACTER_REGEXP = /[^0-9A-Za-z\u0080-\uFFFF -]/g;
 
 /**
  * Path pattern

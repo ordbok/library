@@ -35,29 +35,29 @@ var Dictionary = /** @class */ (function (_super) {
      *
      * */
     /**
-     * Converts a dictionary text into a Markdown page.
+     * Converts a text into a dictionary entry.
      *
      * @param stringified
      *        Dictionary text
      */
     Dictionary.parse = function (stringified) {
-        var markdownPage = {};
+        var dictionaryPage = {};
         var categorySplit;
-        var markdownSection;
+        var dictionarySection;
         stringified
             .split('\n')
             .forEach(function (line) {
             if (line.indexOf(':') === -1) {
-                markdownPage[line] = markdownSection = {};
+                dictionaryPage[line] = dictionarySection = {};
                 return;
             }
-            if (!markdownSection) {
+            if (!dictionarySection) {
                 return;
             }
             categorySplit = line.split(':', 2);
-            markdownSection[categorySplit[0]] = categorySplit[1].split(',');
+            dictionarySection[categorySplit[0]] = categorySplit[1].split(';');
         });
-        return markdownPage;
+        return dictionaryPage;
     };
     /**
      * Converts a Markdown page into a dictionary text.
@@ -76,7 +76,7 @@ var Dictionary = /** @class */ (function (_super) {
             Object
                 .keys(markdownSection)
                 .forEach(function (category) {
-                return stringified.push(utilities_1.Utilities.getKey(category) + ':' + markdownSection[category].join(','));
+                return stringified.push(utilities_1.Utilities.getKey(category) + ':' + markdownSection[category].join(';'));
             });
         });
         return stringified.join('\n');
@@ -102,12 +102,7 @@ var Dictionary = /** @class */ (function (_super) {
                     response.serverStatus >= 400) {
                     return undefined;
                 }
-                var responseFile = Dictionary.parse(response.result);
-                if (responseFile &&
-                    !(responseFile instanceof Array)) {
-                    return responseFile;
-                }
-                return undefined;
+                return Dictionary.parse(response.result);
             })
                 .catch(function (error) {
                 console.error(error);
