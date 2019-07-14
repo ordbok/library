@@ -23,6 +23,10 @@ var ARGV = process.argv.slice(2).map(mapArgv);
  */
 var CORE_PLUGIN = Path.join(__dirname, '..');
 /**
+ * Current working directory
+ */
+var CWD = process.cwd();
+/**
  * Ordbok package configuration
  */
 var PACKAGE = require('../../package.json');
@@ -104,7 +108,7 @@ function cli() {
             targetDirectory[1] === '-') {
             throw new Error('Invalid arguments');
         }
-        config('ordbok.json');
+        config(Path.join(CWD, 'ordbok.json'));
         assemble(sourceDirectory, targetDirectory);
     }
     catch (catchedError) {
@@ -122,14 +126,14 @@ function config(configPath) {
         return;
     }
     var configFolder = Path.dirname(configPath);
-    _config = JSON.parse(FS.readFileSync('ordbok.json').toString());
+    _config = JSON.parse(FS.readFileSync(configPath).toString());
     if (!_config.plugins ||
         _config.plugins.length === 0) {
         _config.plugins = [CORE_PLUGIN];
     }
     else {
         _config.plugins = _config.plugins
-            .map(function (pluginPath) { return (pluginPath[0] === '.' ?
+            .map(function (pluginPath) { return (pluginPath[0] !== Path.sep ?
             Path.join(configFolder, pluginPath) :
             pluginPath); });
     }
