@@ -14,7 +14,7 @@ export interface IDictionarySection extends IMarkdownSection {
 }
 export declare class Dictionary extends Ajax {
     /**
-     * Converts a dictionary text into a Markdown page.
+     * Converts a text into a dictionary entry.
      *
      * @param stringified
      *        Dictionary text

@@ -35,7 +35,7 @@ var Dictionary = /** @class */ (function (_super) {
      *
      * */
     /**
-     * Converts a dictionary text into a Markdown page.
+     * Converts a text into a dictionary entry.
      *
      * @param stringified
      *        Dictionary text
@@ -55,7 +55,7 @@ var Dictionary = /** @class */ (function (_super) {
                 return;
             }
             categorySplit = line.split(':', 2);
-            dictionarySection[categorySplit[0]] = categorySplit[1].split(',');
+            dictionarySection[categorySplit[0]] = categorySplit[1].split(';');
         });
         return dictionaryPage;
     };
@@ -76,7 +76,7 @@ var Dictionary = /** @class */ (function (_super) {
             Object
                 .keys(markdownSection)
                 .forEach(function (category) {
-                return stringified.push(utilities_1.Utilities.getKey(category) + ':' + markdownSection[category].join(','));
+                return stringified.push(utilities_1.Utilities.getKey(category) + ':' + markdownSection[category].join(';'));
             });
         });
         return stringified.join('\n');

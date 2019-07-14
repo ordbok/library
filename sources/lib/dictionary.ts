@@ -42,7 +42,7 @@ export class Dictionary extends Ajax {
      * */
 
     /**
-     * Converts a dictionary text into a Markdown page.
+     * Converts a text into a dictionary entry.
      *
      * @param stringified
      *        Dictionary text
@@ -69,7 +69,7 @@ export class Dictionary extends Ajax {
 
                 categorySplit = line.split(':', 2);
 
-                dictionarySection[categorySplit[0]] = categorySplit[1].split(',');
+                dictionarySection[categorySplit[0]] = categorySplit[1].split(';');
             });
 
         return dictionaryPage;
@@ -99,7 +99,7 @@ export class Dictionary extends Ajax {
                     .keys(markdownSection)
                     .forEach(category =>
                         stringified.push(
-                            Utilities.getKey(category) + ':' + markdownSection[category].join(',')
+                            Utilities.getKey(category) + ':' + markdownSection[category].join(';')
                         )
                     );
             });

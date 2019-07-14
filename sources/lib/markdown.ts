@@ -99,7 +99,7 @@ export class Markdown {
 
                 if (match) {
                     section[match[1]] = match[2]
-                        .split(',')
+                        .split(';')
                         .map(Text.trimSpaces);
                 }
             })

@@ -34,7 +34,7 @@ define(["require", "exports", "./ajax", "./utilities"], function (require, expor
          *
          * */
         /**
-         * Converts a dictionary text into a Markdown page.
+         * Converts a text into a dictionary entry.
          *
          * @param stringified
          *        Dictionary text
@@ -54,7 +54,7 @@ define(["require", "exports", "./ajax", "./utilities"], function (require, expor
                     return;
                 }
                 categorySplit = line.split(':', 2);
-                dictionarySection[categorySplit[0]] = categorySplit[1].split(',');
+                dictionarySection[categorySplit[0]] = categorySplit[1].split(';');
             });
             return dictionaryPage;
         };
@@ -75,7 +75,7 @@ define(["require", "exports", "./ajax", "./utilities"], function (require, expor
                 Object
                     .keys(markdownSection)
                     .forEach(function (category) {
-                    return stringified.push(utilities_1.Utilities.getKey(category) + ':' + markdownSection[category].join(','));
+                    return stringified.push(utilities_1.Utilities.getKey(category) + ':' + markdownSection[category].join(';'));
                 });
             });
             return stringified.join('\n');
