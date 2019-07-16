@@ -4,7 +4,7 @@
 /*---------------------------------------------------------------------------*/
 
 import * as FS from 'fs';
-import { Dictionary, IMarkdownPage } from '../lib/index';
+import { Dictionary, IMarkdownPage } from '../lib';
 import { IPlugin, PluginUtilities } from '../plugin';
 
 /* *
@@ -16,38 +16,7 @@ import { IPlugin, PluginUtilities } from '../plugin';
 /**
  * Default plugin to create dictionary text files.
  */
-export class TextPlugin implements IPlugin {
-
-    /* *
-     *
-     *  Constructors
-     *
-     * */
-
-    /**
-     * Creates a plugin instance.
-     */
-    public constructor () {
-
-        this._sourceFolder = '';
-        this._targetFolder = '';
-    }
-
-    /* *
-     *
-     *  Properties
-     *
-     * */
-
-    /**
-     * Markdown folder
-     */
-    private _sourceFolder: string;
-
-    /**
-     * Dictionary folder
-     */
-    private _targetFolder: string;
+export class DictionaryPlugin implements IPlugin {
 
     /* *
      *
@@ -65,17 +34,10 @@ export class TextPlugin implements IPlugin {
 
     /**
      * Gets called before the assembling begins.
-     *
-     * @param sourceFolder
-     *        Markdown folder
-     *
-     * @param targetFolder
-     *        Dictionary folder
      */
-    public onAssembling (sourceFolder: string, targetFolder: string) {
+    public onAssembling () {
 
-        this._sourceFolder = sourceFolder;
-        this._targetFolder = targetFolder;
+        // nothing to do
     }
 
     /**
@@ -97,9 +59,18 @@ export class TextPlugin implements IPlugin {
      */
     public onWriteFile (targetFile: string, markdownPage: IMarkdownPage) {
 
-        const filePath = targetFile + '.txt';
+        const filePath = targetFile + Dictionary.FILE_EXTENSION;
 
         PluginUtilities.makeFilePath(filePath);
+
         FS.writeFileSync(filePath, Dictionary.stringify(markdownPage));
     }
 }
+
+/* *
+ *
+ *  Plugin Export
+ *
+ * */
+
+export const ordbokPlugin = new DictionaryPlugin();

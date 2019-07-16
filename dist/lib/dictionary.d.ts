@@ -12,7 +12,14 @@ export interface IDictionaryEntry extends IMarkdownPage {
 export interface IDictionarySection extends IMarkdownSection {
     [category: string]: Array<string>;
 }
+/**
+ * Manages dictionary communication with a server.
+ */
 export declare class Dictionary extends Ajax {
+    /**
+     * File extension of dictionary entries.
+     */
+    static readonly FILE_EXTENSION = ".txt";
     /**
      * Converts a text into a dictionary entry.
      *

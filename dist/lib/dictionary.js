@@ -24,6 +24,9 @@ var utilities_1 = require("./utilities");
  *  Classes
  *
  * */
+/**
+ * Manages dictionary communication with a server.
+ */
 var Dictionary = /** @class */ (function (_super) {
     __extends(Dictionary, _super);
     function Dictionary() {
@@ -96,7 +99,7 @@ var Dictionary = /** @class */ (function (_super) {
         var _this = this;
         return new Promise(function (resolve) {
             _this
-                .request(utilities_1.Utilities.getKey(baseName) + '.txt')
+                .request(utilities_1.Utilities.getKey(baseName) + Dictionary.FILE_EXTENSION)
                 .then(function (response) {
                 if (response instanceof Error ||
                     response.serverStatus >= 400) {
@@ -111,6 +114,15 @@ var Dictionary = /** @class */ (function (_super) {
                 .then(resolve);
         });
     };
+    /* *
+     *
+     *  Static Variables
+     *
+     * */
+    /**
+     * File extension of dictionary entries.
+     */
+    Dictionary.FILE_EXTENSION = '.txt';
     return Dictionary;
 }(ajax_1.Ajax));
 exports.Dictionary = Dictionary;

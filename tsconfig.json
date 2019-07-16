@@ -15,8 +15,8 @@
     ],
     "files": [
         "sources/bin/ordbok-assembler.ts",
+        "sources/dictionary-plugin/ordbok-plugin.ts",
         "sources/lib/index.ts",
         "sources/plugin.ts",
-        "sources/text-plugin/ordbok-plugin.ts",
     ]
 }

@@ -86,9 +86,7 @@ export class Ajax {
      * @param responseTimeout
      *        Time in milliseconds to wait for a server response
      */
-    public constructor (
-        baseUrl?: string, cacheTimeout?: number, responseTimeout?: number
-    ) {
+    public constructor (baseUrl?: string, cacheTimeout?: number, responseTimeout?: number) {
 
         this._cache = {};
 
@@ -201,7 +199,7 @@ export class Ajax {
                     error.timestamp = evt.timeStamp;
                     error.url = url;
 
-                    reject(error)
+                    reject(error);
                 });
 
                 server.send();

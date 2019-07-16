@@ -23,6 +23,9 @@ define(["require", "exports", "./ajax", "./utilities"], function (require, expor
      *  Classes
      *
      * */
+    /**
+     * Manages dictionary communication with a server.
+     */
     var Dictionary = /** @class */ (function (_super) {
         __extends(Dictionary, _super);
         function Dictionary() {
@@ -95,7 +98,7 @@ define(["require", "exports", "./ajax", "./utilities"], function (require, expor
             var _this = this;
             return new Promise(function (resolve) {
                 _this
-                    .request(utilities_1.Utilities.getKey(baseName) + '.txt')
+                    .request(utilities_1.Utilities.getKey(baseName) + Dictionary.FILE_EXTENSION)
                     .then(function (response) {
                     if (response instanceof Error ||
                         response.serverStatus >= 400) {
@@ -110,6 +113,15 @@ define(["require", "exports", "./ajax", "./utilities"], function (require, expor
                     .then(resolve);
             });
         };
+        /* *
+         *
+         *  Static Variables
+         *
+         * */
+        /**
+         * File extension of dictionary entries.
+         */
+        Dictionary.FILE_EXTENSION = '.txt';
         return Dictionary;
     }(ajax_1.Ajax));
     exports.Dictionary = Dictionary;
