@@ -3,7 +3,6 @@
 /* Licensed under the MIT License. See the LICENSE file in the project root. */
 /*---------------------------------------------------------------------------*/
 
-import * as FS from 'fs';
 import { Dictionary, IMarkdownPage } from '../lib';
 import { IPlugin, PluginUtilities } from '../plugin';
 
