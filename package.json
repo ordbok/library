@@ -13,9 +13,9 @@
 	"homepage": "https://github.com/ordbok/core#readme",
 	"repository": "https://github.com/ordbok/core.git",
 	"devDependencies": {
-		"@types/node": "^11.12.2",
-		"requirejs": "^2.3.6",
-		"typescript": "^3.4.5"
+		"@types/node": "^10.0.0",
+		"requirejs": "2.3.6",
+		"typescript": "3.4.5"
 	},
 	"engines": {
 		"node": ">=10.0.0"
