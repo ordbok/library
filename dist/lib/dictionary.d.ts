@@ -39,6 +39,9 @@ export declare class Dictionary extends Ajax {
      *
      * @param baseName
      *        Base name of the translation file
+     *
+     * @param pageIndex
+     *        Index of the entry page to load
      */
-    loadEntry(baseName: string): Promise<IDictionaryEntry>;
+    loadEntry(baseName: string, pageIndex?: number): Promise<IDictionaryEntry>;
 }
