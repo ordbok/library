@@ -4,7 +4,6 @@
 /* Licensed under the MIT License. See the LICENSE file in the project root. */
 /*---------------------------------------------------------------------------*/
 Object.defineProperty(exports, "__esModule", { value: true });
-var FS = require("fs");
 var lib_1 = require("../lib");
 var plugin_1 = require("../plugin");
 /* *
@@ -51,9 +50,7 @@ var DictionaryPlugin = /** @class */ (function () {
      *        Logical file content
      */
     DictionaryPlugin.prototype.onWriteFile = function (targetFile, markdownPage) {
-        var filePath = targetFile + lib_1.Dictionary.FILE_EXTENSION;
-        plugin_1.PluginUtilities.makeFilePath(filePath);
-        FS.writeFileSync(filePath, lib_1.Dictionary.stringify(markdownPage));
+        plugin_1.PluginUtilities.writeFileSync((targetFile + lib_1.Dictionary.FILE_EXTENSION), lib_1.Dictionary.stringify(markdownPage));
     };
     return DictionaryPlugin;
 }());

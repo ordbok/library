@@ -59,11 +59,10 @@ export class DictionaryPlugin implements IPlugin {
      */
     public onWriteFile (targetFile: string, markdownPage: IMarkdownPage) {
 
-        const filePath = targetFile + Dictionary.FILE_EXTENSION;
-
-        PluginUtilities.makeFilePath(filePath);
-
-        FS.writeFileSync(filePath, Dictionary.stringify(markdownPage));
+        PluginUtilities.writeFileSync(
+            (targetFile + Dictionary.FILE_EXTENSION),
+            Dictionary.stringify(markdownPage)
+        );
     }
 }
 

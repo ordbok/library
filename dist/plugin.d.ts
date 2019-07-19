@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import { IMarkdownPage, Markdown } from './lib/markdown';
 /**
  * Interface of an `ordbokPlugin` export
@@ -46,4 +47,5 @@ export declare module PluginUtilities {
      *        File path to establish
      */
     function makeFilePath(filePath: string): void;
+    function writeFileSync(filePath: string, fileContent: string, options?: FS.WriteFileOptions): void;
 }
