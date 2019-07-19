@@ -7,7 +7,5 @@
         "outDir": "dist/client",
         "rootDir": "sources/lib"
     },
-    "files": [
-        "sources/lib/index.ts"
-    ]
+    "files": []
 }

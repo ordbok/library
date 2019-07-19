@@ -15,14 +15,14 @@ English
 
 Translation: English, the English
 
-Tags: Noun, Neuter
+Grammar: Noun, Neuter
 
 New Norwegian
 =============
 
 Translation: engelsk, engelsken
 
-Tags: Noun, Masculine
+Grammar: Noun, Masculine
 ```
 
 The following example takes a Markdown source folder to build dictionary files
@@ -37,10 +37,10 @@ import { Dictionary, Utilities } from `ordbok`;
 
 const myDictionary = new Dictionary('build/dictionary');
 
-const theEntry = myDictionary.loadEntry(Utilities.getKey('English') + '-0');
+const theEntry = myDictionary.loadEntry('English');
 
 console.log(theEntry[Utilities.getKey('New Norwegian')].translation); // = engelsk, engelsken
-console.log(theEntry[Utilities.getKey('New Norwegian')].tags); // = Noun, Masculine
+console.log(theEntry[Utilities.getKey('New Norwegian')].grammar); // = Noun, Masculine
 ```
 
 
