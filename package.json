@@ -37,6 +37,8 @@
 		"build-3": "chmod +x dist/bin/ordbok-assembler.js",
 		"build-4": "typedoc --out docs --tsconfig tsconfig.json",
 		"clean": "rm -rf dist",
+        "release": "npm publish --access=public --tag next",
+        "release-as-stable": "npm publish --access=public",
 		"watch": "tsc --build tsconfig.json --watch"
 	},
 	"types": "dist/lib/index.d.ts"
