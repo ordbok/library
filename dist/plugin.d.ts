@@ -1,4 +1,5 @@
 /// <reference types="node" />
+import * as FS from 'fs';
 import { IMarkdownPage, Markdown } from './lib/markdown';
 /**
  * Interface of an `ordbokPlugin` export
