@@ -12,7 +12,14 @@ export interface IDictionaryEntry extends IMarkdownPage {
 export interface IDictionarySection extends IMarkdownSection {
     [category: string]: Array<string>;
 }
+/**
+ * Manages dictionary communication with a server.
+ */
 export declare class Dictionary extends Ajax {
+    /**
+     * File extension of dictionary entries.
+     */
+    static readonly FILE_EXTENSION = ".txt";
     /**
      * Converts a text into a dictionary entry.
      *
@@ -32,6 +39,9 @@ export declare class Dictionary extends Ajax {
      *
      * @param baseName
      *        Base name of the translation file
+     *
+     * @param pageIndex
+     *        Index of the entry page to load
      */
-    loadEntry(baseName: string): Promise<IDictionaryEntry>;
+    loadEntry(baseName: string, pageIndex?: number): Promise<IDictionaryEntry>;
 }

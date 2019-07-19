@@ -1,35 +1,17 @@
-import { IMarkdownPage } from '../lib/index';
+import { IMarkdownPage } from '../lib';
 import { IPlugin } from '../plugin';
 /**
  * Default plugin to create dictionary text files.
  */
-export declare class TextPlugin implements IPlugin {
-    /**
-     * Creates a plugin instance.
-     */
-    constructor();
-    /**
-     * Markdown folder
-     */
-    private _sourceFolder;
-    /**
-     * Dictionary folder
-     */
-    private _targetFolder;
+export declare class DictionaryPlugin implements IPlugin {
     /**
      * Gets called after the assembling has been done.
      */
     onAssembled(): void;
     /**
      * Gets called before the assembling begins.
-     *
-     * @param sourceFolder
-     *        Markdown folder
-     *
-     * @param targetFolder
-     *        Dictionary folder
      */
-    onAssembling(sourceFolder: string, targetFolder: string): void;
+    onAssembling(): void;
     /**
      * Gets called after a markdown file has been read.
      */
@@ -45,3 +27,4 @@ export declare class TextPlugin implements IPlugin {
      */
     onWriteFile(targetFile: string, markdownPage: IMarkdownPage): void;
 }
+export declare const ordbokPlugin: DictionaryPlugin;

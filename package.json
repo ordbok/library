@@ -1,7 +1,7 @@
 {
 	"private": true,
 	"name": "@ordbok/core",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"author": "ORDBOK contributors",
 	"license": "MIT",
 	"description": "Dictionary system",
@@ -13,9 +13,10 @@
 	"homepage": "https://github.com/ordbok/core#readme",
 	"repository": "https://github.com/ordbok/core.git",
 	"devDependencies": {
-		"@types/node": "^11.12.2",
-		"requirejs": "^2.3.6",
-		"typescript": "^3.4.5"
+		"@types/node": "^10.0.0",
+		"requirejs": "2.3.6",
+		"typedoc": "0.14.2",
+		"typescript": "3.4.5"
 	},
 	"engines": {
 		"node": ">=10.0.0"
@@ -30,10 +31,11 @@
 	],
 	"main": "dist/lib/index.js",
 	"scripts": {
-		"build": "npm run clean && npm run build-1 && npm run build-2 && npm run build-3",
+		"build": "npm run clean && npm run build-1 && npm run build-2 && npm run build-3 && npm run build-4",
 		"build-1": "tsc --build tsconfig.json tsconfig-client.json",
 		"build-2": "r_js -o rjsconfig-client.js",
 		"build-3": "chmod +x dist/bin/ordbok-assembler.js",
+		"build-4": "typedoc --out docs --tsconfig tsconfig.json",
 		"clean": "rm -rf dist",
 		"watch": "tsc --build tsconfig.json --watch"
 	},

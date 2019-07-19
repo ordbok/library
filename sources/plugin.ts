@@ -93,13 +93,23 @@ export module PluginUtilities {
             .normalize(Path.dirname(filePath))
             .split(Path.sep)
             .map((entry, index) => {
-                currentPath += (index ? Path.sep : '') + entry;
-                return currentPath;
+                return currentPath += (index ? Path.sep : '') + entry;
             })
             .forEach((path) => {
                 if (!FS.existsSync(path)) {
                     FS.mkdirSync(path);
                 }
             });
+    }
+
+    export function writeFileSync (
+        filePath: string,
+        fileContent: string,
+        options?: FS.WriteFileOptions
+    ) {
+
+        PluginUtilities.makeFilePath(filePath);
+
+        FS.writeFileSync(filePath, fileContent, options);
     }
 }

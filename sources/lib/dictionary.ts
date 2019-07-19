@@ -33,7 +33,21 @@ export interface IDictionarySection extends IMarkdownSection {
  *
  * */
 
+/**
+ * Manages dictionary communication with a server.
+ */
 export class Dictionary extends Ajax {
+
+    /* *
+     *
+     *  Static Variables
+     *
+     * */
+
+    /**
+     * File extension of dictionary entries.
+     */
+    public static readonly FILE_EXTENSION = '.txt';
 
     /* *
      *
@@ -118,13 +132,16 @@ export class Dictionary extends Ajax {
      *
      * @param baseName
      *        Base name of the translation file
+     *
+     * @param pageIndex
+     *        Index of the entry page to load
      */
-    public loadEntry (baseName: string): Promise<IDictionaryEntry> {
+    public loadEntry (baseName: string, pageIndex: number = 0): Promise<IDictionaryEntry> {
 
         return new Promise((resolve) => {
 
             this
-                .request(Utilities.getKey(baseName) + '.txt')
+                .request(Utilities.getKey(baseName) + '-' + pageIndex + Dictionary.FILE_EXTENSION)
                 .then(response => {
 
                     if (response instanceof Error ||

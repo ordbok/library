@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
         "declaration": true,
+        "noEmitOnError": true,
         "strict": true,
-        "stripInternal": true,
         "module": "commonjs",
         "moduleResolution": "node",
         "outDir": "dist",
@@ -13,10 +13,12 @@
         "dist",
         "node_modules"
     ],
+    "include": [
+        "sources/lib/**/*.ts"
+    ],
     "files": [
         "sources/bin/ordbok-assembler.ts",
-        "sources/lib/index.ts",
+        "sources/dictionary-plugin/ordbok-plugin.ts",
         "sources/plugin.ts",
-        "sources/text-plugin/ordbok-plugin.ts",
     ]
 }

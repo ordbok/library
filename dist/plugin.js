@@ -31,8 +31,7 @@ var PluginUtilities;
             .normalize(Path.dirname(filePath))
             .split(Path.sep)
             .map(function (entry, index) {
-            currentPath += (index ? Path.sep : '') + entry;
-            return currentPath;
+            return currentPath += (index ? Path.sep : '') + entry;
         })
             .forEach(function (path) {
             if (!FS.existsSync(path)) {
@@ -41,4 +40,9 @@ var PluginUtilities;
         });
     }
     PluginUtilities.makeFilePath = makeFilePath;
+    function writeFileSync(filePath, fileContent, options) {
+        PluginUtilities.makeFilePath(filePath);
+        FS.writeFileSync(filePath, fileContent, options);
+    }
+    PluginUtilities.writeFileSync = writeFileSync;
 })(PluginUtilities = exports.PluginUtilities || (exports.PluginUtilities = {}));
