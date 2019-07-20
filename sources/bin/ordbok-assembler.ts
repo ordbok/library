@@ -54,7 +54,9 @@ const PACKAGE = require('../../package.json');
  * Command line help
  */
 const HELP =
-`Ordbok v${PACKAGE.version || '0.0.0'}
+`ORDBOK v${PACKAGE.version || '0.0.0'}
+
+Creates dictionary files out of Markdown files.
 
 ordbok-assembler [options] source target
 
