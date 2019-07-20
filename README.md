@@ -33,7 +33,7 @@ $ npx ordbok-assembler ./markdown ./build/dictionary
 
 The following TypeScript code uses the dictionary files to find a translation:
 ```ts
-import { Dictionary, Utilities } from `ordbok`;
+import { Dictionary, Utilities } from `@ordbok/core`;
 
 const myDictionary = new Dictionary('build/dictionary');
 
@@ -53,7 +53,7 @@ assembling process. You can specify node modules and folders:
 ```json
 {
     "plugins": [
-        "ordbok-index",
+        "@ordbok/index-plugin",
         "./tools/custom-plugin"
     ]
 }
