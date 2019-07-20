@@ -89,6 +89,7 @@ export class Ajax {
     public constructor (baseUrl?: string, cacheTimeout?: number, responseTimeout?: number) {
 
         this._cache = {};
+        this._requests = 0;
 
         this.baseUrl = (baseUrl || '');
         this.cacheTimeout = (cacheTimeout || 3600000);
@@ -105,6 +106,11 @@ export class Ajax {
      * Cached results
      */
     private _cache: { [key: string]: IAjaxResponse };
+
+    /**
+     * Counter of open requests
+     */
+    private _requests: number;
 
     /**
      * Base URL of the server
@@ -128,7 +134,19 @@ export class Ajax {
      * */
 
     /**
-     * Requests a server resource
+     * Checks for open requests.
+     */
+    public hasOpenRequests (): boolean {
+
+        if (this._requests < 0) {
+            this._requests = 0;
+        }
+
+        return (this._requests > 0);
+    }
+
+    /**
+     * Requests a server resource.
      *
      * @param urlPath
      *        Base relative path to the requested server resource
@@ -156,6 +174,8 @@ export class Ajax {
 
             const server = new XMLHttpRequest();
 
+            let isCountingRequest = false;
+
             try {
 
                 if (this.cacheTimeout === 0 && url.indexOf('?') === -1) {
@@ -169,14 +189,25 @@ export class Ajax {
                     server.open('GET', url, true);
                 }
 
+                this._requests++;
+                isCountingRequest = true;
+
                 server.timeout = this.responseTimeout;
 
-                server.addEventListener('load', (evt) => resolve({
-                    result: (server.response || '').toString(),
-                    serverStatus: server.status,
-                    timestamp: evt.timeStamp,
-                    url: url
-                }));
+                server.addEventListener('load', (evt) => {
+
+                    if (isCountingRequest) {
+                        isCountingRequest = false;
+                        this._requests--;
+                    }
+
+                    resolve({
+                        result: (server.response || '').toString(),
+                        serverStatus: server.status,
+                        timestamp: evt.timeStamp,
+                        url: url
+                    })
+                });
 
                 server.addEventListener('error', (evt) => {
 
@@ -186,6 +217,11 @@ export class Ajax {
                     error.serverStatus = server.status;
                     error.timestamp = evt.timeStamp;
                     error.url = url;
+
+                    if (isCountingRequest) {
+                        isCountingRequest = false;
+                        this._requests--;
+                    }
 
                     reject(error);
                 });
@@ -198,6 +234,11 @@ export class Ajax {
                     error.serverStatus = server.status;
                     error.timestamp = evt.timeStamp;
                     error.url = url;
+
+                    if (isCountingRequest) {
+                        isCountingRequest = false;
+                        this._requests--;
+                    }
 
                     reject(error);
                 });
@@ -212,6 +253,11 @@ export class Ajax {
                 error.timestamp = (new Date()).getTime();
                 error.serverStatus = server.status;
                 error.url = url;
+
+                if (isCountingRequest) {
+                    isCountingRequest = false;
+                    this._requests--;
+                }
 
                 reject(error);
             }
