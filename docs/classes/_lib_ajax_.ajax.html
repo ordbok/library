@@ -103,6 +103,7 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_lib_ajax_.ajax.html#_cache" class="tsd-kind-icon">_cache</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_lib_ajax_.ajax.html#_requests" class="tsd-kind-icon">_requests</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_lib_ajax_.ajax.html#baseurl" class="tsd-kind-icon">base<wbr>Url</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_lib_ajax_.ajax.html#cachetimeout" class="tsd-kind-icon">cache<wbr>Timeout</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_lib_ajax_.ajax.html#responsetimeout" class="tsd-kind-icon">response<wbr>Timeout</a></li>
@@ -111,6 +112,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_lib_ajax_.ajax.html#hasopenrequests" class="tsd-kind-icon">has<wbr>Open<wbr>Requests</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_lib_ajax_.ajax.html#request" class="tsd-kind-icon">request</a></li>
 							</ul>
 						</section>
@@ -129,7 +131,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ordbok/core/blob/87403fd/sources/lib/ajax.ts#L69">lib/ajax.ts:69</a></li>
+									<li>Defined in <a href="https://github.com/ordbok/core/blob/284206a/sources/lib/ajax.ts#L69">lib/ajax.ts:69</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -177,7 +179,7 @@
 					<div class="tsd-signature tsd-kind-icon">_cache<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ordbok/core/blob/87403fd/sources/lib/ajax.ts#L107">lib/ajax.ts:107</a></li>
+							<li>Defined in <a href="https://github.com/ordbok/core/blob/284206a/sources/lib/ajax.ts#L108">lib/ajax.ts:108</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -194,13 +196,28 @@
 						</ul>
 					</div>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_requests" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _requests</h3>
+					<div class="tsd-signature tsd-kind-icon">_requests<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/ordbok/core/blob/284206a/sources/lib/ajax.ts#L113">lib/ajax.ts:113</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Counter of open requests</p>
+						</div>
+					</div>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="baseurl" class="tsd-anchor"></a>
 					<h3>base<wbr>Url</h3>
 					<div class="tsd-signature tsd-kind-icon">base<wbr>Url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ordbok/core/blob/87403fd/sources/lib/ajax.ts#L112">lib/ajax.ts:112</a></li>
+							<li>Defined in <a href="https://github.com/ordbok/core/blob/284206a/sources/lib/ajax.ts#L118">lib/ajax.ts:118</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -215,7 +232,7 @@
 					<div class="tsd-signature tsd-kind-icon">cache<wbr>Timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ordbok/core/blob/87403fd/sources/lib/ajax.ts#L117">lib/ajax.ts:117</a></li>
+							<li>Defined in <a href="https://github.com/ordbok/core/blob/284206a/sources/lib/ajax.ts#L123">lib/ajax.ts:123</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -230,7 +247,7 @@
 					<div class="tsd-signature tsd-kind-icon">response<wbr>Timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/ordbok/core/blob/87403fd/sources/lib/ajax.ts#L122">lib/ajax.ts:122</a></li>
+							<li>Defined in <a href="https://github.com/ordbok/core/blob/284206a/sources/lib/ajax.ts#L128">lib/ajax.ts:128</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -243,6 +260,28 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="hasopenrequests" class="tsd-anchor"></a>
+					<h3>has<wbr>Open<wbr>Requests</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">has<wbr>Open<wbr>Requests<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ordbok/core/blob/284206a/sources/lib/ajax.ts#L139">lib/ajax.ts:139</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Checks for open requests.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="request" class="tsd-anchor"></a>
 					<h3>request</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -252,12 +291,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ordbok/core/blob/87403fd/sources/lib/ajax.ts#L136">lib/ajax.ts:136</a></li>
+									<li>Defined in <a href="https://github.com/ordbok/core/blob/284206a/sources/lib/ajax.ts#L154">lib/ajax.ts:154</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Requests a server resource</p>
+									<p>Requests a server resource.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -280,12 +319,6 @@
 				<ul>
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_bin_ordbok_assembler_.html">"bin/ordbok-<wbr>assembler"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_dictionary_plugin_ordbok_plugin_.html">"dictionary-<wbr>plugin/ordbok-<wbr>plugin"</a>
 					</li>
 					<li class="current tsd-kind-external-module">
 						<a href="../modules/_lib_ajax_.html">"lib/ajax"</a>
@@ -323,6 +356,9 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="_lib_ajax_.ajax.html#_cache" class="tsd-kind-icon">_cache</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_lib_ajax_.ajax.html#_requests" class="tsd-kind-icon">_requests</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_lib_ajax_.ajax.html#baseurl" class="tsd-kind-icon">base<wbr>Url</a>
 							</li>
@@ -331,6 +367,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_lib_ajax_.ajax.html#responsetimeout" class="tsd-kind-icon">response<wbr>Timeout</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_lib_ajax_.ajax.html#hasopenrequests" class="tsd-kind-icon">has<wbr>Open<wbr>Requests</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_lib_ajax_.ajax.html#request" class="tsd-kind-icon">request</a>

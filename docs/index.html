@@ -85,7 +85,7 @@ Grammar: Noun, Masculine</code></pre>
 				into a <code>./build/dictionary</code> folder:</p>
 				<pre><code class="language-sh">$ npx ordbok-assembler ./markdown ./build/dictionary</code></pre>
 				<p>The following TypeScript code uses the dictionary files to find a translation:</p>
-				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { Dictionary, Utilities } <span class="hljs-keyword">from</span> <span class="hljs-string">`ordbok`</span>;
+				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { Dictionary, Utilities } <span class="hljs-keyword">from</span> <span class="hljs-string">`@ordbok/core`</span>;
 
 <span class="hljs-keyword">const</span> myDictionary = <span class="hljs-keyword">new</span> Dictionary(<span class="hljs-string">'build/dictionary'</span>);
 
@@ -98,7 +98,7 @@ Grammar: Noun, Masculine</code></pre>
 				assembling process. You can specify node modules and folders:</p>
 				<pre><code class="language-json">{
     <span class="hljs-attr">"plugins"</span>: [
-        <span class="hljs-string">"ordbok-index"</span>,
+        <span class="hljs-string">"@ordbok/index-plugin"</span>,
         <span class="hljs-string">"./tools/custom-plugin"</span>
     ]
 }</code></pre>
@@ -121,12 +121,6 @@ Grammar: Noun, Masculine</code></pre>
 				<ul>
 					<li class="globals  ">
 						<a href="globals.html"><em>Globals</em></a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_bin_ordbok_assembler_.html">"bin/ordbok-<wbr>assembler"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_dictionary_plugin_ordbok_plugin_.html">"dictionary-<wbr>plugin/ordbok-<wbr>plugin"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_lib_ajax_.html">"lib/ajax"</a>

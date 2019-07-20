@@ -32,6 +32,7 @@ var Ajax = /** @class */ (function () {
      */
     function Ajax(baseUrl, cacheTimeout, responseTimeout) {
         this._cache = {};
+        this._requests = 0;
         this.baseUrl = (baseUrl || '');
         this.cacheTimeout = (cacheTimeout || 3600000);
         this.responseTimeout = (responseTimeout || 60000);
@@ -42,7 +43,16 @@ var Ajax = /** @class */ (function () {
      *
      * */
     /**
-     * Requests a server resource
+     * Checks for open requests.
+     */
+    Ajax.prototype.hasOpenRequests = function () {
+        if (this._requests < 0) {
+            this._requests = 0;
+        }
+        return (this._requests > 0);
+    };
+    /**
+     * Requests a server resource.
      *
      * @param urlPath
      *        Base relative path to the requested server resource
@@ -62,6 +72,7 @@ var Ajax = /** @class */ (function () {
                 delete _this._cache[url];
             }
             var server = new XMLHttpRequest();
+            var isCountingRequest = false;
             try {
                 if (_this.cacheTimeout === 0 && url.indexOf('?') === -1) {
                     server.open('GET', (url + '?' + (new Date()).getTime()), true);
@@ -69,19 +80,31 @@ var Ajax = /** @class */ (function () {
                 else {
                     server.open('GET', url, true);
                 }
+                _this._requests++;
+                isCountingRequest = true;
                 server.timeout = _this.responseTimeout;
-                server.addEventListener('load', function (evt) { return resolve({
-                    result: (server.response || '').toString(),
-                    serverStatus: server.status,
-                    timestamp: evt.timeStamp,
-                    url: url
-                }); });
+                server.addEventListener('load', function (evt) {
+                    if (isCountingRequest) {
+                        isCountingRequest = false;
+                        _this._requests--;
+                    }
+                    resolve({
+                        result: (server.response || '').toString(),
+                        serverStatus: server.status,
+                        timestamp: evt.timeStamp,
+                        url: url
+                    });
+                });
                 server.addEventListener('error', function (evt) {
                     var error = new Error('error');
                     error.result = server.response.toString();
                     error.serverStatus = server.status;
                     error.timestamp = evt.timeStamp;
                     error.url = url;
+                    if (isCountingRequest) {
+                        isCountingRequest = false;
+                        _this._requests--;
+                    }
                     reject(error);
                 });
                 server.addEventListener('timeout', function (evt) {
@@ -90,6 +113,10 @@ var Ajax = /** @class */ (function () {
                     error.serverStatus = server.status;
                     error.timestamp = evt.timeStamp;
                     error.url = url;
+                    if (isCountingRequest) {
+                        isCountingRequest = false;
+                        _this._requests--;
+                    }
                     reject(error);
                 });
                 server.send();
@@ -100,6 +127,10 @@ var Ajax = /** @class */ (function () {
                 error.timestamp = (new Date()).getTime();
                 error.serverStatus = server.status;
                 error.url = url;
+                if (isCountingRequest) {
+                    isCountingRequest = false;
+                    _this._requests--;
+                }
                 reject(error);
             }
         });
