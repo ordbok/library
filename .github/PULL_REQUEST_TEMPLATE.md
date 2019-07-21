@@ -1,8 +1,10 @@
-Fixes #[issue number]
+---
+title: 'Fixes #[issue number] - Short description of the solution'
+assignees: ''
 
-**Actual**
+---
 
-A short description of what the issue is.
+Fixes # - Short description of the issue
 
 
 **Solution**
