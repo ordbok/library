@@ -1,21 +1,24 @@
 ---
-name: Issue Report
+name: Report Issue
 about: Create a report to help us improve
-title: ''
-labels: bug
-assignees: ''
 ---
 
-**Actual**
+Actual
+------
 
 A clear and concise description of what the issue is.
 
 
-**Expected**
+
+Expected
+--------
 
 A clear and concise description of what you expected.
 
 
-**Alternatives**
+
+Alternatives
+------------
 
 A clear and concise description of any alternative solutions or features you've considered.
+(optional)
