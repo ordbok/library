@@ -61,7 +61,7 @@ Reporting Code of Conduct Issues
 We encourage all communities to resolve issues on their own whenever possible.
 This builds a broader and deeper understanding and ultimately a healthier
 interaction. In the event that an issue cannot be resolved locally, please feel
-free to report your concerns by contacting oosp@ordbok.one.
+free to report your concerns by contacting open@ordbok.one.
 
 In your report please include:
 
