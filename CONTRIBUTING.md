@@ -1,7 +1,7 @@
-Reporting New Issues
-====================
+Reporting Issues
+================
 
-1. Read the Documentation
+1: Read the Documentation
 -------------------------
 
 Please [read the README](https://github.com/ordbok/core) and [check the core API](https://ordbok.github.io/core) before reporting new issues, even if you think you have found a bug.
@@ -9,7 +9,7 @@ Please [read the README](https://github.com/ordbok/core) and [check the core API
 Issues that ask questions answered in the documentation will be closed without elaboration.
 
 
-2. Search for Duplicates
+2: Search for Duplicates
 ------------------------
 
 [Search existing issues](https://github.com/ordbok/core/search?type=Issues) before reporting a new one.
@@ -22,14 +22,14 @@ Some search tips:
  * If you have a crash, search for the first few topmost function names shown in the call stack.
 
 
-3. Do You Have a Question?
+3: Do You Have a Question?
 --------------------------
 
 The issue tracker is for **issues**, in other words, bugs and suggestions.
 If you have a *question*, please use [Stack Overflow](http://stackoverflow.com/questions/tagged/ordbok), your favorite search engine, or other resources.
 
 
-4. Did You Found a Bug?
+4: Did You Found a Bug?
 -----------------------
 
 When logging a bug, please be sure to include the following:
@@ -39,7 +39,7 @@ When logging a bug, please be sure to include the following:
 - The behavior you expect to see, and the actual behavior.
 
 
-5. Do You Have a Suggestion?
+5: Do You Have a Suggestion?
 ----------------------------
 
 Suggestions are also accepted in the issue tracker.
