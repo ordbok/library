@@ -1,8 +1,3 @@
----
-title: 'Fixes #[issue number] - Short description of the solution'
-assignees: ''
-
----
 
 Fixes # - Short description of the issue
 
