@@ -7,5 +7,6 @@
         "outDir": "dist/client",
         "rootDir": "sources/lib"
     },
-    "files": []
+    "files": [
+    ]
 }

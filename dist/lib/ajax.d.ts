@@ -46,6 +46,10 @@ export declare class Ajax {
      */
     private _cache;
     /**
+     * Counter of open requests
+     */
+    private _requests;
+    /**
      * Base URL of the server
      */
     baseUrl: string;
@@ -58,7 +62,11 @@ export declare class Ajax {
      */
     responseTimeout: number;
     /**
-     * Requests a server resource
+     * Checks for open requests.
+     */
+    hasOpenRequest(): boolean;
+    /**
+     * Requests a server resource.
      *
      * @param urlPath
      *        Base relative path to the requested server resource

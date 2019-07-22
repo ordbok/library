@@ -33,7 +33,7 @@ var PACKAGE = require('../../package.json');
 /**
  * Command line help
  */
-var HELP = "Ordbok v" + (PACKAGE.version || '0.0.0') + "\n\nordbok-assembler [options] source target\n\nOptions:\n  -h --help     This help information\n  -v --version  Version";
+var HELP = "ORDBOK v" + (PACKAGE.version || '0.0.0') + "\n\nCreates dictionary files out of Markdown files.\n\nordbok-assembler [options] source target\n\nOptions:\n  -h --help     This help information\n  -v --version  Version";
 /* *
  *
  *  Variables
