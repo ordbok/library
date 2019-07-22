@@ -136,7 +136,7 @@ export class Ajax {
     /**
      * Checks for open requests.
      */
-    public hasOpenRequests (): boolean {
+    public hasOpenRequest (): boolean {
 
         if (this._requests < 0) {
             this._requests = 0;

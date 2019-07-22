@@ -64,7 +64,7 @@ export declare class Ajax {
     /**
      * Checks for open requests.
      */
-    hasOpenRequests(): boolean;
+    hasOpenRequest(): boolean;
     /**
      * Requests a server resource.
      *

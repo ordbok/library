@@ -45,7 +45,7 @@ var Ajax = /** @class */ (function () {
     /**
      * Checks for open requests.
      */
-    Ajax.prototype.hasOpenRequests = function () {
+    Ajax.prototype.hasOpenRequest = function () {
         if (this._requests < 0) {
             this._requests = 0;
         }
