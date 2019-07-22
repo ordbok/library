@@ -26,6 +26,8 @@
 	},
 	"files": [
 		"dist",
+		"AUTHORS.md",
+		"CODE_OF_CONDUCT.md",
 		"LICENSE",
 		"README.md"
 	],
