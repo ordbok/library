@@ -38,7 +38,7 @@
 		"build-1": "tsc --build tsconfig.json tsconfig-client.json",
 		"build-2": "r_js -o rjsconfig-client.js",
 		"build-3": "chmod +x dist/bin/ordbok-assembler.js",
-		"build-4": "typedoc --mode file --name \"ORDBOK Core API\" --out docs --tsconfig tsconfig-docs.json",
+		"build-4": "typedoc --gitRevision master --mode file --name \"ORDBOK Core API\" --out docs --tsconfig tsconfig-docs.json",
 		"clean": "rm -rf dist docs",
 		"release": "npm publish --access=public --tag next",
 		"release-as-stable": "npm publish --access=public",
