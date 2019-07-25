@@ -4,8 +4,8 @@
 /* Licensed under the MIT License. See the LICENSE file in the project root. */
 /*---------------------------------------------------------------------------*/
 Object.defineProperty(exports, "__esModule", { value: true });
-var lib_1 = require("../lib");
-var plugin_1 = require("../plugin");
+/** @internal */
+var __1 = require("../");
 /* *
  *
  *  Classes
@@ -50,7 +50,7 @@ var DictionaryPlugin = /** @class */ (function () {
      *        Logical file content
      */
     DictionaryPlugin.prototype.onWriteFile = function (targetFile, markdownPage) {
-        plugin_1.PluginUtilities.writeFileSync((targetFile + lib_1.Dictionary.FILE_EXTENSION), lib_1.Dictionary.stringify(markdownPage));
+        __1.Internals.writeFile((targetFile + __1.Dictionary.FILE_EXTENSION), __1.Dictionary.stringify(markdownPage));
     };
     return DictionaryPlugin;
 }());

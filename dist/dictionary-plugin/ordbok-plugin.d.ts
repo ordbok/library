@@ -1,5 +1,5 @@
-import { IMarkdownPage } from '../lib';
-import { IPlugin } from '../plugin';
+/** @internal */
+import { IMarkdownPage, IPlugin } from '../';
 /**
  * Default plugin to create dictionary text files.
  */

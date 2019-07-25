@@ -3,8 +3,9 @@
 /* Licensed under the MIT License. See the LICENSE file in the project root. */
 /*---------------------------------------------------------------------------*/
 
-import { Dictionary, IMarkdownPage } from '../lib';
-import { IPlugin, PluginUtilities } from '../plugin';
+/** @internal */
+
+import { Dictionary, IMarkdownPage, Internals, IPlugin } from '../';
 
 /* *
  *
@@ -58,7 +59,7 @@ export class DictionaryPlugin implements IPlugin {
      */
     public onWriteFile (targetFile: string, markdownPage: IMarkdownPage) {
 
-        PluginUtilities.writeFileSync(
+        Internals.writeFile(
             (targetFile + Dictionary.FILE_EXTENSION),
             Dictionary.stringify(markdownPage)
         );
