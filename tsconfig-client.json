@@ -7,10 +7,6 @@
         "outDir": "dist/client",
         "rootDir": "sources/lib"
     },
-    "exclude": [
-        "dist",
-        "node_modules"
-    ],
     "include": [
         "sources/lib/**/*.ts"
     ]
