@@ -7,11 +7,39 @@ import * as Internals from './internals';
 
 /* *
  *
+ *  Constants
+ *
+ * */
+
+export const CONFIG_TEMPLATE =
+`{
+    "plugins": [
+        "../../dist"
+    ]
+}`
+
+export const MARKDOWN_TEMPLATE =
+`English
+=======
+
+Translation: English, the English
+
+Grammar: Noun, Neuter
+
+New Norwegian
+=============
+
+Translation: engelsk, engelsken
+
+Grammar: Noun, Masculine`
+
+/* *
+ *
  *  Functions
  *
  * */
 
-export function test (): void {
+function test (): void {
 
     try {
 

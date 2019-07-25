@@ -42,7 +42,9 @@
 		"clean": "rm -rf dist docs",
 		"release": "npm publish --access=public --tag next",
 		"release-as-stable": "npm publish --access=public",
-		"tests": "tsc --build tsconfig-tests.json && cd tests_build && node index.js && cd .. && rm -rf tests_build",
+		"tests": "npm run tests-clean && npm run tests-build && npm run tests-clean",
+        "tests-build": "tsc --build tsconfig-tests.json && cd tests_build && node index.js",
+        "tests-clean": "rm -rf tests_build",
 		"watch": "tsc --build tsconfig.json --watch"
 	},
 	"types": "dist/lib/index.d.ts",
