@@ -1,9 +1,12 @@
 {
-    "extends": "./tsconfig-client.json",
+    "extends": "./tsconfig.json",
     "compilerOptions": {
         "rootDir": "sources"
     },
-    "files": [
-        "sources/plugin.ts"
+    "exclude": [
+        "dist",
+        "node_modules",
+        "sources/bin",
+        "sources/dictionary-plugin"
     ]
 }
