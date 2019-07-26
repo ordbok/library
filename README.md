@@ -54,7 +54,7 @@ assembling process. You can specify node modules and folders:
 {
     "plugins": [
         "@ordbok/index-plugin",
-        "./tools/custom-plugin"
+        "../tools/custom-plugin"
     ]
 }
 ```
