@@ -71,16 +71,16 @@
 				<pre><code class="language-md"><span class="hljs-section">English
 =======</span>
 
-Translation: English, the English
+Translation: English ; the English
 
-Grammar: Noun, Neuter
+Grammar:     Noun ; Neuter
 
 <span class="hljs-section">New Norwegian
 =============</span>
 
-Translation: engelsk, engelsken
+Translation: engelsk ; engelsken
 
-Grammar: Noun, Masculine</code></pre>
+Grammar:     Noun ; Masculine</code></pre>
 				<p>The following example takes a Markdown source folder to build dictionary files
 				into a <code>./build/dictionary</code> folder:</p>
 				<pre><code class="language-sh">$ npx ordbok-assembler ./markdown ./build/dictionary</code></pre>
@@ -99,7 +99,7 @@ Grammar: Noun, Masculine</code></pre>
 				<pre><code class="language-json">{
     <span class="hljs-attr">"plugins"</span>: [
         <span class="hljs-string">"@ordbok/index-plugin"</span>,
-        <span class="hljs-string">"./tools/custom-plugin"</span>
+        <span class="hljs-string">"../tools/custom-plugin"</span>
     ]
 }</code></pre>
 				<p>If you like to create a custom plugin yourself, create a folder or package with
