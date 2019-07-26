@@ -18,54 +18,61 @@ export function test (): void {
 
     test_writeFile();
     test_getConfig();
+    test_getFiles();
     test_assembleFiles();
 }
 
 function test_assembleFiles (): void {
 
-    Internals.writeFile('internals/assembleFiles.json', CONFIG_TEMPLATE);
-    Internals.writeFile('internals/assembleFiles.md', MARKDOWN_TEMPLATE);
+    Internals.writeFile('assembleFiles.json', CONFIG_TEMPLATE);
+    Internals.writeFile('assembleFiles.md', MARKDOWN_TEMPLATE);
     Internals.assembleFiles(
-        'internals',
-        'internals/assembleFiles',
-        Internals.getConfig('internals/assembleFiles.json', { plugins: [] })
+        '.',
+        'assembleFiles',
+        Internals.getConfig('assembleFiles.json', { plugins: [] })
     );
 
-    Assert.ok(Fs.existsSync('internals/assembleFiles/assembleFiles-0.txt'));
+    Assert.ok(Fs.existsSync('assembleFiles/assembleFiles-0.txt'));
 
-    Fs.unlinkSync('internals/assembleFiles/assembleFiles-0.txt')
-    Fs.unlinkSync('internals/assembleFiles.json')
-    Fs.unlinkSync('internals/assembleFiles.md')
-    Fs.rmdirSync('internals/assembleFiles');
-    Fs.rmdirSync('internals');
+    Fs.unlinkSync('assembleFiles/assembleFiles-0.txt')
+    Fs.unlinkSync('assembleFiles.json')
+    Fs.unlinkSync('assembleFiles.md')
+    Fs.rmdirSync('assembleFiles');
 }
 
 function test_getConfig (): void {
 
-    Internals.writeFile('internals/getConfig.json', CONFIG_TEMPLATE);
+    Internals.writeFile('getConfig.json', CONFIG_TEMPLATE);
 
     let config: IConfig = { plugins: [] };
 
-    config = Internals.getConfig('internals/getConfig.fail', config);
-
+    config = Internals.getConfig('getConfig.fail', config);
     Assert.ok(config.plugins instanceof Array);
     Assert.equal(config.plugins.length, 0);
 
-    config = Internals.getConfig('internals/getConfig.json', config);
-
+    config = Internals.getConfig('getConfig.json', config);
     Assert.ok(config.plugins instanceof Array);
-    Assert.equal(config.plugins.length, 1);
+    Assert.deepEqual(config, JSON.parse(CONFIG_TEMPLATE));
 
-    Fs.unlinkSync('internals/getConfig.json')
-    Fs.rmdirSync('internals');
+    Fs.unlinkSync('getConfig.json')
+}
+
+function test_getFiles (): void {
+
+    Internals.writeFile('getFiles.markdown', CONFIG_TEMPLATE);
+
+    const files = Internals.getFiles('.', /\.markdown$/);
+
+    Assert.deepEqual(files, ['getFiles.markdown']);
+
+    Fs.unlinkSync('getFiles.markdown')
 }
 
 function test_writeFile (): void {
 
-    Internals.writeFile('internals/writeFile.txt', '');
+    Internals.writeFile('writeFile.txt', '');
 
-    Assert.ok(Fs.existsSync('internals/writeFile.txt'));
+    Assert.ok(Fs.existsSync('writeFile.txt'));
 
-    Fs.unlinkSync('internals/writeFile.txt')
-    Fs.rmdirSync('internals');
+    Fs.unlinkSync('writeFile.txt')
 }

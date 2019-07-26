@@ -14,7 +14,7 @@ import * as Internals from './internals';
 export const CONFIG_TEMPLATE =
 `{
     "plugins": [
-        "../../dist"
+        "../dist"
     ]
 }`
 
@@ -22,16 +22,16 @@ export const MARKDOWN_TEMPLATE =
 `English
 =======
 
-Translation: English, the English
+Translation: English ; the English
 
-Grammar: Noun, Neuter
+Grammar:     Noun ; Neuter
 
 New Norwegian
 =============
 
-Translation: engelsk, engelsken
+Translation: engelsk ; engelsken
 
-Grammar: Noun, Masculine`
+Grammar:     Noun ; Masculine`
 
 /* *
  *
