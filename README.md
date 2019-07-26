@@ -13,16 +13,16 @@ The following example shows a Markdown source file named `english.md`:
 English
 =======
 
-Translation: English, the English
+Translation: English ; the English
 
-Grammar: Noun, Neuter
+Grammar:     Noun ; Neuter
 
 New Norwegian
 =============
 
-Translation: engelsk, engelsken
+Translation: engelsk ; engelsken
 
-Grammar: Noun, Masculine
+Grammar:     Noun ; Masculine
 ```
 
 The following example takes a Markdown source folder to build dictionary files
