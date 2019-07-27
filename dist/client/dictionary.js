@@ -100,26 +100,22 @@ define(["require", "exports", "./ajax", "./utilities"], function (require, expor
          *        Index of the entry page to load
          */
         Dictionary.prototype.loadEntry = function (baseName, pageIndex) {
-            var _this = this;
             if (pageIndex === void 0) { pageIndex = 0; }
-            return new Promise(function (resolve) {
-                return _this
-                    .request(utilities_1.Utilities.getKey(baseName) +
-                    Dictionary.FILE_SEPARATOR +
-                    pageIndex +
-                    Dictionary.FILE_EXTENSION)
-                    .then(function (response) {
-                    if (response instanceof Error ||
-                        response.serverStatus >= 400) {
-                        return undefined;
-                    }
-                    return Dictionary.parse(response.result);
-                })
-                    .catch(function (error) {
-                    console.error(error);
-                    return undefined;
-                })
-                    .then(resolve);
+            return this
+                .request(utilities_1.Utilities.getKey(baseName) +
+                Dictionary.FILE_SEPARATOR +
+                pageIndex +
+                Dictionary.FILE_EXTENSION)
+                .then(function (response) {
+                if (response instanceof Error ||
+                    response.serverStatus >= 400) {
+                    return;
+                }
+                return Dictionary.parse(response.result);
+            })
+                .catch(function (error) {
+                console.error(error);
+                return;
             });
         };
         /* *

@@ -3,7 +3,7 @@
 /* Licensed under the MIT License. See the LICENSE file in the project root. */
 /*---------------------------------------------------------------------------*/
 
-import { Ajax } from './ajax';
+import { Ajax, IAjaxResponse } from './ajax';
 import { IMarkdownPage, IMarkdownSection } from './markdown';
 import { Utilities } from './utilities';
 
@@ -165,31 +165,29 @@ export class Dictionary extends Ajax {
         pageIndex: number = 0
     ): Promise<(IDictionaryEntry|undefined)> {
 
-        return new Promise(resolve =>
-            this
-                .request(
-                    Utilities.getKey(baseName) +
-                    Dictionary.FILE_SEPARATOR +
-                    pageIndex +
-                    Dictionary.FILE_EXTENSION
-                )
-                .then(response => {
+        return this
+            .request(
+                Utilities.getKey(baseName) +
+                Dictionary.FILE_SEPARATOR +
+                pageIndex +
+                Dictionary.FILE_EXTENSION
+            )
+            .then(function (response: IAjaxResponse): (IDictionaryEntry|undefined) {
 
-                    if (response instanceof Error ||
-                        response.serverStatus >= 400
-                    ) {
-                        return undefined;
-                    }
+                if (
+                    response instanceof Error ||
+                    response.serverStatus >= 400
+                ) {
+                    return;
+                }
 
-                    return Dictionary.parse(response.result);
-                })
-                .catch(error => {
+                return Dictionary.parse(response.result);
+            })
+            .catch(function (error?: Error): undefined {
 
-                    console.error(error);
+                console.error(error);
 
-                    return undefined;
-                })
-                .then(resolve)
-        );
+                return;
+            });
     }
 }
