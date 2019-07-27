@@ -5,30 +5,32 @@
 
 /* *
  *
- *  Types
- *
- * */
-
-/**
- * Internal promise reject function
- */
-type AjaxReject = (error?: IAjaxError) => void;
-
-/**
- * Internal promise resolve function
- */
-type AjaxResolve = (response?: IAjaxResponse) => void;
-
-/* *
- *
  *  Interfaces
  *
  * */
 
 /**
+ * Internal request context
+ */
+interface IAjaxContext {
+    ajax: Ajax;
+    isCountingRequest?: boolean;
+    url: string;
+    resolve(response: IAjaxResponse): void;
+    reject(error: IAjaxError): void;
+}
+
+/**
  * Error during an Ajax request
  */
-export interface IAjaxError extends IAjaxResponse, Error {
+export interface IAjaxError extends Error, IAjaxResponse {
+}
+
+/**
+ * Internal request instance
+ */
+interface IAjaxRequest extends XMLHttpRequest {
+    context?: IAjaxContext;
 }
 
 /**
@@ -78,22 +80,28 @@ export class Ajax {
      * Creates a new managed AJAX instance.
      *
      * @param baseUrl
-     *        Base URL of the server
+     *        Base URL of the server.
      *
      * @param cacheTimeout
-     *        Use 0 milliseconds to turn off all cache systems
+     *        Use 0 milliseconds to turn off all cache systems. Default is 1
+     *        hour.
      *
      * @param responseTimeout
-     *        Time in milliseconds to wait for a server response
+     *        Time in milliseconds to wait for a server response. Default are 60
+     *        seconds.
      */
-    public constructor (baseUrl?: string, cacheTimeout?: number, responseTimeout?: number) {
+    public constructor (
+        baseUrl: string = '',
+        cacheTimeout: number = 3600000,
+        responseTimeout: number = 60000
+    ) {
 
         this._cache = {};
         this._requests = 0;
 
-        this.baseUrl = (baseUrl || '');
-        this.cacheTimeout = (cacheTimeout || 3600000);
-        this.responseTimeout = (responseTimeout || 60000);
+        this.baseUrl = baseUrl;
+        this.cacheTimeout = (cacheTimeout < 0 ? 0 : cacheTimeout);
+        this.responseTimeout = (responseTimeout < 0 ? 0 : responseTimeout);
     }
 
     /* *
@@ -129,6 +137,106 @@ export class Ajax {
 
     /* *
      *
+     *  Events
+     *
+     * */
+
+    /**
+     * Handles server error.
+     *
+     * @param this
+     *        Extended XMLHTTPRequest.
+     *
+     * @param progressEvent
+     *        XMLHTTPRequest event.
+     */
+    private onError (this: IAjaxRequest, progressEvent: ProgressEvent): void {
+
+        const context = this.context;
+
+        if (!context) {
+            return;
+        }
+
+        const error = new Error('error') as IAjaxError;
+
+        error.result = this.response.toString();
+        error.serverStatus = this.status;
+        error.timestamp = progressEvent.timeStamp;
+        error.url = context.url;
+
+        if (context.isCountingRequest) {
+            context.isCountingRequest = false;
+            context.ajax._requests--;
+        }
+
+        context.reject(error);
+    }
+
+    /**
+     * Handles server data.
+     *
+     * @param this
+     *        Extended XMLHTTPRequest.
+     *
+     * @param progressEvent
+     *        XMLHTTPRequest event.
+     */
+    private onLoad (this: IAjaxRequest, progressEvent: ProgressEvent): void {
+
+        const context = this.context;
+
+        if (!context) {
+            return;
+        }
+
+        if (context.isCountingRequest) {
+            context.isCountingRequest = false;
+            context.ajax._requests--;
+        }
+
+        context.resolve({
+            result: (this.response || '').toString(),
+            serverStatus: this.status,
+            timestamp: progressEvent.timeStamp,
+            url: context.url
+        })
+    }
+
+    /**
+     * Handles server timeout.
+     *
+     * @param this
+     *        Extended XMLHTTPRequest.
+     *
+     * @param progressEvent
+     *        XMLHTTPRequest event.
+     */
+    private onTimeout (this: IAjaxRequest, progressEvent: ProgressEvent): void {
+
+        const context = this.context;
+
+        if (!context) {
+            return;
+        }
+
+        const error = new Error('timeout') as IAjaxError;
+
+        error.result = this.response.toString();
+        error.serverStatus = this.status;
+        error.timestamp = progressEvent.timeStamp;
+        error.url = context.url;
+
+        if (context.isCountingRequest) {
+            context.isCountingRequest = false;
+            context.ajax._requests--;
+        }
+
+        context.reject(error);
+    }
+
+    /* *
+     *
      *  Functions
      *
      * */
@@ -149,36 +257,47 @@ export class Ajax {
      * Requests a server resource.
      *
      * @param urlPath
-     *        Base relative path to the requested server resource
+     *        Base relative path to the requested server resource.
      */
     public request (urlPath: string): Promise<IAjaxResponse> {
 
-        return new Promise((resolve: AjaxResolve, reject: AjaxReject) => {
+        const ajax = this;
 
-            const url = this.baseUrl + urlPath;
+        return new Promise(function (
+            resolve: IAjaxContext['resolve'],
+            reject: IAjaxContext['reject']
+        ): void {
 
-            if (this.cacheTimeout > 0) {
+            const url: string = ajax.baseUrl + urlPath;
+            const context: IAjaxContext = { ajax, resolve, reject, url };
 
-                const cachedResult = this._cache[url];
-                const cacheTimeout = (new Date()).getTime() + this.cacheTimeout;
+            if (ajax.cacheTimeout > 0) {
 
-                if (cachedResult &&
+                const cachedResult: IAjaxResponse = ajax._cache[url];
+                const cacheTimeout: number = (new Date()).getTime() + ajax.cacheTimeout;
+
+                if (
+                    cachedResult &&
                     cachedResult.timestamp > cacheTimeout
                 ) {
                     resolve(cachedResult);
                     return;
                 }
 
-                delete this._cache[url];
+                delete ajax._cache[url];
             }
 
-            const server = new XMLHttpRequest();
+            const server: IAjaxRequest = new XMLHttpRequest();
 
-            let isCountingRequest = false;
+            server.context = context;
+            context.isCountingRequest = false;
 
             try {
 
-                if (this.cacheTimeout === 0 && url.indexOf('?') === -1) {
+                if (
+                    ajax.cacheTimeout <= 0 &&
+                    url.indexOf('?') === -1
+                ) {
                     server.open(
                         'GET',
                         (url + '?' + (new Date()).getTime()),
@@ -189,59 +308,14 @@ export class Ajax {
                     server.open('GET', url, true);
                 }
 
-                this._requests++;
-                isCountingRequest = true;
+                ajax._requests++;
+                context.isCountingRequest = true;
 
-                server.timeout = this.responseTimeout;
+                server.timeout = ajax.responseTimeout;
 
-                server.addEventListener('load', (evt) => {
-
-                    if (isCountingRequest) {
-                        isCountingRequest = false;
-                        this._requests--;
-                    }
-
-                    resolve({
-                        result: (server.response || '').toString(),
-                        serverStatus: server.status,
-                        timestamp: evt.timeStamp,
-                        url: url
-                    })
-                });
-
-                server.addEventListener('error', (evt) => {
-
-                    const error = new Error('error') as IAjaxError;
-
-                    error.result = server.response.toString();
-                    error.serverStatus = server.status;
-                    error.timestamp = evt.timeStamp;
-                    error.url = url;
-
-                    if (isCountingRequest) {
-                        isCountingRequest = false;
-                        this._requests--;
-                    }
-
-                    reject(error);
-                });
-
-                server.addEventListener('timeout', (evt) => {
-
-                    const error = new Error('timeout') as IAjaxError;
-
-                    error.result = server.response.toString();
-                    error.serverStatus = server.status;
-                    error.timestamp = evt.timeStamp;
-                    error.url = url;
-
-                    if (isCountingRequest) {
-                        isCountingRequest = false;
-                        this._requests--;
-                    }
-
-                    reject(error);
-                });
+                server.addEventListener('load', ajax.onLoad);
+                server.addEventListener('error', ajax.onError);
+                server.addEventListener('timeout', ajax.onTimeout);
 
                 server.send();
             }
@@ -252,11 +326,11 @@ export class Ajax {
                 error.result = (server.response || '');
                 error.timestamp = (new Date()).getTime();
                 error.serverStatus = server.status;
-                error.url = url;
+                error.url = context.url;
 
-                if (isCountingRequest) {
-                    isCountingRequest = false;
-                    this._requests--;
+                if (context.isCountingRequest) {
+                    context.isCountingRequest = false;
+                    context.ajax._requests--;
                 }
 
                 reject(error);

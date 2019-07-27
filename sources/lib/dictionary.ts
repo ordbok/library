@@ -17,14 +17,14 @@ import { Utilities } from './utilities';
  * Dictionary with sections
  */
 export interface IDictionaryEntry extends IMarkdownPage {
-    [section: string]: IDictionarySection;
+    [sectionKey: string]: IDictionarySection;
 }
 
 /**
  * Dictionary section with categories
  */
 export interface IDictionarySection extends IMarkdownSection {
-    [category: string]: Array<string>;
+    [categoryKey: string]: Array<string>;
 }
 
 /* *
@@ -49,6 +49,26 @@ export class Dictionary extends Ajax {
      */
     public static readonly FILE_EXTENSION = '.txt';
 
+    /**
+     * Character to separate a base file name from its page index.
+     */
+    public static readonly FILE_SEPARATOR = '-';
+
+    /**
+     * Line character to separate sections.
+     */
+    public static readonly LINE_SEPARATOR = '\n';
+
+    /**
+     * Character to separate a category from its values.
+     */
+    public static readonly PAIR_SEPARATOR = ':';
+
+    /**
+     * Character to separate a category's values.
+     */
+    public static readonly VALUE_SEPARATOR = ';';
+
     /* *
      *
      *  Static Functions
@@ -69,10 +89,10 @@ export class Dictionary extends Ajax {
         let dictionarySection: IMarkdownSection;
 
         stringified
-            .split('\n')
-            .forEach(line => {
+            .split(Dictionary.LINE_SEPARATOR)
+            .forEach(function (line: string): void {
 
-                if (line.indexOf(':') === -1) {
+                if (line.indexOf(Dictionary.PAIR_SEPARATOR) === -1) {
                     dictionaryPage[line] = dictionarySection = {};
                     return;
                 }
@@ -81,9 +101,11 @@ export class Dictionary extends Ajax {
                     return;
                 }
 
-                categorySplit = line.split(':', 2);
+                categorySplit = line.split(Dictionary.PAIR_SEPARATOR, 2);
 
-                dictionarySection[categorySplit[0]] = categorySplit[1].split(';');
+                dictionarySection[categorySplit[0]] = (
+                    categorySplit[1].split(Dictionary.VALUE_SEPARATOR)
+                );
             });
 
         return dictionaryPage;
@@ -103,7 +125,7 @@ export class Dictionary extends Ajax {
 
         Object
             .keys(markdownPage)
-            .forEach(headline => {
+            .forEach(function (headline: string): void {
 
                 stringified.push(Utilities.getKey(headline))
 
@@ -113,12 +135,14 @@ export class Dictionary extends Ajax {
                     .keys(markdownSection)
                     .forEach(category =>
                         stringified.push(
-                            Utilities.getKey(category) + ':' + markdownSection[category].join(';')
+                            Utilities.getKey(category) +
+                            Dictionary.PAIR_SEPARATOR +
+                            markdownSection[category].join(Dictionary.VALUE_SEPARATOR)
                         )
                     );
             });
 
-        return stringified.join('\n');
+        return stringified.join(Dictionary.LINE_SEPARATOR);
     }
 
     /* *
@@ -136,12 +160,19 @@ export class Dictionary extends Ajax {
      * @param pageIndex
      *        Index of the entry page to load
      */
-    public loadEntry (baseName: string, pageIndex: number = 0): Promise<IDictionaryEntry> {
+    public loadEntry (
+        baseName: string,
+        pageIndex: number = 0
+    ): Promise<(IDictionaryEntry|undefined)> {
 
-        return new Promise((resolve) => {
-
+        return new Promise(resolve =>
             this
-                .request(Utilities.getKey(baseName) + '-' + pageIndex + Dictionary.FILE_EXTENSION)
+                .request(
+                    Utilities.getKey(baseName) +
+                    Dictionary.FILE_SEPARATOR +
+                    pageIndex +
+                    Dictionary.FILE_EXTENSION
+                )
                 .then(response => {
 
                     if (response instanceof Error ||
@@ -158,7 +189,7 @@ export class Dictionary extends Ajax {
 
                     return undefined;
                 })
-                .then(resolve);
-        });
+                .then(resolve)
+        );
     }
 }

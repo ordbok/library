@@ -1,7 +1,7 @@
 /**
  * Error during an Ajax request
  */
-export interface IAjaxError extends IAjaxResponse, Error {
+export interface IAjaxError extends Error, IAjaxResponse {
 }
 /**
  * Response to an AJAX request
@@ -32,13 +32,15 @@ export declare class Ajax {
      * Creates a new managed AJAX instance.
      *
      * @param baseUrl
-     *        Base URL of the server
+     *        Base URL of the server.
      *
      * @param cacheTimeout
-     *        Use 0 milliseconds to turn off all cache systems
+     *        Use 0 milliseconds to turn off all cache systems. Default is 1
+     *        hour.
      *
      * @param responseTimeout
-     *        Time in milliseconds to wait for a server response
+     *        Time in milliseconds to wait for a server response. Default are 60
+     *        seconds.
      */
     constructor(baseUrl?: string, cacheTimeout?: number, responseTimeout?: number);
     /**
@@ -62,6 +64,36 @@ export declare class Ajax {
      */
     responseTimeout: number;
     /**
+     * Handles server error.
+     *
+     * @param this
+     *        Extended XMLHTTPRequest.
+     *
+     * @param progressEvent
+     *        XMLHTTPRequest event.
+     */
+    private onError;
+    /**
+     * Handles server data.
+     *
+     * @param this
+     *        Extended XMLHTTPRequest.
+     *
+     * @param progressEvent
+     *        XMLHTTPRequest event.
+     */
+    private onLoad;
+    /**
+     * Handles server timeout.
+     *
+     * @param this
+     *        Extended XMLHTTPRequest.
+     *
+     * @param progressEvent
+     *        XMLHTTPRequest event.
+     */
+    private onTimeout;
+    /**
      * Checks for open requests.
      */
     hasOpenRequest(): boolean;
@@ -69,7 +101,7 @@ export declare class Ajax {
      * Requests a server resource.
      *
      * @param urlPath
-     *        Base relative path to the requested server resource
+     *        Base relative path to the requested server resource.
      */
     request(urlPath: string): Promise<IAjaxResponse>;
 }

@@ -86,7 +86,9 @@
 						<section class="tsd-index-section ">
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface tsd-is-not-exported"><a href="interfaces/iajaxcontext.html" class="tsd-kind-icon">IAjax<wbr>Context</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/iajaxerror.html" class="tsd-kind-icon">IAjax<wbr>Error</a></li>
+								<li class="tsd-kind-interface tsd-is-not-exported"><a href="interfaces/iajaxrequest.html" class="tsd-kind-icon">IAjax<wbr>Request</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/iajaxresponse.html" class="tsd-kind-icon">IAjax<wbr>Response</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/iconfig.html" class="tsd-kind-icon">IConfig</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/idictionaryentry.html" class="tsd-kind-icon">IDictionary<wbr>Entry</a></li>
@@ -94,13 +96,6 @@
 								<li class="tsd-kind-interface"><a href="interfaces/imarkdownpage.html" class="tsd-kind-icon">IMarkdown<wbr>Page</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/imarkdownsection.html" class="tsd-kind-icon">IMarkdown<wbr>Section</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/iplugin.html" class="tsd-kind-icon">IPlugin</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-not-exported">
-							<h3>Type aliases</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-type-alias tsd-is-not-exported"><a href="globals.html#ajaxreject" class="tsd-kind-icon">Ajax<wbr>Reject</a></li>
-								<li class="tsd-kind-type-alias tsd-is-not-exported"><a href="globals.html#ajaxresolve" class="tsd-kind-icon">Ajax<wbr>Resolve</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-not-exported">
@@ -115,81 +110,6 @@
 								<li class="tsd-kind-variable tsd-is-not-exported"><a href="globals.html#space_regexp" class="tsd-kind-icon">SPACE_<wbr>REGEXP</a></li>
 							</ul>
 						</section>
-					</div>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
-				<h2>Type aliases</h2>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-is-not-exported">
-					<a name="ajaxreject" class="tsd-anchor"></a>
-					<h3>Ajax<wbr>Reject</h3>
-					<div class="tsd-signature tsd-kind-icon">Ajax<wbr>Reject<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/ordbok/core/blob/master/sources/lib/ajax.ts#L15">lib/ajax.ts:15</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Internal promise reject function</p>
-						</div>
-					</div>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">?: </span><a href="interfaces/iajaxerror.html" class="tsd-signature-type">IAjaxError</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5><span class="tsd-flag ts-flagOptional">Optional</span> error: <a href="interfaces/iajaxerror.html" class="tsd-signature-type">IAjaxError</a></h5>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-is-not-exported">
-					<a name="ajaxresolve" class="tsd-anchor"></a>
-					<h3>Ajax<wbr>Resolve</h3>
-					<div class="tsd-signature tsd-kind-icon">Ajax<wbr>Resolve<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/ordbok/core/blob/master/sources/lib/ajax.ts#L20">lib/ajax.ts:20</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Internal promise resolve function</p>
-						</div>
-					</div>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>response<span class="tsd-signature-symbol">?: </span><a href="interfaces/iajaxresponse.html" class="tsd-signature-type">IAjaxResponse</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5><span class="tsd-flag ts-flagOptional">Optional</span> response: <a href="interfaces/iajaxresponse.html" class="tsd-signature-type">IAjaxResponse</a></h5>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-									</li>
-								</ul>
-							</li>
-						</ul>
 					</div>
 				</section>
 			</section>
@@ -332,8 +252,14 @@
 					<li class=" tsd-kind-class">
 						<a href="classes/text.html" class="tsd-kind-icon">Text</a>
 					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/iajaxcontext.html" class="tsd-kind-icon">IAjax<wbr>Context</a>
+					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/iajaxerror.html" class="tsd-kind-icon">IAjax<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/iajaxrequest.html" class="tsd-kind-icon">IAjax<wbr>Request</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/iajaxresponse.html" class="tsd-kind-icon">IAjax<wbr>Response</a>
@@ -355,12 +281,6 @@
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/iplugin.html" class="tsd-kind-icon">IPlugin</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-is-not-exported">
-						<a href="globals.html#ajaxreject" class="tsd-kind-icon">Ajax<wbr>Reject</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-is-not-exported">
-						<a href="globals.html#ajaxresolve" class="tsd-kind-icon">Ajax<wbr>Resolve</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-is-not-exported">
 						<a href="globals.html#headline_regexp" class="tsd-kind-icon">HEADLINE_<wbr>REGEXP</a>

@@ -7,7 +7,7 @@
 
 import * as FS from 'fs';
 import * as Path from 'path';
-import { IMarkdownPage, Markdown, Utilities } from './lib';
+import { Dictionary, IMarkdownPage, Markdown, Utilities } from './lib';
 
 /* *
  *
@@ -116,25 +116,31 @@ export module Internals {
             plugin.onAssembling(sourceFolder, targetFolder)
         );
 
-        getFiles(sourceFolder, /\.(?:md|markdown)$/).forEach(sourceFile => {
+        getFiles(sourceFolder, /\.(?:md|markdown)$/).forEach(function (sourceFile) {
 
             const markdown = new Markdown(
                 FS.readFileSync(sourceFile).toString()
             );
 
-            plugins.forEach(plugin => plugin.onReadFile(sourceFile, markdown));
+            plugins.forEach(plugin =>
+                plugin.onReadFile(sourceFile, markdown)
+            );
 
-            markdown.pages.forEach((markdownPage, index) => {
-
-                const targetFile = Path.join(
-                    targetFolder,
-                    (Utilities.getBaseName(sourceFile) + '-' + index)
-                );
-
+            markdown.pages.forEach((markdownPage, pageIndex) =>
                 plugins.forEach(plugin =>
-                    plugin.onWriteFile(targetFile, markdownPage)
-                );
-            });
+                    plugin.onWriteFile(
+                        Path.join(
+                            targetFolder,
+                            (
+                                Utilities.getBaseName(sourceFile) +
+                                Dictionary.FILE_SEPARATOR +
+                                pageIndex
+                            )
+                        ),
+                        markdownPage
+                    )
+                )
+            );
         });
 
         plugins.forEach(plugin =>
@@ -157,21 +163,18 @@ export module Internals {
         const configFolder = Path.dirname(configPath);
         const config = JSON.parse(FS.readFileSync(configPath).toString()) as IConfig;
 
-        if (!config.plugins ||
+        if (
+            !config.plugins ||
             config.plugins.length === 0
         ) {
             config.plugins = defaultConfig.plugins;
         }
         else {
-            config.plugins = config.plugins.map(
-                function (pluginPath): string {
-                    if (pluginPath[0] !== Path.sep) {
-                        return Path.join(configFolder, pluginPath);
-                    }
-                    else {
-                        return pluginPath;
-                    }
-                });
+            config.plugins = config.plugins.map(pluginPath =>
+                pluginPath[0] !== Path.sep ?
+                    Path.join(configFolder, pluginPath) :
+                    pluginPath
+            );
         }
 
         return config;
@@ -196,14 +199,15 @@ export module Internals {
 
         FS
             .readdirSync(sourceFolder, { withFileTypes: true })
-            .forEach(sourceEntry => {
+            .forEach(function (sourceEntry: FS.Dirent): void {
 
                 const path = Path.join(sourceFolder, sourceEntry.name);
 
                 if (sourceEntry.isDirectory()) {
                     files.push(...getFiles(path, pattern));
                 }
-                if (sourceEntry.isFile() &&
+                else if (
+                    sourceEntry.isFile() &&
                     (!pattern || pattern.test(path))
                 ) {
                     files.push(path);
@@ -226,14 +230,14 @@ export module Internals {
         Path
             .normalize(Path.dirname(filePath))
             .split(Path.sep)
-            .map((entry, index) => {
-                return currentPath += (index ? Path.sep : '') + entry;
-            })
-            .forEach((path) => {
-                if (!FS.existsSync(path)) {
-                    FS.mkdirSync(path);
-                }
-            });
+            .map((entry, index) =>
+                currentPath += (index ? Path.sep : '') + entry
+            )
+            .forEach(path =>
+                !FS.existsSync(path) ?
+                    FS.mkdirSync(path) :
+                    undefined
+            );
     }
 
     /**

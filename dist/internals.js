@@ -47,11 +47,14 @@ var Internals;
         });
         getFiles(sourceFolder, /\.(?:md|markdown)$/).forEach(function (sourceFile) {
             var markdown = new lib_1.Markdown(FS.readFileSync(sourceFile).toString());
-            plugins.forEach(function (plugin) { return plugin.onReadFile(sourceFile, markdown); });
-            markdown.pages.forEach(function (markdownPage, index) {
-                var targetFile = Path.join(targetFolder, (lib_1.Utilities.getBaseName(sourceFile) + '-' + index));
-                plugins.forEach(function (plugin) {
-                    return plugin.onWriteFile(targetFile, markdownPage);
+            plugins.forEach(function (plugin) {
+                return plugin.onReadFile(sourceFile, markdown);
+            });
+            markdown.pages.forEach(function (markdownPage, pageIndex) {
+                return plugins.forEach(function (plugin) {
+                    return plugin.onWriteFile(Path.join(targetFolder, (lib_1.Utilities.getBaseName(sourceFile) +
+                        lib_1.Dictionary.FILE_SEPARATOR +
+                        pageIndex)), markdownPage);
                 });
             });
         });
@@ -78,12 +81,9 @@ var Internals;
         }
         else {
             config.plugins = config.plugins.map(function (pluginPath) {
-                if (pluginPath[0] !== Path.sep) {
-                    return Path.join(configFolder, pluginPath);
-                }
-                else {
-                    return pluginPath;
-                }
+                return pluginPath[0] !== Path.sep ?
+                    Path.join(configFolder, pluginPath) :
+                    pluginPath;
             });
         }
         return config;
@@ -110,7 +110,7 @@ var Internals;
             if (sourceEntry.isDirectory()) {
                 files.push.apply(files, getFiles(path, pattern));
             }
-            if (sourceEntry.isFile() &&
+            else if (sourceEntry.isFile() &&
                 (!pattern || pattern.test(path))) {
                 files.push(path);
             }
@@ -133,9 +133,9 @@ var Internals;
             return currentPath += (index ? Path.sep : '') + entry;
         })
             .forEach(function (path) {
-            if (!FS.existsSync(path)) {
-                FS.mkdirSync(path);
-            }
+            return !FS.existsSync(path) ?
+                FS.mkdirSync(path) :
+                undefined;
         });
     }
     Internals.makeFilePath = makeFilePath;

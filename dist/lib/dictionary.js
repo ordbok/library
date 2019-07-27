@@ -48,17 +48,17 @@ var Dictionary = /** @class */ (function (_super) {
         var categorySplit;
         var dictionarySection;
         stringified
-            .split('\n')
+            .split(Dictionary.LINE_SEPARATOR)
             .forEach(function (line) {
-            if (line.indexOf(':') === -1) {
+            if (line.indexOf(Dictionary.PAIR_SEPARATOR) === -1) {
                 dictionaryPage[line] = dictionarySection = {};
                 return;
             }
             if (!dictionarySection) {
                 return;
             }
-            categorySplit = line.split(':', 2);
-            dictionarySection[categorySplit[0]] = categorySplit[1].split(';');
+            categorySplit = line.split(Dictionary.PAIR_SEPARATOR, 2);
+            dictionarySection[categorySplit[0]] = (categorySplit[1].split(Dictionary.VALUE_SEPARATOR));
         });
         return dictionaryPage;
     };
@@ -79,10 +79,12 @@ var Dictionary = /** @class */ (function (_super) {
             Object
                 .keys(markdownSection)
                 .forEach(function (category) {
-                return stringified.push(utilities_1.Utilities.getKey(category) + ':' + markdownSection[category].join(';'));
+                return stringified.push(utilities_1.Utilities.getKey(category) +
+                    Dictionary.PAIR_SEPARATOR +
+                    markdownSection[category].join(Dictionary.VALUE_SEPARATOR));
             });
         });
-        return stringified.join('\n');
+        return stringified.join(Dictionary.LINE_SEPARATOR);
     };
     /* *
      *
@@ -102,8 +104,11 @@ var Dictionary = /** @class */ (function (_super) {
         var _this = this;
         if (pageIndex === void 0) { pageIndex = 0; }
         return new Promise(function (resolve) {
-            _this
-                .request(utilities_1.Utilities.getKey(baseName) + '-' + pageIndex + Dictionary.FILE_EXTENSION)
+            return _this
+                .request(utilities_1.Utilities.getKey(baseName) +
+                Dictionary.FILE_SEPARATOR +
+                pageIndex +
+                Dictionary.FILE_EXTENSION)
                 .then(function (response) {
                 if (response instanceof Error ||
                     response.serverStatus >= 400) {
@@ -127,6 +132,22 @@ var Dictionary = /** @class */ (function (_super) {
      * File extension of dictionary entries.
      */
     Dictionary.FILE_EXTENSION = '.txt';
+    /**
+     * Character to separate a base file name from its page index.
+     */
+    Dictionary.FILE_SEPARATOR = '-';
+    /**
+     * Line character to separate sections.
+     */
+    Dictionary.LINE_SEPARATOR = '\n';
+    /**
+     * Character to separate a category from its values.
+     */
+    Dictionary.PAIR_SEPARATOR = ':';
+    /**
+     * Character to separate a category's values.
+     */
+    Dictionary.VALUE_SEPARATOR = ';';
     return Dictionary;
 }(ajax_1.Ajax));
 exports.Dictionary = Dictionary;
