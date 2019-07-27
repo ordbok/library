@@ -19,27 +19,9 @@ var DictionaryPlugin = /** @class */ (function () {
     }
     /* *
      *
-     *  Functions
+     *  Events
      *
      * */
-    /**
-     * Gets called after the assembling has been done.
-     */
-    DictionaryPlugin.prototype.onAssembled = function () {
-        // nothing to do
-    };
-    /**
-     * Gets called before the assembling begins.
-     */
-    DictionaryPlugin.prototype.onAssembling = function () {
-        // nothing to do
-    };
-    /**
-     * Gets called after a markdown file has been read.
-     */
-    DictionaryPlugin.prototype.onReadFile = function () {
-        // nothing to do
-    };
     /**
      * Gets called before a dictionary file will be written.
      *

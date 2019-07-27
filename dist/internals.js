@@ -43,23 +43,27 @@ var Internals;
             return;
         }
         plugins.forEach(function (plugin) {
-            return plugin.onAssembling(sourceFolder, targetFolder);
+            return plugin.onAssembling &&
+                plugin.onAssembling(sourceFolder, targetFolder);
         });
         getFiles(sourceFolder, /\.(?:md|markdown)$/).forEach(function (sourceFile) {
             var markdown = new lib_1.Markdown(FS.readFileSync(sourceFile).toString());
             plugins.forEach(function (plugin) {
-                return plugin.onReadFile(sourceFile, markdown);
+                return plugin.onReadFile &&
+                    plugin.onReadFile(sourceFile, markdown);
             });
             markdown.pages.forEach(function (markdownPage, pageIndex) {
                 return plugins.forEach(function (plugin) {
-                    return plugin.onWriteFile(Path.join(targetFolder, (lib_1.Utilities.getBaseName(sourceFile) +
-                        lib_1.Dictionary.FILE_SEPARATOR +
-                        pageIndex)), markdownPage);
+                    return plugin.onWriteFile &&
+                        plugin.onWriteFile(Path.join(targetFolder, (lib_1.Utilities.getBaseName(sourceFile) +
+                            lib_1.Dictionary.FILE_SEPARATOR +
+                            pageIndex)), markdownPage);
                 });
             });
         });
         plugins.forEach(function (plugin) {
-            return plugin.onAssembled();
+            return plugin.onAssembled &&
+                plugin.onAssembled();
         });
     }
     Internals.assembleFiles = assembleFiles;

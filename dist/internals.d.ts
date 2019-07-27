@@ -15,7 +15,7 @@ export interface IPlugin {
     /**
      * Called after assembling.
      */
-    onAssembled(): void;
+    onAssembled?(): void;
     /**
      * Called before assembling.
      *
@@ -25,7 +25,7 @@ export interface IPlugin {
      * @param targetFolder
      *        Target folder
      */
-    onAssembling(sourceFolder: string, targetFolder: string): void;
+    onAssembling?(sourceFolder: string, targetFolder: string): void;
     /**
      * Called after reading a markdown file.
      *
@@ -35,7 +35,7 @@ export interface IPlugin {
      * @param markdown
      *        File's markdown
      */
-    onReadFile(sourceFile: string, markdown: Markdown): void;
+    onReadFile?(sourceFile: string, markdown: Markdown): void;
     /**
      * Called before writing a dictionary entry.
      *
@@ -45,7 +45,7 @@ export interface IPlugin {
      * @param markdownPage
      *        File's markdown
      */
-    onWriteFile(targetFile: string, markdownPage: IMarkdownPage): void;
+    onWriteFile?(targetFile: string, markdownPage: IMarkdownPage): void;
 }
 /**
  * Internal utilities
