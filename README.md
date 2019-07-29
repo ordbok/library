@@ -13,16 +13,16 @@ The following example shows a Markdown source file named `english.md`:
 English
 =======
 
-Translation: English, the English
+Translation: English ; the English
 
-Grammar: Noun, Neuter
+Grammar:     Noun ; Neuter
 
 New Norwegian
 =============
 
-Translation: engelsk, engelsken
+Translation: engelsk ; engelsken
 
-Grammar: Noun, Masculine
+Grammar:     Noun ; Masculine
 ```
 
 The following example takes a Markdown source folder to build dictionary files
@@ -54,7 +54,7 @@ assembling process. You can specify node modules and folders:
 {
     "plugins": [
         "@ordbok/index-plugin",
-        "./tools/custom-plugin"
+        "../tools/custom-plugin"
     ]
 }
 ```
@@ -64,8 +64,7 @@ If you like to create a custom plugin yourself, create a folder or package with
 a `ordbok-plugin.js` file somewhere inside. Here is how the corresponding
 TypeScript file looks like:
 ```ts
-const { IMarkdownPage, Markdown } = require('@ordbok/core');
-const { IPlugin } = require('@ordbok/core/plugin');
+const { IMarkdownPage, IPlugin, Markdown } = require('@ordbok/core/dist');
 
 export const ordbokPlugin: IPlugin = {
     onAssembling: (sourceFolder: string, targetFolder: string) => {},

@@ -10,6 +10,11 @@
  * */
 
 /**
+ * Inclusive brackets pattern
+ */
+const BRACKET_REGEXP = /\([^\)]*\)|\[[^\]]*\]|\{[^\}]*\}/g;
+
+/**
  * Inclusive space pattern
  */
 const SPACE_REGEXP = /\s+/g;
@@ -20,7 +25,10 @@ const SPACE_REGEXP = /\s+/g;
  *
  * */
 
-export class Text {
+/**
+ * Text utility class.
+ */
+export class Text extends String {
 
     /* *
      *
@@ -28,6 +36,15 @@ export class Text {
      *
      * */
 
+    /**
+     * Tests for a matching pattern at the text end.
+     *
+     * @param text
+     *        Text to test.
+     *
+     * @param pattern
+     *        Pattern to match.
+     */
     public static endsWith (text: string, pattern: string): boolean {
 
         if (text === pattern) {
@@ -43,6 +60,23 @@ export class Text {
         );
     }
 
+    /**
+     * Removes brackets and their content.
+     *
+     * @param text
+     *        Text to filter.
+     */
+    public static removeBrackets (text: string): string {
+
+        return text.replace(BRACKET_REGEXP, '').replace(SPACE_REGEXP, ' ').trim();
+    }
+
+    /**
+     * Trims all unnecessary spaces.
+     *
+     * @param text
+     *        Text to filter.
+     */
     public static trimSpaces (text: string): string {
 
         return text.replace(SPACE_REGEXP, ' ').trim();
@@ -54,18 +88,10 @@ export class Text {
      *
      * */
 
-    public constructor (text: string) {
+    public constructor (text?: string) {
 
-        this._value = text;
+        super(text);
     }
-
-    /* *
-     *
-     *  Properties
-     *
-     * */
-
-    private _value: string;
 
     /* *
      *
@@ -73,11 +99,30 @@ export class Text {
      *
      * */
 
+    /**
+     * Tests for a matching pattern at the text end.
+     *
+     * @param pattern
+     *        Pattern to match.
+     */
     public endsWith (pattern: string): boolean {
-        return Text.endsWith(this._value, pattern);
+
+        return Text.endsWith(this.toString(), pattern);
     }
 
+    /**
+     * Removes brackets and their content.
+     */
+    public removeBrackets (): Text {
+
+        return new Text(Text.removeBrackets(this.toString()));
+    }
+
+    /**
+     * Trims all unnecessary spaces.
+     */
     public trimSpaces (): Text {
-        return new Text(Text.trimSpaces(this._value));
+
+        return new Text(Text.trimSpaces(this.toString()));
     }
 }

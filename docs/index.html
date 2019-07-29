@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>@ordbok/core</title>
+	<title>ORDBOK Core API</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">@ordbok/core</a>
+					<a href="index.html" class="title">ORDBOK Core API</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -56,7 +56,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> @ordbok/core</h1>
+			<h1> ORDBOK Core API</h1>
 		</div>
 	</div>
 </header>
@@ -71,16 +71,16 @@
 				<pre><code class="language-md"><span class="hljs-section">English
 =======</span>
 
-Translation: English, the English
+Translation: English ; the English
 
-Grammar: Noun, Neuter
+Grammar:     Noun ; Neuter
 
 <span class="hljs-section">New Norwegian
 =============</span>
 
-Translation: engelsk, engelsken
+Translation: engelsk ; engelsken
 
-Grammar: Noun, Masculine</code></pre>
+Grammar:     Noun ; Masculine</code></pre>
 				<p>The following example takes a Markdown source folder to build dictionary files
 				into a <code>./build/dictionary</code> folder:</p>
 				<pre><code class="language-sh">$ npx ordbok-assembler ./markdown ./build/dictionary</code></pre>
@@ -99,14 +99,13 @@ Grammar: Noun, Masculine</code></pre>
 				<pre><code class="language-json">{
     <span class="hljs-attr">"plugins"</span>: [
         <span class="hljs-string">"@ordbok/index-plugin"</span>,
-        <span class="hljs-string">"./tools/custom-plugin"</span>
+        <span class="hljs-string">"../tools/custom-plugin"</span>
     ]
 }</code></pre>
 				<p>If you like to create a custom plugin yourself, create a folder or package with
 					a <code>ordbok-plugin.js</code> file somewhere inside. Here is how the corresponding
 				TypeScript file looks like:</p>
-				<pre><code class="language-ts"><span class="hljs-keyword">const</span> { IMarkdownPage, Markdown } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@ordbok/core'</span>);
-<span class="hljs-keyword">const</span> { IPlugin } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@ordbok/core/plugin'</span>);
+				<pre><code class="language-ts"><span class="hljs-keyword">const</span> { IMarkdownPage, IPlugin, Markdown } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@ordbok/core/dist'</span>);
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> ordbokPlugin: IPlugin = {
     onAssembling: <span class="hljs-function">(<span class="hljs-params">sourceFolder: <span class="hljs-built_in">string</span>, targetFolder: <span class="hljs-built_in">string</span></span>) =&gt;</span> {},
@@ -122,31 +121,82 @@ Grammar: Noun, Masculine</code></pre>
 					<li class="globals  ">
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_lib_ajax_.html">"lib/ajax"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/internals.html">Internals</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_lib_dictionary_.html">"lib/dictionary"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_lib_index_.html">"lib/index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_lib_markdown_.html">"lib/markdown"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_lib_text_.html">"lib/text"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_lib_utilities_.html">"lib/utilities"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_plugin_.html">"plugin"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/utilities.html">Utilities</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="classes/ajax.html" class="tsd-kind-icon">Ajax</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/dictionary.html" class="tsd-kind-icon">Dictionary</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/markdown.html" class="tsd-kind-icon">Markdown</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/text.html" class="tsd-kind-icon">Text</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/iajaxcontext.html" class="tsd-kind-icon">IAjax<wbr>Context</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iajaxerror.html" class="tsd-kind-icon">IAjax<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/iajaxrequest.html" class="tsd-kind-icon">IAjax<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iajaxresponse.html" class="tsd-kind-icon">IAjax<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iconfig.html" class="tsd-kind-icon">IConfig</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/idictionaryentry.html" class="tsd-kind-icon">IDictionary<wbr>Entry</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/idictionarysection.html" class="tsd-kind-icon">IDictionary<wbr>Section</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/imarkdownpage.html" class="tsd-kind-icon">IMarkdown<wbr>Page</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/imarkdownsection.html" class="tsd-kind-icon">IMarkdown<wbr>Section</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iplugin.html" class="tsd-kind-icon">IPlugin</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#bracket_regexp" class="tsd-kind-icon">BRACKET_<wbr>REGEXP</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#headline_regexp" class="tsd-kind-icon">HEADLINE_<wbr>REGEXP</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#non_character_regexp" class="tsd-kind-icon">NON_<wbr>CHARACTER_<wbr>REGEXP</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#page_regexp" class="tsd-kind-icon">PAGE_<wbr>REGEXP</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#pair_regexp" class="tsd-kind-icon">PAIR_<wbr>REGEXP</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#paragraph_regexp" class="tsd-kind-icon">PARAGRAPH_<wbr>REGEXP</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#path_regexp" class="tsd-kind-icon">PATH_<wbr>REGEXP</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="globals.html#space_regexp" class="tsd-kind-icon">SPACE_<wbr>REGEXP</a>
+					</li>
 				</ul>
 			</nav>
 		</div>

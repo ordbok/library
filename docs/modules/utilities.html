@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IPlugin | @ordbok/core</title>
+	<title>Utilities | ORDBOK Core API</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@ordbok/core</a>
+					<a href="../index.html" class="title">ORDBOK Core API</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -56,182 +56,219 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_plugin_.html">&quot;plugin&quot;</a>
-				</li>
-				<li>
-					<a href="_plugin_.iplugin.html">IPlugin</a>
+					<a href="utilities.html">Utilities</a>
 				</li>
 			</ul>
-			<h1>Interface IPlugin</h1>
+			<h1>Module Utilities</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>Interface of an <code>ordbokPlugin</code> export</p>
-					</div>
-				</div>
-			</section>
-			<section class="tsd-panel tsd-hierarchy">
-				<h3>Hierarchy</h3>
-				<ul class="tsd-hierarchy">
-					<li>
-						<span class="target">IPlugin</span>
-					</li>
-				</ul>
-			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Methods</h3>
+							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_plugin_.iplugin.html#onassembled" class="tsd-kind-icon">on<wbr>Assembled</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_plugin_.iplugin.html#onassembling" class="tsd-kind-icon">on<wbr>Assembling</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_plugin_.iplugin.html#onreadfile" class="tsd-kind-icon">on<wbr>Read<wbr>File</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_plugin_.iplugin.html#onwritefile" class="tsd-kind-icon">on<wbr>Write<wbr>File</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="utilities.html#getbasename" class="tsd-kind-icon">get<wbr>Base<wbr>Name</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="utilities.html#getextension" class="tsd-kind-icon">get<wbr>Extension</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="utilities.html#getkey" class="tsd-kind-icon">get<wbr>Key</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="utilities.html#getnorm" class="tsd-kind-icon">get<wbr>Norm</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="utilities.html#getparentpath" class="tsd-kind-icon">get<wbr>Parent<wbr>Path</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="utilities.html#rotate" class="tsd-kind-icon">rotate</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="onassembled" class="tsd-anchor"></a>
-					<h3>on<wbr>Assembled</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">on<wbr>Assembled<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="getbasename" class="tsd-anchor"></a>
+					<h3>get<wbr>Base<wbr>Name</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Base<wbr>Name<span class="tsd-signature-symbol">(</span>filePath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ordbok/core/blob/42af829/sources/plugin.ts#L32">plugin.ts:32</a></li>
+									<li>Defined in <a href="https://github.com/ordbok/core/blob/master/sources/lib/utilities.ts#L54">lib/utilities.ts:54</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Called after assembling.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="onassembling" class="tsd-anchor"></a>
-					<h3>on<wbr>Assembling</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">on<wbr>Assembling<span class="tsd-signature-symbol">(</span>sourceFolder<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, targetFolder<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/ordbok/core/blob/42af829/sources/plugin.ts#L43">plugin.ts:43</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Called before assembling.</p>
+									<p>Returns the base name of a file path.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>sourceFolder: <span class="tsd-signature-type">string</span></h5>
+									<h5>filePath: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<pre><code><span class="hljs-attribute">   Source folder</span></code></pre>
-									</div>
-								</li>
-								<li>
-									<h5>targetFolder: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<pre><code>   <span class="hljs-keyword">Target</span> folder</code></pre>
+										<pre><code>   <span class="hljs-built_in">File</span> path</code></pre>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="onreadfile" class="tsd-anchor"></a>
-					<h3>on<wbr>Read<wbr>File</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">on<wbr>Read<wbr>File<span class="tsd-signature-symbol">(</span>sourceFile<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, markdown<span class="tsd-signature-symbol">: </span><a href="../classes/_lib_markdown_.markdown.html" class="tsd-signature-type">Markdown</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="getextension" class="tsd-anchor"></a>
+					<h3>get<wbr>Extension</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Extension<span class="tsd-signature-symbol">(</span>filePath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ordbok/core/blob/42af829/sources/plugin.ts#L54">plugin.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/ordbok/core/blob/master/sources/lib/utilities.ts#L41">lib/utilities.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Called after reading a markdown file.</p>
+									<p>Returns the extension of a file path.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>sourceFile: <span class="tsd-signature-type">string</span></h5>
+									<h5>filePath: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<pre><code>   <span class="hljs-keyword">Source</span> <span class="hljs-keyword">file</span></code></pre>
-									</div>
-								</li>
-								<li>
-									<h5>markdown: <a href="../classes/_lib_markdown_.markdown.html" class="tsd-signature-type">Markdown</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<pre><code>   <span class="hljs-keyword">File</span><span class="hljs-symbol">'s</span> markdown</code></pre>
+										<pre><code>   <span class="hljs-built_in">File</span> path</code></pre>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="onwritefile" class="tsd-anchor"></a>
-					<h3>on<wbr>Write<wbr>File</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">on<wbr>Write<wbr>File<span class="tsd-signature-symbol">(</span>targetFile<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, markdownPage<span class="tsd-signature-symbol">: </span><a href="_lib_markdown_.imarkdownpage.html" class="tsd-signature-type">IMarkdownPage</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="getkey" class="tsd-anchor"></a>
+					<h3>get<wbr>Key</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Key<span class="tsd-signature-symbol">(</span>text<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/ordbok/core/blob/42af829/sources/plugin.ts#L65">plugin.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/ordbok/core/blob/master/sources/lib/utilities.ts#L67">lib/utilities.ts:67</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Called before writing a dictionary entry.</p>
+									<p>Returns the universal key for the given text.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>targetFile: <span class="tsd-signature-type">string</span></h5>
+									<h5>text: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<pre><code>   <span class="hljs-keyword">Target</span> <span class="hljs-keyword">file</span></code></pre>
-									</div>
-								</li>
-								<li>
-									<h5>markdownPage: <a href="_lib_markdown_.imarkdownpage.html" class="tsd-signature-type">IMarkdownPage</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<pre><code>   <span class="hljs-keyword">File</span><span class="hljs-symbol">'s</span> markdown</code></pre>
+										<pre><code>   Text to <span class="hljs-keyword">generate</span> key from</code></pre>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="getnorm" class="tsd-anchor"></a>
+					<h3>get<wbr>Norm</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Norm<span class="tsd-signature-symbol">(</span>text<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ordbok/core/blob/master/sources/lib/utilities.ts#L82">lib/utilities.ts:82</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Normalize a text to lower case characters and space only.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>text: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<pre><code>   <span class="hljs-type">Text</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">filter</span></code></pre>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="getparentpath" class="tsd-anchor"></a>
+					<h3>get<wbr>Parent<wbr>Path</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Parent<wbr>Path<span class="tsd-signature-symbol">(</span>path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ordbok/core/blob/master/sources/lib/utilities.ts#L97">lib/utilities.ts:97</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the parent part of the path.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>path: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<pre><code>   <span class="hljs-keyword">Path</span> <span class="hljs-built_in">with</span> parent</code></pre>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="rotate" class="tsd-anchor"></a>
+					<h3>rotate</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">rotate<span class="tsd-signature-symbol">(</span>text<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/ordbok/core/blob/master/sources/lib/utilities.ts#L110">lib/utilities.ts:110</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Rotates characters in a text.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>text: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<pre><code>   <span class="hljs-type">Text</span> <span class="hljs-keyword">to</span> rotate</code></pre>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -243,52 +280,34 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_lib_ajax_.html">"lib/ajax"</a>
+					<li class=" tsd-kind-module">
+						<a href="internals.html">Internals</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_lib_dictionary_.html">"lib/dictionary"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_lib_index_.html">"lib/index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_lib_markdown_.html">"lib/markdown"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_lib_text_.html">"lib/text"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_lib_utilities_.html">"lib/utilities"</a>
-					</li>
-					<li class="current tsd-kind-external-module">
-						<a href="../modules/_plugin_.html">"plugin"</a>
+					<li class="current tsd-kind-module">
+						<a href="utilities.html">Utilities</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_plugin_.iplugin.html" class="tsd-kind-icon">IPlugin</a>
-						<ul>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_plugin_.iplugin.html#onassembled" class="tsd-kind-icon">on<wbr>Assembled</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_plugin_.iplugin.html#onassembling" class="tsd-kind-icon">on<wbr>Assembling</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_plugin_.iplugin.html#onreadfile" class="tsd-kind-icon">on<wbr>Read<wbr>File</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_plugin_.iplugin.html#onwritefile" class="tsd-kind-icon">on<wbr>Write<wbr>File</a>
-							</li>
-						</ul>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="utilities.html#getbasename" class="tsd-kind-icon">get<wbr>Base<wbr>Name</a>
 					</li>
-				</ul>
-				<ul class="after-current">
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="utilities.html#getextension" class="tsd-kind-icon">get<wbr>Extension</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="utilities.html#getkey" class="tsd-kind-icon">get<wbr>Key</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="utilities.html#getnorm" class="tsd-kind-icon">get<wbr>Norm</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="utilities.html#getparentpath" class="tsd-kind-icon">get<wbr>Parent<wbr>Path</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="utilities.html#rotate" class="tsd-kind-icon">rotate</a>
+					</li>
 				</ul>
 			</nav>
 		</div>

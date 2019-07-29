@@ -3,8 +3,9 @@
 /* Licensed under the MIT License. See the LICENSE file in the project root. */
 /*---------------------------------------------------------------------------*/
 
-import { Dictionary, IMarkdownPage } from '../lib';
-import { IPlugin, PluginUtilities } from '../plugin';
+/** @internal */
+
+import { Dictionary, IMarkdownPage, Internals, IPlugin } from '../';
 
 /* *
  *
@@ -19,33 +20,9 @@ export class DictionaryPlugin implements IPlugin {
 
     /* *
      *
-     *  Functions
+     *  Events
      *
      * */
-
-    /**
-     * Gets called after the assembling has been done.
-     */
-    public onAssembled () {
-
-        // nothing to do
-    }
-
-    /**
-     * Gets called before the assembling begins.
-     */
-    public onAssembling () {
-
-        // nothing to do
-    }
-
-    /**
-     * Gets called after a markdown file has been read.
-     */
-    public onReadFile () {
-
-        // nothing to do
-    }
 
     /**
      * Gets called before a dictionary file will be written.
@@ -58,7 +35,7 @@ export class DictionaryPlugin implements IPlugin {
      */
     public onWriteFile (targetFile: string, markdownPage: IMarkdownPage) {
 
-        PluginUtilities.writeFileSync(
+        Internals.writeFile(
             (targetFile + Dictionary.FILE_EXTENSION),
             Dictionary.stringify(markdownPage)
         );
