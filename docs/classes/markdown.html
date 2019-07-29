@@ -38,10 +38,6 @@
 							</div>
 							<input type="checkbox" id="tsd-filter-inherited" checked />
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
 					</div>
 					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
@@ -91,25 +87,11 @@
 								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="markdown.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
-							<h3>Properties</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="markdown.html#_pages" class="tsd-kind-icon">_pages</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="markdown.html#_raw" class="tsd-kind-icon">_raw</a></li>
-							</ul>
-						</section>
 						<section class="tsd-index-section ">
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="markdown.html#pages" class="tsd-kind-icon">pages</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="markdown.html#raw" class="tsd-kind-icon">raw</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
-							<h3>Methods</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="markdown.html#parse" class="tsd-kind-icon">parse</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="markdown.html#parsepage" class="tsd-kind-icon">parse<wbr>Page</a></li>
 							</ul>
 						</section>
 					</div>
@@ -149,39 +131,6 @@
 							<h4 class="tsd-returns-title">Returns <a href="markdown.html" class="tsd-signature-type">Markdown</a></h4>
 						</li>
 					</ul>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_pages" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _pages</h3>
-					<div class="tsd-signature tsd-kind-icon">_pages<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/imarkdownpage.html" class="tsd-signature-type">IMarkdownPage</a><span class="tsd-signature-symbol">&gt;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/ordbok/core/blob/master/sources/lib/markdown.ts#L139">lib/markdown.ts:139</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Internal markdown pages</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_raw" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _raw</h3>
-					<div class="tsd-signature tsd-kind-icon">_raw<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/ordbok/core/blob/master/sources/lib/markdown.ts#L144">lib/markdown.ts:144</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Internal raw markdown</p>
-						</div>
-					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -231,71 +180,6 @@
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="parse" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> parse</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">parse<span class="tsd-signature-symbol">(</span>markdown<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/ordbok/core/blob/master/sources/lib/markdown.ts#L172">lib/markdown.ts:172</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Internal markdown parser</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>markdown: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<pre><code>   Markdown <span class="hljs-keyword">to</span> parse</code></pre>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-					<a name="parsepage" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> parse<wbr>Page</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">parse<wbr>Page<span class="tsd-signature-symbol">(</span>markdownPage<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/imarkdownpage.html" class="tsd-signature-type">IMarkdownPage</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/ordbok/core/blob/master/sources/lib/markdown.ts#L77">lib/markdown.ts:77</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Internal markdown page parser</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>markdownPage: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<pre><code>   <span class="hljs-keyword">Markdown </span>page</code></pre>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/imarkdownpage.html" class="tsd-signature-type">IMarkdownPage</a></h4>
-						</li>
-					</ul>
-				</section>
-			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
@@ -321,23 +205,11 @@
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
 								<a href="markdown.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="markdown.html#_pages" class="tsd-kind-icon">_pages</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="markdown.html#_raw" class="tsd-kind-icon">_raw</a>
-							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
 								<a href="markdown.html#pages" class="tsd-kind-icon">pages</a>
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
 								<a href="markdown.html#raw" class="tsd-kind-icon">raw</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="markdown.html#parse" class="tsd-kind-icon">parse</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-								<a href="markdown.html#parsepage" class="tsd-kind-icon">parse<wbr>Page</a>
 							</li>
 						</ul>
 					</li>
@@ -346,14 +218,8 @@
 					<li class=" tsd-kind-class">
 						<a href="text.html" class="tsd-kind-icon">Text</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-is-not-exported">
-						<a href="../interfaces/iajaxcontext.html" class="tsd-kind-icon">IAjax<wbr>Context</a>
-					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/iajaxerror.html" class="tsd-kind-icon">IAjax<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-is-not-exported">
-						<a href="../interfaces/iajaxrequest.html" class="tsd-kind-icon">IAjax<wbr>Request</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/iajaxresponse.html" class="tsd-kind-icon">IAjax<wbr>Response</a>
@@ -375,30 +241,6 @@
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/iplugin.html" class="tsd-kind-icon">IPlugin</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#bracket_regexp" class="tsd-kind-icon">BRACKET_<wbr>REGEXP</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#headline_regexp" class="tsd-kind-icon">HEADLINE_<wbr>REGEXP</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#non_character_regexp" class="tsd-kind-icon">NON_<wbr>CHARACTER_<wbr>REGEXP</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#page_regexp" class="tsd-kind-icon">PAGE_<wbr>REGEXP</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#pair_regexp" class="tsd-kind-icon">PAIR_<wbr>REGEXP</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#paragraph_regexp" class="tsd-kind-icon">PARAGRAPH_<wbr>REGEXP</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#path_regexp" class="tsd-kind-icon">PATH_<wbr>REGEXP</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#space_regexp" class="tsd-kind-icon">SPACE_<wbr>REGEXP</a>
 					</li>
 				</ul>
 			</nav>

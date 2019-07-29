@@ -38,10 +38,6 @@
 							</div>
 							<input type="checkbox" id="tsd-filter-inherited" checked />
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
 					</div>
 					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
@@ -99,8 +95,6 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="ajax.html#_cache" class="tsd-kind-icon">_cache</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="ajax.html#_requests" class="tsd-kind-icon">_requests</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="ajax.html#baseurl" class="tsd-kind-icon">base<wbr>Url</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="ajax.html#cachetimeout" class="tsd-kind-icon">cache<wbr>Timeout</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="ajax.html#responsetimeout" class="tsd-kind-icon">response<wbr>Timeout</a></li>
@@ -110,9 +104,6 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="ajax.html#hasopenrequest" class="tsd-kind-icon">has<wbr>Open<wbr>Request</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="ajax.html#onerror" class="tsd-kind-icon">on<wbr>Error</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="ajax.html#onload" class="tsd-kind-icon">on<wbr>Load</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="ajax.html#ontimeout" class="tsd-kind-icon">on<wbr>Timeout</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="ajax.html#request" class="tsd-kind-icon">request</a></li>
 							</ul>
 						</section>
@@ -175,44 +166,6 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_cache" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _cache</h3>
-					<div class="tsd-signature tsd-kind-icon">_cache<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/ordbok/core/blob/master/sources/lib/ajax.ts#L116">lib/ajax.ts:116</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Cached results</p>
-						</div>
-					</div>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-index-signature">
-								<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><a href="../interfaces/iajaxresponse.html" class="tsd-signature-type">IAjaxResponse</a></h5>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_requests" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _requests</h3>
-					<div class="tsd-signature tsd-kind-icon">_requests<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/ordbok/core/blob/master/sources/lib/ajax.ts#L121">lib/ajax.ts:121</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Counter of open requests</p>
-						</div>
-					</div>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="baseurl" class="tsd-anchor"></a>
 					<h3>base<wbr>Url</h3>
@@ -283,117 +236,6 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="onerror" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> on<wbr>Error</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">on<wbr>Error<span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><a href="../interfaces/iajaxrequest.html" class="tsd-signature-type">IAjaxRequest</a>, progressEvent<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ProgressEvent</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/ordbok/core/blob/master/sources/lib/ajax.ts#L153">lib/ajax.ts:153</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Handles server error.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>this: <a href="../interfaces/iajaxrequest.html" class="tsd-signature-type">IAjaxRequest</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<pre><code>   Extended XMLHTTPRequest.</code></pre>
-									</div>
-								</li>
-								<li>
-									<h5>progressEvent: <span class="tsd-signature-type">ProgressEvent</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<pre><code>   XMLHTTPRequest <span class="hljs-keyword">event</span>.</code></pre>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="onload" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> on<wbr>Load</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">on<wbr>Load<span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><a href="../interfaces/iajaxrequest.html" class="tsd-signature-type">IAjaxRequest</a>, progressEvent<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ProgressEvent</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/ordbok/core/blob/master/sources/lib/ajax.ts#L185">lib/ajax.ts:185</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Handles server data.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>this: <a href="../interfaces/iajaxrequest.html" class="tsd-signature-type">IAjaxRequest</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<pre><code>   Extended XMLHTTPRequest.</code></pre>
-									</div>
-								</li>
-								<li>
-									<h5>progressEvent: <span class="tsd-signature-type">ProgressEvent</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<pre><code>   XMLHTTPRequest <span class="hljs-keyword">event</span>.</code></pre>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="ontimeout" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> on<wbr>Timeout</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">on<wbr>Timeout<span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><a href="../interfaces/iajaxrequest.html" class="tsd-signature-type">IAjaxRequest</a>, progressEvent<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ProgressEvent</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/ordbok/core/blob/master/sources/lib/ajax.ts#L215">lib/ajax.ts:215</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Handles server timeout.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>this: <a href="../interfaces/iajaxrequest.html" class="tsd-signature-type">IAjaxRequest</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<pre><code>   Extended XMLHTTPRequest.</code></pre>
-									</div>
-								</li>
-								<li>
-									<h5>progressEvent: <span class="tsd-signature-type">ProgressEvent</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<pre><code>   XMLHTTPRequest <span class="hljs-keyword">event</span>.</code></pre>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="request" class="tsd-anchor"></a>
 					<h3>request</h3>
@@ -445,12 +287,6 @@
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
 								<a href="ajax.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="ajax.html#_cache" class="tsd-kind-icon">_cache</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="ajax.html#_requests" class="tsd-kind-icon">_requests</a>
-							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="ajax.html#baseurl" class="tsd-kind-icon">base<wbr>Url</a>
 							</li>
@@ -462,15 +298,6 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="ajax.html#hasopenrequest" class="tsd-kind-icon">has<wbr>Open<wbr>Request</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="ajax.html#onerror" class="tsd-kind-icon">on<wbr>Error</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="ajax.html#onload" class="tsd-kind-icon">on<wbr>Load</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="ajax.html#ontimeout" class="tsd-kind-icon">on<wbr>Timeout</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="ajax.html#request" class="tsd-kind-icon">request</a>
@@ -488,14 +315,8 @@
 					<li class=" tsd-kind-class">
 						<a href="text.html" class="tsd-kind-icon">Text</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-is-not-exported">
-						<a href="../interfaces/iajaxcontext.html" class="tsd-kind-icon">IAjax<wbr>Context</a>
-					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/iajaxerror.html" class="tsd-kind-icon">IAjax<wbr>Error</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-is-not-exported">
-						<a href="../interfaces/iajaxrequest.html" class="tsd-kind-icon">IAjax<wbr>Request</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/iajaxresponse.html" class="tsd-kind-icon">IAjax<wbr>Response</a>
@@ -517,30 +338,6 @@
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/iplugin.html" class="tsd-kind-icon">IPlugin</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#bracket_regexp" class="tsd-kind-icon">BRACKET_<wbr>REGEXP</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#headline_regexp" class="tsd-kind-icon">HEADLINE_<wbr>REGEXP</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#non_character_regexp" class="tsd-kind-icon">NON_<wbr>CHARACTER_<wbr>REGEXP</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#page_regexp" class="tsd-kind-icon">PAGE_<wbr>REGEXP</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#pair_regexp" class="tsd-kind-icon">PAIR_<wbr>REGEXP</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#paragraph_regexp" class="tsd-kind-icon">PARAGRAPH_<wbr>REGEXP</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#path_regexp" class="tsd-kind-icon">PATH_<wbr>REGEXP</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#space_regexp" class="tsd-kind-icon">SPACE_<wbr>REGEXP</a>
 					</li>
 				</ul>
 			</nav>
