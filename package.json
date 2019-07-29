@@ -1,7 +1,7 @@
 {
 	"private": true,
 	"name": "@ordbok/core",
-	"version": "0.0.7",
+	"version": "0.0.8",
 	"author": "ORDBOK contributors",
 	"license": "MIT",
 	"description": "Dictionary system",
@@ -13,6 +13,7 @@
 	"homepage": "https://github.com/ordbok/core#readme",
 	"repository": "https://github.com/ordbok/core.git",
 	"devDependencies": {
+		"@ordbok/typedoc-theme": "^0.5.0",
 		"@types/node": "^10.0.0",
 		"husky": "3.0.1",
 		"requirejs": "2.3.6",
@@ -38,13 +39,13 @@
 		"build-1": "tsc --build tsconfig.json tsconfig-client.json",
 		"build-2": "r_js -o rjsconfig-client.js",
 		"build-3": "chmod +x dist/bin/ordbok-assembler.js",
-		"build-4": "typedoc --excludeExternals --excludeNotExported --excludePrivate --excludeProtected --gitRevision master --mode file --name \"ORDBOK Core API\" --out docs --tsconfig tsconfig-docs.json",
+		"build-4": "typedoc --out docs --tsconfig tsconfig-docs.json",
 		"clean": "rm -rf dist docs",
 		"release": "npm publish --access=public --tag next",
 		"release-as-stable": "npm publish --access=public",
 		"tests": "npm run tests-clean && npm run tests-build && npm run tests-clean",
-        "tests-build": "tsc --build tsconfig-tests.json && cd tests_build && node index.js",
-        "tests-clean": "rm -rf tests_build",
+		"tests-build": "tsc --build tsconfig-tests.json && cd tests_build && node index.js",
+		"tests-clean": "rm -rf tests_build",
 		"watch": "tsc --build tsconfig.json --watch"
 	},
 	"types": "dist/lib/index.d.ts",
