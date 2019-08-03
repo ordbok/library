@@ -90,15 +90,23 @@ export module Internals {
      * */
 
     /**
-     * Assembles markdown files with the help of plugins
+     * Processes Markdown files with the help of plugins and returns the number
+     * of assembled files.
      *
      * @param sourceFolder
      *        Source folder
      *
      * @param targetFolder
      *        Target folder
+     *
+     * @param config
+     *        Assembling configuration
      */
-    export function assembleFiles (sourceFolder: string, targetFolder: string, config: IConfig) {
+    export function assembleFiles (
+        sourceFolder: string,
+        targetFolder: string,
+        config: IConfig
+    ): number {
 
         const plugins: Array<IPlugin> = [];
 
@@ -109,7 +117,7 @@ export module Internals {
         );
 
         if (plugins.length === 0) {
-            return;
+            return 0;
         }
 
         plugins.forEach(plugin =>
@@ -117,7 +125,9 @@ export module Internals {
             plugin.onAssembling(sourceFolder, targetFolder)
         );
 
-        getFiles(sourceFolder, /\.(?:md|markdown)$/).forEach(function (sourceFile) {
+        let assembledCounter: number = 0;
+
+        getFiles(sourceFolder, /\.(?:md|markdown)$/).forEach(function (sourceFile): void {
 
             const markdown = new Markdown(
                 FS.readFileSync(sourceFile).toString()
@@ -128,7 +138,8 @@ export module Internals {
                 plugin.onReadFile(sourceFile, markdown)
             );
 
-            markdown.pages.forEach((markdownPage, pageIndex) =>
+            markdown.pages.forEach(function (markdownPage, pageIndex): void {
+
                 plugins.forEach(plugin =>
                     plugin.onWriteFile &&
                     plugin.onWriteFile(
@@ -143,13 +154,18 @@ export module Internals {
                         markdownPage
                     )
                 )
-            );
+
+                ++assembledCounter;
+
+            });
         });
 
         plugins.forEach(plugin =>
             plugin.onAssembled &&
             plugin.onAssembled()
         );
+
+        return assembledCounter;
     }
 
     /**

@@ -66,7 +66,9 @@ function cli() {
             targetDirectory[1] === '-') {
             throw new Error('Invalid arguments');
         }
-        __1.Internals.assembleFiles(sourceDirectory, targetDirectory, __1.Internals.getConfig(Path.join(CWD, 'ordbok.json'), DEFAULT_CONFIG));
+        var assembledCounter = __1.Internals
+            .assembleFiles(sourceDirectory, targetDirectory, __1.Internals.getConfig(Path.join(CWD, 'ordbok.json'), DEFAULT_CONFIG));
+        console.log('\nAssembled ' + assembledCounter + ' files\n');
     }
     catch (catchedError) {
         error(catchedError);

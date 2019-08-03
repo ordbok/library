@@ -92,11 +92,14 @@ function cli () {
             throw new Error('Invalid arguments');
         }
 
-        Internals.assembleFiles(
-            sourceDirectory,
-            targetDirectory,
-            Internals.getConfig(Path.join(CWD, 'ordbok.json'), DEFAULT_CONFIG)
-        );
+        const assembledCounter = Internals
+            .assembleFiles(
+                sourceDirectory,
+                targetDirectory,
+                Internals.getConfig(Path.join(CWD, 'ordbok.json'), DEFAULT_CONFIG)
+            );
+
+        console.log('\nAssembled ' + assembledCounter + ' files\n')
     }
     catch (catchedError) {
 

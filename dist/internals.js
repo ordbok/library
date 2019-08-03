@@ -24,13 +24,17 @@ var Internals;
      *
      * */
     /**
-     * Assembles markdown files with the help of plugins
+     * Processes Markdown files with the help of plugins and returns the number
+     * of assembled files.
      *
      * @param sourceFolder
      *        Source folder
      *
      * @param targetFolder
      *        Target folder
+     *
+     * @param config
+     *        Assembling configuration
      */
     function assembleFiles(sourceFolder, targetFolder, config) {
         var plugins = [];
@@ -40,12 +44,13 @@ var Internals;
             });
         });
         if (plugins.length === 0) {
-            return;
+            return 0;
         }
         plugins.forEach(function (plugin) {
             return plugin.onAssembling &&
                 plugin.onAssembling(sourceFolder, targetFolder);
         });
+        var assembledCounter = 0;
         getFiles(sourceFolder, /\.(?:md|markdown)$/).forEach(function (sourceFile) {
             var markdown = new lib_1.Markdown(FS.readFileSync(sourceFile).toString());
             plugins.forEach(function (plugin) {
@@ -53,18 +58,20 @@ var Internals;
                     plugin.onReadFile(sourceFile, markdown);
             });
             markdown.pages.forEach(function (markdownPage, pageIndex) {
-                return plugins.forEach(function (plugin) {
+                plugins.forEach(function (plugin) {
                     return plugin.onWriteFile &&
                         plugin.onWriteFile(Path.join(targetFolder, (lib_1.Utilities.getBaseName(sourceFile) +
                             lib_1.Dictionary.FILE_SEPARATOR +
                             pageIndex)), markdownPage);
                 });
+                ++assembledCounter;
             });
         });
         plugins.forEach(function (plugin) {
             return plugin.onAssembled &&
                 plugin.onAssembled();
         });
+        return assembledCounter;
     }
     Internals.assembleFiles = assembleFiles;
     /**
