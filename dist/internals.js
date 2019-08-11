@@ -20,6 +20,15 @@ var Internals;
 (function (Internals) {
     /* *
      *
+     *  Constants
+     *
+     * */
+    /**
+     * ORDBOK package configuration
+     */
+    var PACKAGE = require('../package.json');
+    /* *
+     *
      *  Functions
      *
      * */
@@ -129,6 +138,13 @@ var Internals;
         return files;
     }
     Internals.getFiles = getFiles;
+    /**
+     * Returns the version of the ORDBOK core.
+     */
+    function getVersion() {
+        return (PACKAGE.version || '0.0.0');
+    }
+    Internals.getVersion = getVersion;
     /**
      * Creates all necessary folders for a given file path.
      *

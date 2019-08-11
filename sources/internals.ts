@@ -85,6 +85,17 @@ export module Internals {
 
     /* *
      *
+     *  Constants
+     *
+     * */
+
+    /**
+     * ORDBOK package configuration
+     */
+    const PACKAGE = require('../package.json');
+
+    /* *
+     *
      *  Functions
      *
      * */
@@ -235,6 +246,14 @@ export module Internals {
             });
 
         return files;
+    }
+
+    /**
+     * Returns the version of the ORDBOK core.
+     */
+    export function getVersion (): string {
+
+        return (PACKAGE.version || '0.0.0');
     }
 
     /**

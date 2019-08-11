@@ -83,6 +83,10 @@ export declare module Internals {
      */
     function getFiles(sourceFolder: string, pattern?: RegExp): Array<string>;
     /**
+     * Returns the version of the ORDBOK core.
+     */
+    function getVersion(): string;
+    /**
      * Creates all necessary folders for a given file path.
      *
      * @param filePath
