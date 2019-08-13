@@ -3,7 +3,9 @@
 /* Licensed under the MIT License. See the LICENSE file in the project root. */
 /*---------------------------------------------------------------------------*/
 
+import * as ChildProcess from 'child_process';
 import * as Internals from './internals';
+import * as OrdbokAssembler from './ordbok-assembler';
 
 /* *
  *
@@ -14,9 +16,9 @@ import * as Internals from './internals';
 export const CONFIG_TEMPLATE =
 `{
     "plugins": [
-        "../dist"
+        "../../dist"
     ]
-}`
+}`;
 
 export const MARKDOWN_TEMPLATE =
 `English
@@ -31,7 +33,9 @@ New Norwegian
 
 Translation: engelsk ; engelsken
 
-Grammar:     Noun ; Masculine`
+Grammar:     Noun ; Masculine`;
+
+export const TEMPORARY_FOLDER = '_tmp';
 
 /* *
  *
@@ -39,18 +43,24 @@ Grammar:     Noun ; Masculine`
  *
  * */
 
-function test (): void {
+export function cleanTemporaryFolder (): void
+{
+    ChildProcess.execSync(`rm -r "${TEMPORARY_FOLDER}"`);
+}
 
-    try {
-
+function test (): void
+{
+    try
+    {
+        OrdbokAssembler.test();
         Internals.test();
 
         console.log('Tests succeeded.');
 
         process.exit(0);
     }
-    catch (catchedError) {
-
+    catch (catchedError)
+    {
         console.error('Tests failed!', (catchedError || new Error('unknown')));
 
         process.exit(1);

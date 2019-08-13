@@ -5,8 +5,21 @@
 
 import * as Assert from 'assert';
 import * as Fs from 'fs';
-import { IConfig, Internals } from '../dist';
-import { CONFIG_TEMPLATE, MARKDOWN_TEMPLATE } from './index';
+import * as Path from 'path';
+import
+{
+    IConfig,
+    Internals
+}
+from '../dist';
+import
+{
+    cleanTemporaryFolder,
+    CONFIG_TEMPLATE,
+    MARKDOWN_TEMPLATE,
+    TEMPORARY_FOLDER
+}
+from './index';
 
 /* *
  *
@@ -14,67 +27,64 @@ import { CONFIG_TEMPLATE, MARKDOWN_TEMPLATE } from './index';
  *
  * */
 
-export function test (): void {
-
+export function test (): void
+{
     test_writeFile();
-    test_getConfig();
     test_getFiles();
+    test_getConfig();
     test_assembleFiles();
 }
 
-function test_assembleFiles (): void {
-
-    Internals.writeFile('assembleFiles.json', CONFIG_TEMPLATE);
-    Internals.writeFile('assembleFiles.md', MARKDOWN_TEMPLATE);
+function test_assembleFiles (): void
+{
+    Internals.writeFile(Path.join(TEMPORARY_FOLDER, 'assembleFiles.json'), CONFIG_TEMPLATE);
+    Internals.writeFile(Path.join(TEMPORARY_FOLDER, 'assembleFiles.md'), MARKDOWN_TEMPLATE);
     const assembledCounter = Internals
         .assembleFiles(
-            '.',
-            'assembleFiles',
-            Internals.getConfig('assembleFiles.json', { plugins: [] })
+            TEMPORARY_FOLDER,
+            Path.join(TEMPORARY_FOLDER, 'assembledFiles'),
+            Internals.getConfig(Path.join(TEMPORARY_FOLDER, 'assembleFiles.json'), { plugins: [] })
         );
 
-    Assert.ok(Fs.existsSync('assembleFiles/assembleFiles-0.txt'));
+    Assert.ok(Fs.existsSync(Path.join(TEMPORARY_FOLDER, 'assembledFiles', 'assembleFiles-0.txt')));
     Assert.strictEqual(assembledCounter, 1);
 
-    Fs.unlinkSync('assembleFiles/assembleFiles-0.txt')
-    Fs.unlinkSync('assembleFiles.json')
-    Fs.unlinkSync('assembleFiles.md')
-    Fs.rmdirSync('assembleFiles');
+    cleanTemporaryFolder();
 }
 
-function test_getConfig (): void {
-
-    Internals.writeFile('getConfig.json', CONFIG_TEMPLATE);
+function test_getConfig (): void
+{
+    Internals.writeFile(Path.join(TEMPORARY_FOLDER, 'getConfig.json'), CONFIG_TEMPLATE);
 
     let config: IConfig = { plugins: [] };
 
-    config = Internals.getConfig('getConfig.fail', config);
+    config = Internals.getConfig(Path.join(TEMPORARY_FOLDER, 'getConfig.fail'), config);
     Assert.ok(config.plugins instanceof Array);
     Assert.strictEqual(config.plugins.length, 0);
 
-    config = Internals.getConfig('getConfig.json', config);
+    config = Internals.getConfig(Path.join(TEMPORARY_FOLDER, 'getConfig.json'), config);
     Assert.ok(config.plugins instanceof Array);
-    Assert.deepStrictEqual(config, JSON.parse(CONFIG_TEMPLATE));
+    Assert.deepStrictEqual(config, { plugins: ['../dist'] });
 
-    Fs.unlinkSync('getConfig.json')
+    cleanTemporaryFolder();
 }
 
-function test_getFiles (): void {
+function test_getFiles (): void
+{
+    Internals.writeFile(Path.join(TEMPORARY_FOLDER, 'getFiles.markdown'), CONFIG_TEMPLATE);
 
-    Internals.writeFile('getFiles.markdown', CONFIG_TEMPLATE);
+    const files = Internals.getFiles(TEMPORARY_FOLDER, /\.markdown$/);
 
-    const files = Internals.getFiles('.', /\.markdown$/);
+    Assert.deepStrictEqual(files, [Path.join(TEMPORARY_FOLDER, 'getFiles.markdown')]);
 
-    Assert.deepStrictEqual(files, ['getFiles.markdown']);
-
-    Fs.unlinkSync('getFiles.markdown')
+    cleanTemporaryFolder();
 }
 
-function test_writeFile (): void {
+function test_writeFile (): void
+{
+    Internals.writeFile(Path.join(TEMPORARY_FOLDER, 'writeFile.txt'), '');
 
-    Internals.writeFile('writeFile.txt', '');
+    Assert.ok(Fs.existsSync(Path.join(TEMPORARY_FOLDER, 'writeFile.txt')));
 
-    Assert.ok(Fs.existsSync('writeFile.txt'));
-
-    Fs.unlinkSync('writeFile.txt')
+    cleanTemporaryFolder();
 }
