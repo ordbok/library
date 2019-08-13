@@ -1,10 +1,10 @@
 ({
     generateSourceMaps: true,
     name: "@ordbok/core",
-    out: "dist/client.js",
+    out: "dist/client/ordbok-core.js",
     packages: [{
         name: "@ordbok/core",
         main: "index",
-        location: "dist/client"
+        location: "dist/client/ordbok-core"
     }]
 })
