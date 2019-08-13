@@ -29,6 +29,11 @@ define(["require", "exports"], function (require, exports) {
      * */
     var Utilities;
     (function (Utilities) {
+        /* *
+         *
+         *  Functions
+         *
+         * */
         /**
          * Returns the extension of a file path.
          *
@@ -91,21 +96,22 @@ define(["require", "exports"], function (require, exports) {
         }
         Utilities.getParentPath = getParentPath;
         /**
-         * Rotates characters in a text.
+         * Binary rotation of a given text.
          *
          * @param text
          *        Text to rotate
          */
         function rotate(text) {
+            if (text.lastIndexOf('=') === text.length - 1 && text.indexOf(' ') === -1) {
+                text = atob(text);
+            }
             var result = [];
             for (var c = 0, i = 0, ie = text.length; i < ie; ++i) {
                 c = text.charCodeAt(i);
-                if (c > 31 && c < 128) {
-                    c += (c < 80 ? 48 : -48);
-                }
+                c += (c < 128 ? 128 : -128);
                 result.push(String.fromCharCode(c));
             }
-            return result.join('');
+            return btoa(result.join(''));
         }
         Utilities.rotate = rotate;
     })(Utilities = exports.Utilities || (exports.Utilities = {}));

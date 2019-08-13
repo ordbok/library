@@ -35,7 +35,7 @@ export declare module Utilities {
      */
     function getParentPath(path: string): string;
     /**
-     * Rotates characters in a text.
+     * Binary rotation of a given text.
      *
      * @param text
      *        Text to rotate
