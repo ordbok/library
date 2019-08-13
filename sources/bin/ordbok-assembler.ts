@@ -16,17 +16,17 @@ import { IConfig, Internals } from '../';
  * */
 
 /**
- * Command line arguments
- */
-const ARGV = process.argv.slice(2).map(argv => ARGV_MAP[argv] || argv);
-
-/**
  * Command line arguments shortcuts
  */
 const ARGV_MAP: Record<string, string> = {
     '-h': '--help',
     '-v': '--version'
 };
+
+/**
+ * Command line arguments
+ */
+const ARGV = process.argv.slice(2).map(argv => ARGV_MAP[argv] || argv);
 
 /**
  * Default core plugin path
@@ -118,24 +118,6 @@ function cli () {
  */
 function error (error: Error) {
     console.error('\nError: ' + error.message + '\n');
-}
-
-/**
- * Maps shortcuts of command line arguments
- *
- * @param arg
- *        Argument to map
- */
-function mapArgv (arg: string): string {
-
-    switch (arg) {
-        default:
-            return arg;
-        case '-h':
-            return '--help';
-        case '-v':
-            return '--version';
-    }
 }
 
 /* *

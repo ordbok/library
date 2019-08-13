@@ -14,16 +14,16 @@ var __1 = require("../");
  *
  * */
 /**
- * Command line arguments
- */
-var ARGV = process.argv.slice(2).map(function (argv) { return ARGV_MAP[argv] || argv; });
-/**
  * Command line arguments shortcuts
  */
 var ARGV_MAP = {
     '-h': '--help',
     '-v': '--version'
 };
+/**
+ * Command line arguments
+ */
+var ARGV = process.argv.slice(2).map(function (argv) { return ARGV_MAP[argv] || argv; });
 /**
  * Default core plugin path
  */
@@ -85,22 +85,6 @@ function cli() {
  */
 function error(error) {
     console.error('\nError: ' + error.message + '\n');
-}
-/**
- * Maps shortcuts of command line arguments
- *
- * @param arg
- *        Argument to map
- */
-function mapArgv(arg) {
-    switch (arg) {
-        default:
-            return arg;
-        case '-h':
-            return '--help';
-        case '-v':
-            return '--version';
-    }
 }
 /* *
  *
