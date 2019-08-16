@@ -111,7 +111,7 @@ var Utilities;
                 charCode += (charCode < 128 ? 128 : -128);
                 result.push(String.fromCharCode(charCode));
             }
-            btoa(result.join(''));
+            text = btoa(result.join(''));
         }
         return text;
     }
