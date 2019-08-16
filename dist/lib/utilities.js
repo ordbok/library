@@ -101,17 +101,19 @@ var Utilities;
      *        Text to rotate
      */
     function rotate(text) {
-        if (text.indexOf('base64,') === 0) {
+        var isDecode = text.indexOf('base64,') === 0;
+        if (isDecode) {
             text = atob(text.substr(7));
         }
-        else {
-            var result = [];
-            for (var charCode = 0, index = 0, indexEnd = text.length; index < indexEnd; ++index) {
-                charCode = text.charCodeAt(index);
-                charCode += (charCode < 128 ? 128 : -128);
-                result.push(String.fromCharCode(charCode));
-            }
-            text = 'base64,' + btoa(result.join(''));
+        var result = [];
+        for (var charCode = 0, index = 0, indexEnd = text.length; index < indexEnd; ++index) {
+            charCode = text.charCodeAt(index);
+            charCode += (charCode < 128 ? 128 : -128);
+            result.push(String.fromCharCode(charCode));
+        }
+        text = result.join('');
+        if (!isDecode) {
+            text = 'base64,' + btoa(text);
         }
         return text;
     }
