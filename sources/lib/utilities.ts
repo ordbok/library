@@ -130,7 +130,7 @@ export module Utilities
                 result.push(String.fromCharCode(charCode));
             }
 
-            text = btoa(result.join(''));
+            text = 'base64,' + btoa(result.join(''));
         }
 
         return text;

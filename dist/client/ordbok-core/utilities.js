@@ -112,7 +112,7 @@ define(["require", "exports"], function (require, exports) {
                     charCode += (charCode < 128 ? 128 : -128);
                     result.push(String.fromCharCode(charCode));
                 }
-                text = btoa(result.join(''));
+                text = 'base64,' + btoa(result.join(''));
             }
             return text;
         }
