@@ -118,4 +118,29 @@ var Utilities;
         return text;
     }
     Utilities.rotate = rotate;
+    /**
+     * Simplifies nested arrays and object properties to a single array of
+     * values.
+     *
+     * @param obj
+     *        Object to reduce
+     */
+    function splat(obj) {
+        if (obj instanceof Array) {
+            return obj
+                .reduce(function (result, value) {
+                if (value && typeof value === 'object') {
+                    result.push.apply(result, splat(value));
+                }
+                else {
+                    result.push(value);
+                }
+                return result;
+            }, []);
+        }
+        else {
+            return splat(Object.values(obj));
+        }
+    }
+    Utilities.splat = splat;
 })(Utilities = exports.Utilities || (exports.Utilities = {}));

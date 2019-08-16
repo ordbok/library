@@ -139,4 +139,39 @@ export module Utilities
 
         return text;
     }
+
+    /**
+     * Simplifies nested arrays and object properties to a single array of
+     * values.
+     *
+     * @param obj
+     *        Object to reduce
+     */
+    export function splat<T> (obj: object): Array<T>
+    {
+        if (obj instanceof Array)
+        {
+            return obj
+                .reduce(
+                    function (result: Array<T>, value: any): Array<T>
+                    {
+                        if (value && typeof value === 'object')
+                        {
+                            result.push(...splat<T>(value));
+                        }
+                        else
+                        {
+                            result.push(value);
+                        }
+
+                        return result;
+                    },
+                    [] as Array<T>
+                );
+        }
+        else
+        {
+            return splat<T>(Object.values(obj));
+        }
+    }
 }

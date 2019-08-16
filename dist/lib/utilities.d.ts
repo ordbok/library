@@ -41,4 +41,12 @@ export declare module Utilities {
      *        Text to rotate
      */
     function rotate(text: string): string;
+    /**
+     * Simplifies nested arrays and object properties to a single array of
+     * values.
+     *
+     * @param obj
+     *        Object to reduce
+     */
+    function splat<T>(obj: object): Array<T>;
 }
