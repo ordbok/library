@@ -102,16 +102,19 @@ define(["require", "exports"], function (require, exports) {
          *        Text to rotate
          */
         function rotate(text) {
-            if (text.lastIndexOf('=') === text.length - 1 && text.indexOf(' ') === -1) {
+            if (text.indexOf('base64,') === 0) {
                 text = atob(text);
             }
-            var result = [];
-            for (var c = 0, i = 0, ie = text.length; i < ie; ++i) {
-                c = text.charCodeAt(i);
-                c += (c < 128 ? 128 : -128);
-                result.push(String.fromCharCode(c));
+            else {
+                var result = [];
+                for (var charCode = 0, index = 0, indexEnd = text.length; index < indexEnd; ++index) {
+                    charCode = text.charCodeAt(index);
+                    charCode += (charCode < 128 ? 128 : -128);
+                    result.push(String.fromCharCode(charCode));
+                }
+                btoa(result.join(''));
             }
-            return btoa(result.join(''));
+            return text;
         }
         Utilities.rotate = rotate;
     })(Utilities = exports.Utilities || (exports.Utilities = {}));

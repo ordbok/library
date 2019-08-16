@@ -115,20 +115,24 @@ export module Utilities
      */
     export function rotate (text: string): string
     {
-        if (text.lastIndexOf('=') === text.length - 1 && text.indexOf(' ') === -1)
+        if (text.indexOf('base64,') === 0)
         {
             text = atob(text);
         }
-
-        const result = [];
-
-        for (let c = 0, i = 0, ie = text.length; i < ie; ++i)
+        else
         {
-            c = text.charCodeAt(i);
-            c += (c < 128 ? 128 : -128);
-            result.push(String.fromCharCode(c));
+            const result = [];
+
+            for (let charCode = 0, index = 0, indexEnd = text.length; index < indexEnd; ++index)
+            {
+                charCode = text.charCodeAt(index);
+                charCode += (charCode < 128 ? 128 : -128);
+                result.push(String.fromCharCode(charCode));
+            }
+
+            btoa(result.join(''));
         }
 
-        return btoa(result.join(''));
+        return text;
     }
 }
