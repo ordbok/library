@@ -102,7 +102,7 @@ var Utilities;
      */
     function rotate(text) {
         if (text.indexOf('base64,') === 0) {
-            text = atob(text);
+            text = atob(text.substr(7));
         }
         else {
             var result = [];

@@ -117,7 +117,7 @@ export module Utilities
     {
         if (text.indexOf('base64,') === 0)
         {
-            text = atob(text);
+            text = atob(text.substr(7));
         }
         else
         {
