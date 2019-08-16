@@ -14,7 +14,7 @@ import { Utilities } from './utilities';
  * */
 
 /**
- * Dictionary with sections
+ * Dictionary entry with sections
  */
 export interface IDictionaryEntry extends IMarkdownPage {
     [sectionKey: string]: IDictionarySection;

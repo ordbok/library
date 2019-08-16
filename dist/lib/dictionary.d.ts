@@ -1,7 +1,7 @@
 import { Ajax } from './ajax';
 import { IMarkdownPage, IMarkdownSection } from './markdown';
 /**
- * Dictionary with sections
+ * Dictionary entry with sections
  */
 export interface IDictionaryEntry extends IMarkdownPage {
     [sectionKey: string]: IDictionarySection;
