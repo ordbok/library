@@ -10,5 +10,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./ajax"));
 __export(require("./dictionary"));
 __export(require("./markdown"));
-__export(require("./text"));
+__export(require("./str"));
 __export(require("./utilities"));

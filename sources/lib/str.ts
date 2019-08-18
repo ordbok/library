@@ -26,10 +26,10 @@ const SPACE_REGEXP = /\s+/g;
  * */
 
 /**
- * Text utility class.
+ * String utility class.
  */
-export class Text extends String {
-
+export class Str extends String
+{
     /* *
      *
      *  Static Functions
@@ -37,49 +37,50 @@ export class Text extends String {
      * */
 
     /**
-     * Tests for a matching pattern at the text end.
+     * Tests for a matching pattern at the string end.
      *
-     * @param text
-     *        Text to test.
+     * @param str
+     *        String to test.
      *
      * @param pattern
      *        Pattern to match.
      */
-    public static endsWith (text: string, pattern: string): boolean {
-
-        if (text === pattern) {
+    public static endsWith (str: string, pattern: string): boolean
+    {
+        if (str === pattern)
+        {
             return true;
         }
 
-        const textLength = text.length;
+        const strLength = str.length;
         const patternLength = pattern.length;
 
         return (
-            patternLength <= textLength &&
-            text.lastIndexOf(pattern) === textLength - patternLength
+            patternLength <= strLength &&
+            str.lastIndexOf(pattern) === strLength - patternLength
         );
     }
 
     /**
      * Removes brackets and their content.
      *
-     * @param text
-     *        Text to filter.
+     * @param str
+     *        String to filter.
      */
-    public static removeBrackets (text: string): string {
-
-        return text.replace(BRACKET_REGEXP, '').replace(SPACE_REGEXP, ' ').trim();
+    public static removeBrackets (str: string): string
+    {
+        return str.replace(BRACKET_REGEXP, '').replace(SPACE_REGEXP, ' ').trim();
     }
 
     /**
      * Trims all unnecessary spaces.
      *
-     * @param text
-     *        Text to filter.
+     * @param str
+     *        String to filter.
      */
-    public static trimSpaces (text: string): string {
-
-        return text.replace(SPACE_REGEXP, ' ').trim();
+    public static trimSpaces (str: string): string
+    {
+        return str.replace(SPACE_REGEXP, ' ').trim();
     }
 
     /* *
@@ -88,9 +89,9 @@ export class Text extends String {
      *
      * */
 
-    public constructor (text?: string) {
-
-        super(text);
+    public constructor (str?: string)
+    {
+        super(str);
     }
 
     /* *
@@ -100,29 +101,29 @@ export class Text extends String {
      * */
 
     /**
-     * Tests for a matching pattern at the text end.
+     * Tests for a matching pattern at the string end.
      *
      * @param pattern
      *        Pattern to match.
      */
-    public endsWith (pattern: string): boolean {
-
-        return Text.endsWith(this.toString(), pattern);
+    public endsWith (pattern: string): boolean
+    {
+        return Str.endsWith(this.toString(), pattern);
     }
 
     /**
      * Removes brackets and their content.
      */
-    public removeBrackets (): Text {
-
-        return new Text(Text.removeBrackets(this.toString()));
+    public removeBrackets (): Str
+    {
+        return new Str(Str.removeBrackets(this.toString()));
     }
 
     /**
      * Trims all unnecessary spaces.
      */
-    public trimSpaces (): Text {
-
-        return new Text(Text.trimSpaces(this.toString()));
+    public trimSpaces (): Str
+    {
+        return new Str(Str.trimSpaces(this.toString()));
     }
 }

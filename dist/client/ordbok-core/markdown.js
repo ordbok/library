@@ -2,7 +2,7 @@
 /* Copyright (c) ORDBOK contributors. All rights reserved.                   */
 /* Licensed under the MIT License. See the LICENSE file in the project root. */
 /*---------------------------------------------------------------------------*/
-define(["require", "exports", "./text"], function (require, exports, text_1) {
+define(["require", "exports", "./str"], function (require, exports, str_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     /* *
@@ -71,7 +71,7 @@ define(["require", "exports", "./text"], function (require, exports, text_1) {
                 .forEach(function (paragraph) {
                 match = HEADLINE_REGEXP.exec(paragraph);
                 if (match) {
-                    page[text_1.Text.trimSpaces(match[1] || match[2])] = section = {};
+                    page[str_1.Str.trimSpaces(match[1] || match[2])] = section = {};
                 }
                 if (!section) {
                     return;
@@ -80,7 +80,7 @@ define(["require", "exports", "./text"], function (require, exports, text_1) {
                 if (match) {
                     section[match[1]] = match[2]
                         .split(';')
-                        .map(text_1.Text.trimSpaces);
+                        .map(str_1.Str.trimSpaces);
                 }
             });
             return page;
