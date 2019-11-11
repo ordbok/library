@@ -14,9 +14,16 @@ var __1 = require("../");
  *
  * */
 /**
+ * Command line arguments shortcuts
+ */
+var ARGV_MAP = {
+    '-h': '--help',
+    '-v': '--version'
+};
+/**
  * Command line arguments
  */
-var ARGV = process.argv.slice(2).map(mapArgv);
+var ARGV = process.argv.slice(2).map(function (argv) { return ARGV_MAP[argv] || argv; });
 /**
  * Default core plugin path
  */
@@ -32,13 +39,9 @@ var DEFAULT_CONFIG = {
     plugins: [CORE_PLUGIN]
 };
 /**
- * ORDBOK package configuration
- */
-var PACKAGE = require('../../package.json');
-/**
  * Command line help
  */
-var HELP = "ORDBOK v" + (PACKAGE.version || '0.0.0') + "\n\nCreates dictionary files out of Markdown files.\n\nordbok-assembler [options] source target\n\nOptions:\n  -h --help     This help information\n  -v --version  Version";
+var HELP = "ORDBOK Assembler v" + __1.Internals.getVersion() + "\n\nCreates dictionary files out of Markdown files.\n\nordbok-assembler [options] <source> <target>\n\nOptions:\n  -h --help     This help information\n  -v --version  Version";
 /* *
  *
  *  Functions
@@ -54,19 +57,21 @@ function cli() {
             return;
         }
         if (ARGV.includes('--version')) {
-            console.log(PACKAGE.version);
+            console.log(__1.Internals.getVersion());
             return;
         }
         if (ARGV.length < 2) {
             throw new Error('Invalid arguments');
         }
-        var sourceDirectory = ARGV[ARGV.length - 2];
-        var targetDirectory = ARGV[ARGV.length - 1];
-        if (sourceDirectory[0] === '-' ||
-            targetDirectory[1] === '-') {
+        var sourceFolder = ARGV[ARGV.length - 2];
+        var targetFolder = ARGV[ARGV.length - 1];
+        if (sourceFolder[0] === '-' ||
+            targetFolder[0] === '-') {
             throw new Error('Invalid arguments');
         }
-        __1.Internals.assembleFiles(sourceDirectory, targetDirectory, __1.Internals.getConfig(Path.join(CWD, 'ordbok.json'), DEFAULT_CONFIG));
+        var assembledCounter = __1.Internals
+            .assembleFiles(sourceFolder, targetFolder, __1.Internals.getConfig(Path.join(CWD, 'ordbok.json'), DEFAULT_CONFIG));
+        console.log('\nAssembled ' + assembledCounter + ' files\n');
     }
     catch (catchedError) {
         error(catchedError);
@@ -80,22 +85,6 @@ function cli() {
  */
 function error(error) {
     console.error('\nError: ' + error.message + '\n');
-}
-/**
- * Maps shortcuts of command line arguments
- *
- * @param arg
- *        Argument to map
- */
-function mapArgv(arg) {
-    switch (arg) {
-        default:
-            return arg;
-        case '-h':
-            return '--help';
-        case '-v':
-            return '--version';
-    }
 }
 /* *
  *

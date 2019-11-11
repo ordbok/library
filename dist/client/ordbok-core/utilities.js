@@ -29,6 +29,11 @@ define(["require", "exports"], function (require, exports) {
      * */
     var Utilities;
     (function (Utilities) {
+        /* *
+         *
+         *  Functions
+         *
+         * */
         /**
          * Returns the extension of a file path.
          *
@@ -91,23 +96,54 @@ define(["require", "exports"], function (require, exports) {
         }
         Utilities.getParentPath = getParentPath;
         /**
-         * Rotates characters in a text.
+         * Binary rotation of a given text.
          *
          * @param text
          *        Text to rotate
          */
         function rotate(text) {
-            var result = [];
-            for (var c = 0, i = 0, ie = text.length; i < ie; ++i) {
-                c = text.charCodeAt(i);
-                if (c > 31 && c < 128) {
-                    c += (c < 80 ? 48 : -48);
-                }
-                result.push(String.fromCharCode(c));
+            var isDecode = text.indexOf('base64,') === 0;
+            if (isDecode) {
+                text = atob(text.substr(7));
             }
-            return result.join('');
+            var result = [];
+            for (var charCode = 0, index = 0, indexEnd = text.length; index < indexEnd; ++index) {
+                charCode = text.charCodeAt(index);
+                charCode += (charCode < 128 ? 128 : -128);
+                result.push(String.fromCharCode(charCode));
+            }
+            text = result.join('');
+            if (!isDecode) {
+                text = 'base64,' + btoa(text);
+            }
+            return text;
         }
         Utilities.rotate = rotate;
+        /**
+         * Simplifies nested arrays and object properties to a single array of
+         * values.
+         *
+         * @param obj
+         *        Object to reduce
+         */
+        function splat(obj) {
+            if (obj instanceof Array) {
+                return obj
+                    .reduce(function (result, value) {
+                    if (value && typeof value === 'object') {
+                        result.push.apply(result, splat(value));
+                    }
+                    else {
+                        result.push(value);
+                    }
+                    return result;
+                }, []);
+            }
+            else {
+                return splat(Object.values(obj));
+            }
+        }
+        Utilities.splat = splat;
     })(Utilities = exports.Utilities || (exports.Utilities = {}));
 });
 //# sourceMappingURL=utilities.js.map

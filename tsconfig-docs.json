@@ -3,10 +3,20 @@
     "compilerOptions": {
         "rootDir": "sources"
     },
-    "exclude": [
-        "dist",
-        "node_modules",
-        "sources/bin",
-        "sources/dictionary-plugin"
-    ]
+    "include": [
+        "sources/*.ts",
+        "sources/lib/*.ts"
+    ],
+    "typedocOptions": {
+        "excludeExternals": true,
+        "excludeNotExported": true,
+        "excludePrivate": true,
+        "excludeProtected": true,
+        "includeDeclarations": true,
+        "gitRevision": "master",
+        "mode": "file",
+        "name": "ORDBOK Core API",
+        "plugin": "none",
+        "theme": "node_modules/@ordbok/typedoc-theme/bin/ordbok"
+    }
 }

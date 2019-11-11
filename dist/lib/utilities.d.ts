@@ -35,10 +35,18 @@ export declare module Utilities {
      */
     function getParentPath(path: string): string;
     /**
-     * Rotates characters in a text.
+     * Binary rotation of a given text.
      *
      * @param text
      *        Text to rotate
      */
     function rotate(text: string): string;
+    /**
+     * Simplifies nested arrays and object properties to a single array of
+     * values.
+     *
+     * @param obj
+     *        Object to reduce
+     */
+    function splat<T>(obj: object): Array<T>;
 }

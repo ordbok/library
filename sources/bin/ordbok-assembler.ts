@@ -16,9 +16,17 @@ import { IConfig, Internals } from '../';
  * */
 
 /**
+ * Command line arguments shortcuts
+ */
+const ARGV_MAP: Record<string, string> = {
+    '-h': '--help',
+    '-v': '--version'
+};
+
+/**
  * Command line arguments
  */
-const ARGV = process.argv.slice(2).map(mapArgv);
+const ARGV = process.argv.slice(2).map(argv => ARGV_MAP[argv] || argv);
 
 /**
  * Default core plugin path
@@ -38,19 +46,14 @@ const DEFAULT_CONFIG: IConfig = {
 };
 
 /**
- * ORDBOK package configuration
- */
-const PACKAGE = require('../../package.json');
-
-/**
  * Command line help
  */
 const HELP =
-`ORDBOK v${PACKAGE.version || '0.0.0'}
+`ORDBOK Assembler v${Internals.getVersion()}
 
 Creates dictionary files out of Markdown files.
 
-ordbok-assembler [options] source target
+ordbok-assembler [options] <source> <target>
 
 Options:
   -h --help     This help information
@@ -75,7 +78,7 @@ function cli () {
         }
 
         if (ARGV.includes('--version')) {
-            console.log(PACKAGE.version);
+            console.log(Internals.getVersion());
             return;
         }
 
@@ -83,20 +86,23 @@ function cli () {
             throw new Error('Invalid arguments');
         }
 
-        let sourceDirectory = ARGV[ARGV.length - 2];
-        let targetDirectory = ARGV[ARGV.length - 1];
+        let sourceFolder = ARGV[ARGV.length - 2];
+        let targetFolder = ARGV[ARGV.length - 1];
 
-        if (sourceDirectory[0] === '-' ||
-            targetDirectory[1] === '-'
+        if (sourceFolder[0] === '-' ||
+            targetFolder[0] === '-'
         ) {
             throw new Error('Invalid arguments');
         }
 
-        Internals.assembleFiles(
-            sourceDirectory,
-            targetDirectory,
-            Internals.getConfig(Path.join(CWD, 'ordbok.json'), DEFAULT_CONFIG)
-        );
+        const assembledCounter = Internals
+            .assembleFiles(
+                sourceFolder,
+                targetFolder,
+                Internals.getConfig(Path.join(CWD, 'ordbok.json'), DEFAULT_CONFIG)
+            );
+
+        console.log('\nAssembled ' + assembledCounter + ' files\n')
     }
     catch (catchedError) {
 
@@ -112,24 +118,6 @@ function cli () {
  */
 function error (error: Error) {
     console.error('\nError: ' + error.message + '\n');
-}
-
-/**
- * Maps shortcuts of command line arguments
- *
- * @param arg
- *        Argument to map
- */
-function mapArgv (arg: string): string {
-
-    switch (arg) {
-        default:
-            return arg;
-        case '-h':
-            return '--help';
-        case '-v':
-            return '--version';
-    }
 }
 
 /* *

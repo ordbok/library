@@ -1,29 +1,28 @@
 {
-	"private": true,
-	"name": "@ordbok/core",
-	"version": "0.0.7",
+	"private": false,
 	"author": "ORDBOK contributors",
-	"license": "MIT",
-	"description": "Dictionary system",
-	"keywords": [
-		"dictionary",
-		"ordbok"
-	],
 	"bugs": "https://github.com/ordbok/core/issues",
+	"description": "Dictionary system",
 	"homepage": "https://github.com/ordbok/core#readme",
+	"license": "MIT",
+	"main": "dist/lib/index.js",
+	"name": "@ordbok/core",
 	"repository": "https://github.com/ordbok/core.git",
+	"types": "dist/lib/index.d.ts",
+	"version": "0.0.8",
+	"bin": {
+		"ordbok-assembler": "dist/bin/ordbok-assembler.js"
+	},
 	"devDependencies": {
+		"@ordbok/typedoc-theme": "^0.5.0",
 		"@types/node": "^10.0.0",
-		"husky": "3.0.1",
+		"husky": "^3.0.8",
 		"requirejs": "2.3.6",
-		"typedoc": "0.14.2",
-		"typescript": "3.4.5"
+		"typedoc": "~0.15.0",
+		"typescript": "~3.6.4"
 	},
 	"engines": {
 		"node": ">=10.0.0"
-	},
-	"bin": {
-		"ordbok-assembler": "dist/bin/ordbok-assembler.js"
 	},
 	"files": [
 		"dist",
@@ -32,25 +31,28 @@
 		"LICENSE",
 		"README.md"
 	],
-	"main": "dist/lib/index.js",
+	"husky": {
+		"hooks": {
+			"pre-commit": "npm run build && npm run tests"
+		}
+	},
+	"keywords": [
+		"dictionary",
+		"ordbok"
+	],
 	"scripts": {
 		"build": "npm run clean && npm run build-1 && npm run build-2 && npm run build-3 && npm run build-4",
 		"build-1": "tsc --build tsconfig.json tsconfig-client.json",
 		"build-2": "r_js -o rjsconfig-client.js",
 		"build-3": "chmod +x dist/bin/ordbok-assembler.js",
-		"build-4": "typedoc --excludeExternals --excludeNotExported --excludePrivate --excludeProtected --gitRevision master --mode file --name \"ORDBOK Core API\" --out docs --tsconfig tsconfig-docs.json",
+		"build-4": "typedoc --out docs --tsconfig tsconfig-docs.json",
 		"clean": "rm -rf dist docs",
 		"release": "npm publish --access=public --tag next",
-		"release-as-stable": "npm publish --access=public",
+		"release-as-stable": "npm run release && npm publish --access=public",
+        "test": "npm run tests",
 		"tests": "npm run tests-clean && npm run tests-build && npm run tests-clean",
-        "tests-build": "tsc --build tsconfig-tests.json && cd tests_build && node index.js",
-        "tests-clean": "rm -rf tests_build",
+		"tests-build": "tsc --build tsconfig-tests.json && cd tests_build && node index.js",
+		"tests-clean": "rm -rf tests_build",
 		"watch": "tsc --build tsconfig.json --watch"
-	},
-	"types": "dist/lib/index.d.ts",
-	"husky": {
-		"hooks": {
-			"pre-commit": "npm run build && npm run tests"
-		}
 	}
 }

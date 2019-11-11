@@ -52,15 +52,19 @@ export interface IPlugin {
  */
 export declare module Internals {
     /**
-     * Assembles markdown files with the help of plugins
+     * Processes Markdown files with the help of plugins and returns the number
+     * of assembled files.
      *
      * @param sourceFolder
      *        Source folder
      *
      * @param targetFolder
      *        Target folder
+     *
+     * @param config
+     *        Assembling configuration
      */
-    function assembleFiles(sourceFolder: string, targetFolder: string, config: IConfig): void;
+    function assembleFiles(sourceFolder: string, targetFolder: string, config: IConfig): number;
     /**
      * Loads the configuration from the current working folder
      *
@@ -78,6 +82,10 @@ export declare module Internals {
      *        Pattern
      */
     function getFiles(sourceFolder: string, pattern?: RegExp): Array<string>;
+    /**
+     * Returns the version of the ORDBOK core.
+     */
+    function getVersion(): string;
     /**
      * Creates all necessary folders for a given file path.
      *

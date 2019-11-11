@@ -4,7 +4,7 @@
 /* Licensed under the MIT License. See the LICENSE file in the project root. */
 /*---------------------------------------------------------------------------*/
 Object.defineProperty(exports, "__esModule", { value: true });
-var text_1 = require("./text");
+var str_1 = require("./str");
 /* *
  *
  *  Constants
@@ -71,7 +71,7 @@ var Markdown = /** @class */ (function () {
             .forEach(function (paragraph) {
             match = HEADLINE_REGEXP.exec(paragraph);
             if (match) {
-                page[text_1.Text.trimSpaces(match[1] || match[2])] = section = {};
+                page[str_1.Str.trimSpaces(match[1] || match[2])] = section = {};
             }
             if (!section) {
                 return;
@@ -80,7 +80,7 @@ var Markdown = /** @class */ (function () {
             if (match) {
                 section[match[1]] = match[2]
                     .split(';')
-                    .map(text_1.Text.trimSpaces);
+                    .map(str_1.Str.trimSpaces);
             }
         });
         return page;

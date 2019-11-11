@@ -36,17 +36,17 @@ var SPACE_REGEXP = /\s+/g;
  *
  * */
 /**
- * Text utility class.
+ * String utility class.
  */
-var Text = /** @class */ (function (_super) {
-    __extends(Text, _super);
+var Str = /** @class */ (function (_super) {
+    __extends(Str, _super);
     /* *
      *
      *  Constructors
      *
      * */
-    function Text(text) {
-        return _super.call(this, text) || this;
+    function Str(str) {
+        return _super.call(this, str) || this;
     }
     /* *
      *
@@ -54,40 +54,40 @@ var Text = /** @class */ (function (_super) {
      *
      * */
     /**
-     * Tests for a matching pattern at the text end.
+     * Tests for a matching pattern at the string end.
      *
-     * @param text
-     *        Text to test.
+     * @param str
+     *        String to test.
      *
      * @param pattern
      *        Pattern to match.
      */
-    Text.endsWith = function (text, pattern) {
-        if (text === pattern) {
+    Str.endsWith = function (str, pattern) {
+        if (str === pattern) {
             return true;
         }
-        var textLength = text.length;
+        var strLength = str.length;
         var patternLength = pattern.length;
-        return (patternLength <= textLength &&
-            text.lastIndexOf(pattern) === textLength - patternLength);
+        return (patternLength <= strLength &&
+            str.lastIndexOf(pattern) === strLength - patternLength);
     };
     /**
      * Removes brackets and their content.
      *
-     * @param text
-     *        Text to filter.
+     * @param str
+     *        String to filter.
      */
-    Text.removeBrackets = function (text) {
-        return text.replace(BRACKET_REGEXP, '').replace(SPACE_REGEXP, ' ').trim();
+    Str.removeBrackets = function (str) {
+        return str.replace(BRACKET_REGEXP, '').replace(SPACE_REGEXP, ' ').trim();
     };
     /**
      * Trims all unnecessary spaces.
      *
-     * @param text
-     *        Text to filter.
+     * @param str
+     *        String to filter.
      */
-    Text.trimSpaces = function (text) {
-        return text.replace(SPACE_REGEXP, ' ').trim();
+    Str.trimSpaces = function (str) {
+        return str.replace(SPACE_REGEXP, ' ').trim();
     };
     /* *
      *
@@ -95,26 +95,26 @@ var Text = /** @class */ (function (_super) {
      *
      * */
     /**
-     * Tests for a matching pattern at the text end.
+     * Tests for a matching pattern at the string end.
      *
      * @param pattern
      *        Pattern to match.
      */
-    Text.prototype.endsWith = function (pattern) {
-        return Text.endsWith(this.toString(), pattern);
+    Str.prototype.endsWith = function (pattern) {
+        return Str.endsWith(this.toString(), pattern);
     };
     /**
      * Removes brackets and their content.
      */
-    Text.prototype.removeBrackets = function () {
-        return new Text(Text.removeBrackets(this.toString()));
+    Str.prototype.removeBrackets = function () {
+        return new Str(Str.removeBrackets(this.toString()));
     };
     /**
      * Trims all unnecessary spaces.
      */
-    Text.prototype.trimSpaces = function () {
-        return new Text(Text.trimSpaces(this.toString()));
+    Str.prototype.trimSpaces = function () {
+        return new Str(Str.trimSpaces(this.toString()));
     };
-    return Text;
+    return Str;
 }(String));
-exports.Text = Text;
+exports.Str = Str;
