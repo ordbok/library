@@ -11,7 +11,7 @@ import
     IConfig,
     Internals
 }
-from '../dist';
+from '../lib/internals';
 import
 {
     cleanTemporaryFolder,
@@ -64,7 +64,7 @@ function test_getConfig (): void
 
     config = Internals.getConfig(Path.join(TEMPORARY_FOLDER, 'getConfig.json'), config);
     Assert.ok(config.plugins instanceof Array);
-    Assert.deepStrictEqual(config, { plugins: ['../dist'] });
+    Assert.deepStrictEqual(config, { plugins: ['../plugins'] });
 
     cleanTemporaryFolder();
 }
