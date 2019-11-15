@@ -7,7 +7,7 @@
 
 import * as FS from 'fs';
 import * as Path from 'path';
-import { Dictionary, IMarkdownPage, Markdown, Utilities } from './lib';
+import { Dictionary, IMarkdownPage, Markdown, Utilities } from './ordbok-core';
 
 /* *
  *
@@ -128,6 +128,7 @@ export module Internals {
         );
 
         if (plugins.length === 0) {
+            console.log(config, plugins);
             return 0;
         }
 
