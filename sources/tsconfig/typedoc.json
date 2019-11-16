@@ -1,13 +1,10 @@
 {
-    "extends": "./tsconfig.json",
+    "extends": "../tsconfig.json",
     "compilerOptions": {
-        "declaration": true,
-        "inlineSourceMap": true,
-        "inlineSources": true,
-        "removeComments": false
+        "noEmit": true
     },
     "include": [
-        "lib/**/*.ts"
+        "../lib/**/*.ts"
     ],
     "typedocOptions": {
         "excludeExternals": true,
@@ -19,6 +16,6 @@
         "mode": "file",
         "name": "ORDBOK Core API",
         "plugin": "none",
-        "theme": "../node_modules/@ordbok/typedoc-theme/bin/ordbok"
+        "theme": "../../node_modules/@ordbok/typedoc-theme/bin/ordbok"
     }
 }
