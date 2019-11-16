@@ -9,7 +9,9 @@
         "rootDir": "./",
         "target": "es5"
     },
-    "exclude": [],
+    "exclude": [
+        "tsconfig/"
+    ],
     "include": [
         "**/*.ts"
     ]
