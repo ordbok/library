@@ -79,7 +79,7 @@ export interface IPlugin {
  * */
 
 /**
- * Internal utilities
+ * Internal helper functions for ORDBOK plugins.
  */
 export module Internals {
 

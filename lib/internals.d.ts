@@ -48,7 +48,7 @@ export interface IPlugin {
     onWriteFile?(targetFile: string, markdownPage: IMarkdownPage): void;
 }
 /**
- * Internal utilities
+ * Internal helper functions for ORDBOK plugins.
  */
 export declare module Internals {
     /**

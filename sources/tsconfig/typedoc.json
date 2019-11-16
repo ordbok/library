@@ -4,6 +4,7 @@
         "noEmit": true
     },
     "include": [
+        "../index.ts",
         "../lib/**/*.ts"
     ],
     "typedocOptions": {
