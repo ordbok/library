@@ -1,9 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var FS = require("fs");
-var Path = require("path");
-var _1 = require(".");
-var Internals;
+import * as FS from 'fs';
+import * as Path from 'path';
+import { Dictionary, Markdown, Utilities } from '.';
+export var Internals;
 (function (Internals) {
     var PACKAGE = require('../package.json');
     function assembleFiles(sourceFolder, targetFolder, config) {
@@ -23,7 +21,7 @@ var Internals;
         });
         var assembledCounter = 0;
         getFiles(sourceFolder, /\.(?:md|markdown)$/).forEach(function (sourceFile) {
-            var markdown = new _1.Markdown(FS.readFileSync(sourceFile).toString());
+            var markdown = new Markdown(FS.readFileSync(sourceFile).toString());
             plugins.forEach(function (plugin) {
                 return plugin.onReadFile &&
                     plugin.onReadFile(sourceFile, markdown);
@@ -31,8 +29,8 @@ var Internals;
             markdown.pages.forEach(function (markdownPage, pageIndex) {
                 plugins.forEach(function (plugin) {
                     return plugin.onWriteFile &&
-                        plugin.onWriteFile(Path.join(targetFolder, (_1.Utilities.getBaseName(sourceFile) +
-                            _1.Dictionary.FILE_SEPARATOR +
+                        plugin.onWriteFile(Path.join(targetFolder, (Utilities.getBaseName(sourceFile) +
+                            Dictionary.FILE_SEPARATOR +
                             pageIndex)), markdownPage);
                 });
                 ++assembledCounter;
@@ -109,4 +107,4 @@ var Internals;
         FS.writeFileSync(filePath, fileContent, options);
     }
     Internals.writeFile = writeFile;
-})(Internals = exports.Internals || (exports.Internals = {}));
+})(Internals || (Internals = {}));

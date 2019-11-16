@@ -5,7 +5,8 @@
 
 /** @internal */
 
-import { Dictionary, IMarkdownPage, Internals, IPlugin } from '../../lib';
+import { Dictionary, IMarkdownPage } from '../../lib';
+import { Internals, IPlugin } from '../../lib/internals';
 
 /* *
  *

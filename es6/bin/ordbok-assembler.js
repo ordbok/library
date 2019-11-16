@@ -1,8 +1,6 @@
 #!/usr/bin/env node
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var Path = require("path");
-var internals_1 = require("../lib/internals");
+import * as Path from 'path';
+import { Internals } from '../lib/internals';
 var ARGV_MAP = {
     '-h': '--help',
     '-v': '--version'
@@ -13,7 +11,7 @@ var CWD = process.cwd();
 var DEFAULT_CONFIG = {
     plugins: [CORE_PLUGIN]
 };
-var HELP = "ORDBOK Assembler v" + internals_1.Internals.getVersion() + "\n\nCreates dictionary files out of Markdown files.\n\nordbok-assembler [options] <source> <target>\n\nOptions:\n  -h --help     This help information\n  -v --version  Version";
+var HELP = "ORDBOK Assembler v" + Internals.getVersion() + "\n\nCreates dictionary files out of Markdown files.\n\nordbok-assembler [options] <source> <target>\n\nOptions:\n  -h --help     This help information\n  -v --version  Version";
 function cli() {
     try {
         if (ARGV.includes('--help')) {
@@ -21,7 +19,7 @@ function cli() {
             return;
         }
         if (ARGV.includes('--version')) {
-            console.log(internals_1.Internals.getVersion());
+            console.log(Internals.getVersion());
             return;
         }
         if (ARGV.length < 2) {
@@ -33,8 +31,8 @@ function cli() {
             targetFolder[0] === '-') {
             throw new Error('Invalid arguments');
         }
-        var assembledCounter = internals_1.Internals
-            .assembleFiles(sourceFolder, targetFolder, internals_1.Internals.getConfig(Path.join(CWD, 'ordbok.json'), DEFAULT_CONFIG));
+        var assembledCounter = Internals
+            .assembleFiles(sourceFolder, targetFolder, Internals.getConfig(Path.join(CWD, 'ordbok.json'), DEFAULT_CONFIG));
         console.log('\nAssembled ' + assembledCounter + ' files\n');
     }
     catch (catchedError) {

@@ -1,7 +1,7 @@
 /// <reference types="node" />
 /** @internal */
 import * as FS from 'fs';
-import { IMarkdownPage, Markdown } from './ordbok-core';
+import { IMarkdownPage, Markdown } from '.';
 /**
  * ORDBOK configuration
  */

@@ -3,8 +3,4 @@
 /* Licensed under the MIT License. See the LICENSE file in the project root. */
 /*---------------------------------------------------------------------------*/
 
-export * from './ajax';
-export * from './dictionary';
-export * from './markdown';
-export * from './str';
-export * from './utilities';
+export * from './lib';

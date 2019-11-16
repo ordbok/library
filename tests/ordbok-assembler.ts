@@ -11,7 +11,7 @@ import
 {
     Internals
 }
-from '../lib';
+from '../lib/internals';
 import
 {
     cleanTemporaryFolder,
