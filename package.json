@@ -26,10 +26,14 @@
     },
     "files": [
         "bin/",
+        "client/",
+        "es6/",
         "lib/",
         "plugins/",
         "AUTHORS.md",
         "CODE_OF_CONDUCT.md",
+        "index.d.ts",
+        "index.js",
         "LICENSE",
         "README.md"
     ],
