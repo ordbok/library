@@ -4,6 +4,10 @@
         "module": "es6",
         "outDir": "../../es6/"
     },
+    "exclude": [
+        "../plugins/",
+        "../tsconfig/"
+    ],
     "include": [
         "../**/*.ts"
     ]
