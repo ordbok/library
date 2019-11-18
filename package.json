@@ -9,7 +9,7 @@
     "name": "@ordbok/core",
     "repository": "https://github.com/ordbok/core.git",
     "types": "index.d.ts",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "bin": {
         "ordbok-assembler": "bin/ordbok-assembler.js"
     },
@@ -55,7 +55,7 @@
         "build-4": "cd sources/tsconfig && typedoc --out ../../docs --tsconfig typedoc.json",
         "clean": "rm -rf $(< .clean)",
         "release": "npm publish --access=public --tag next",
-        "release-as-stable": "npm run release && npm publish --access=public",
+        "release-as-stable": "npm publish --access=public",
         "test": "npm run tests",
         "tests": "npm run tests-clean && npm run tests-build && npm run tests-clean",
         "tests-build": "tsc --build tests && cd tests-build && node index.js",
