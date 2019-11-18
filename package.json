@@ -15,7 +15,7 @@
     },
     "dependencies": {},
     "devDependencies": {
-        "@ordbok/typedoc-theme": "^0.6.0",
+        "@ordbok/typedoc-theme": "~0.6.0",
         "@types/node": "^10.0.0",
         "browserify": "^16.5.0",
         "husky": "~3.0.9",
@@ -60,6 +60,6 @@
         "tests": "npm run tests-clean && npm run tests-build && npm run tests-clean",
         "tests-build": "tsc --build tests && cd tests-build && node index.js",
         "tests-clean": "rm -rf tests-build",
-        "watch": "tsc --build sources --watch"
+        "watch": "tsc --build sources/tsconfig/*.json --watch"
     }
 }
