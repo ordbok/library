@@ -5,6 +5,7 @@
     },
     "include": [
         "../index.ts",
+        "../internals.ts",
         "../lib/**/*.ts"
     ],
     "typedocOptions": {

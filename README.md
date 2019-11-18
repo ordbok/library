@@ -64,7 +64,7 @@ If you like to create a custom plugin yourself, create a folder or package with
 a `ordbok-plugin.js` file somewhere inside. Here is how the corresponding
 TypeScript file looks like:
 ```ts
-const { IMarkdownPage, IPlugin, Markdown } = require('@ordbok/core/lib');
+const { IMarkdownPage, IPlugin, Markdown } = require('@ordbok/core/internals');
 
 export const ordbokPlugin: IPlugin = {
     onAssembling: (sourceFolder: string, targetFolder: string) => {},

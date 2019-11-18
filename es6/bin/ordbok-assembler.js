@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import * as Path from 'path';
-import { Internals } from '../lib/internals';
+import { Internals } from '../internals';
 var ARGV_MAP = {
     '-h': '--help',
     '-v': '--version'

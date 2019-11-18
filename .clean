@@ -7,3 +7,5 @@ plugins
 tests-build
 index.d.ts
 index.js
+internals.d.ts
+internals.js

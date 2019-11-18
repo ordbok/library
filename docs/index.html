@@ -107,7 +107,7 @@ Grammar:     Noun ; Masculine</code></pre>
 				<p>If you like to create a custom plugin yourself, create a folder or package with
 					a <code>ordbok-plugin.js</code> file somewhere inside. Here is how the corresponding
 				TypeScript file looks like:</p>
-				<pre><code class="language-ts"><span class="hljs-keyword">const</span> { IMarkdownPage, IPlugin, Markdown } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@ordbok/core/lib'</span>);
+				<pre><code class="language-ts"><span class="hljs-keyword">const</span> { IMarkdownPage, IPlugin, Markdown } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@ordbok/core/internals'</span>);
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> ordbokPlugin: IPlugin = {
     onAssembling: <span class="hljs-function">(<span class="hljs-params">sourceFolder: <span class="hljs-built_in">string</span>, targetFolder: <span class="hljs-built_in">string</span></span>) =&gt;</span> {},

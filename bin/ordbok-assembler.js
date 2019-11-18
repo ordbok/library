@@ -2,7 +2,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Path = require("path");
-var internals_1 = require("../lib/internals");
+var internals_1 = require("../internals");
 var ARGV_MAP = {
     '-h': '--help',
     '-v': '--version'

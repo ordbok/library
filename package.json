@@ -35,6 +35,8 @@
         "CODE_OF_CONDUCT.md",
         "index.d.ts",
         "index.js",
+        "internals.d.ts",
+        "internals.js",
         "LICENSE",
         "README.md"
     ],
