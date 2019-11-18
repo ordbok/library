@@ -1,58 +1,65 @@
 {
-	"private": false,
-	"author": "ORDBOK contributors",
-	"bugs": "https://github.com/ordbok/core/issues",
-	"description": "Dictionary system",
-	"homepage": "https://github.com/ordbok/core#readme",
-	"license": "MIT",
-	"main": "dist/lib/index.js",
-	"name": "@ordbok/core",
-	"repository": "https://github.com/ordbok/core.git",
-	"types": "dist/lib/index.d.ts",
-	"version": "0.0.8",
-	"bin": {
-		"ordbok-assembler": "dist/bin/ordbok-assembler.js"
-	},
-	"devDependencies": {
-		"@ordbok/typedoc-theme": "^0.5.0",
-		"@types/node": "^10.0.0",
-		"husky": "^3.0.8",
-		"requirejs": "2.3.6",
-		"typedoc": "~0.15.0",
-		"typescript": "~3.6.4"
-	},
-	"engines": {
-		"node": ">=10.0.0"
-	},
-	"files": [
-		"dist",
-		"AUTHORS.md",
-		"CODE_OF_CONDUCT.md",
-		"LICENSE",
-		"README.md"
-	],
-	"husky": {
-		"hooks": {
-			"pre-commit": "npm run build && npm run tests"
-		}
-	},
-	"keywords": [
-		"dictionary",
-		"ordbok"
-	],
-	"scripts": {
-		"build": "npm run clean && npm run build-1 && npm run build-2 && npm run build-3 && npm run build-4",
-		"build-1": "tsc --build tsconfig.json tsconfig-client.json",
-		"build-2": "r_js -o rjsconfig-client.js",
-		"build-3": "chmod +x dist/bin/ordbok-assembler.js",
-		"build-4": "typedoc --out docs --tsconfig tsconfig-docs.json",
-		"clean": "rm -rf dist docs",
-		"release": "npm publish --access=public --tag next",
-		"release-as-stable": "npm run release && npm publish --access=public",
+    "private": true,
+    "author": "ORDBOK contributors",
+    "bugs": "https://github.com/ordbok/core/issues",
+    "description": "Dictionary system",
+    "homepage": "https://github.com/ordbok/core#readme",
+    "license": "MIT",
+    "main": "index.js",
+    "name": "@ordbok/core",
+    "repository": "https://github.com/ordbok/core.git",
+    "types": "index.d.ts",
+    "version": "0.1.0",
+    "bin": {
+        "ordbok-assembler": "bin/ordbok-assembler.js"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "@ordbok/typedoc-theme": "~0.6.0",
+        "@types/node": "^10.0.0",
+        "browserify": "^16.5.0",
+        "husky": "~3.0.9",
+        "typedoc": "~0.15.2",
+        "typescript": "~3.7.2"
+    },
+    "engines": {
+        "node": ">=10.0.0"
+    },
+    "files": [
+        "bin/",
+        "client/",
+        "es6/",
+        "lib/",
+        "plugins/",
+        "AUTHORS.md",
+        "CODE_OF_CONDUCT.md",
+        "index.d.ts",
+        "index.js",
+        "LICENSE",
+        "README.md"
+    ],
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm run build && npm test"
+        }
+    },
+    "keywords": [
+        "dictionary",
+        "ordbok"
+    ],
+    "scripts": {
+        "build": "npm run clean && npm run build-1 && npm run build-2 && npm run build-3 && npm run build-4",
+        "build-1": "tsc --build sources/tsconfig/*.json",
+        "build-2": "chmod +x bin/ordbok-assembler.js",
+        "build-3": "browserify --outfile client/ordbok-core.js --standalone OrdbokCore index.js",
+        "build-4": "cd sources/tsconfig && typedoc --out ../../docs --tsconfig typedoc.json",
+        "clean": "rm -rf $(< .clean)",
+        "release": "npm publish --access=public --tag next",
+        "release-as-stable": "npm run release && npm publish --access=public",
         "test": "npm run tests",
-		"tests": "npm run tests-clean && npm run tests-build && npm run tests-clean",
-		"tests-build": "tsc --build tsconfig-tests.json && cd tests_build && node index.js",
-		"tests-clean": "rm -rf tests_build",
-		"watch": "tsc --build tsconfig.json --watch"
-	}
+        "tests": "npm run tests-clean && npm run tests-build && npm run tests-clean",
+        "tests-build": "tsc --build tests && cd tests-build && node index.js",
+        "tests-clean": "rm -rf tests-build",
+        "watch": "tsc --build sources/tsconfig/*.json --watch"
+    }
 }

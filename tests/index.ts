@@ -16,7 +16,7 @@ import * as OrdbokAssembler from './ordbok-assembler';
 export const CONFIG_TEMPLATE =
 `{
     "plugins": [
-        "../../dist"
+        "../../plugins"
     ]
 }`;
 

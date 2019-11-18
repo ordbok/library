@@ -11,7 +11,7 @@ import
 {
     Internals
 }
-from '../dist';
+from '../lib/internals';
 import
 {
     cleanTemporaryFolder,
@@ -38,11 +38,12 @@ function test_cli (): void
     Internals.writeFile(Path.join(TEMPORARY_FOLDER, 'translation.md'), MARKDOWN_TEMPLATE);
 
     const stdout = ChildProcess.execSync(
-        'cd "' + TEMPORARY_FOLDER + '" && ../../dist/bin/ordbok-assembler.js . cli'
+        'cd "' + TEMPORARY_FOLDER + '" && ../../bin/ordbok-assembler.js . cli'
     );
 
-    Assert.ok(
+    Assert.strictEqual(
         Fs.existsSync(Path.join(TEMPORARY_FOLDER, 'cli', 'translation-0.txt')),
+        true,
         stdout.toString()
     );
 
