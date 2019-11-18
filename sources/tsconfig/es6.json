@@ -5,7 +5,7 @@
         "outDir": "../../es6/"
     },
     "exclude": [
-        "../plugins/",
+        "../**/ordbok-plugin.ts",
         "../tsconfig/"
     ],
     "include": [
