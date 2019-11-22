@@ -7,7 +7,7 @@
 /** @internal */
 
 import * as Path from 'path';
-import { IConfig, Internals } from '../lib/internals';
+import { IConfig, Internals } from '../internals';
 
 /* *
  *

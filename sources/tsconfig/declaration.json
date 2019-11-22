@@ -8,6 +8,6 @@
     },
     "include": [
         "../index.ts",
-        "../lib/internals.ts"
+        "../internals.ts"
     ]
 }
