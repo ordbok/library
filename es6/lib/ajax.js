@@ -1,5 +1,5 @@
-var Ajax = (function () {
-    function Ajax(baseUrl, cacheTimeout, responseTimeout) {
+var AJAX = (function () {
+    function AJAX(baseUrl, cacheTimeout, responseTimeout) {
         if (baseUrl === void 0) { baseUrl = ''; }
         if (cacheTimeout === void 0) { cacheTimeout = 3600000; }
         if (responseTimeout === void 0) { responseTimeout = 60000; }
@@ -9,7 +9,7 @@ var Ajax = (function () {
         this.cacheTimeout = (cacheTimeout < 0 ? 0 : cacheTimeout);
         this.responseTimeout = (responseTimeout < 0 ? 0 : responseTimeout);
     }
-    Ajax.prototype.onError = function (progressEvent) {
+    AJAX.prototype.onError = function (progressEvent) {
         var context = this.context;
         if (!context) {
             return;
@@ -25,7 +25,7 @@ var Ajax = (function () {
         }
         context.reject(error);
     };
-    Ajax.prototype.onLoad = function (progressEvent) {
+    AJAX.prototype.onLoad = function (progressEvent) {
         var context = this.context;
         if (!context) {
             return;
@@ -41,7 +41,7 @@ var Ajax = (function () {
             url: context.url
         });
     };
-    Ajax.prototype.onTimeout = function (progressEvent) {
+    AJAX.prototype.onTimeout = function (progressEvent) {
         var context = this.context;
         if (!context) {
             return;
@@ -57,13 +57,13 @@ var Ajax = (function () {
         }
         context.reject(error);
     };
-    Ajax.prototype.hasOpenRequest = function () {
+    AJAX.prototype.hasOpenRequest = function () {
         if (this._requests < 0) {
             this._requests = 0;
         }
         return (this._requests > 0);
     };
-    Ajax.prototype.request = function (urlPath) {
+    AJAX.prototype.request = function (urlPath) {
         var ajax = this;
         return new Promise(function (resolve, reject) {
             var url = ajax.baseUrl + urlPath;
@@ -111,6 +111,7 @@ var Ajax = (function () {
             }
         });
     };
-    return Ajax;
+    return AJAX;
 }());
-export { Ajax };
+export { AJAX };
+export default AJAX;

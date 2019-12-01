@@ -1,4 +1,4 @@
-import { Str } from './str';
+import Utilities from './utilities';
 var HEADLINE_REGEXP = /^(?:#+([\s\S]*)|([\s\S]*?)\n(?:={3,}|-{3,}))$/;
 var PAIR_REGEXP = /^([^\:\n\r\t\v]+):([\s\S]*)$/;
 var PAGE_REGEXP = /(?:^\n?|\n\n)-{3,}(?:\n\n|\n?$)/;
@@ -18,7 +18,7 @@ var Markdown = (function () {
             .forEach(function (paragraph) {
             match = HEADLINE_REGEXP.exec(paragraph);
             if (match) {
-                page[Str.trimSpaces(match[1] || match[2])] = section = {};
+                page[Utilities.trimSpaces(match[1] || match[2])] = section = {};
             }
             if (!section) {
                 return;
@@ -27,7 +27,7 @@ var Markdown = (function () {
             if (match) {
                 section[match[1]] = match[2]
                     .split(';')
-                    .map(Str.trimSpaces);
+                    .map(Utilities.trimSpaces);
             }
         });
         return page;
@@ -55,3 +55,4 @@ var Markdown = (function () {
     return Markdown;
 }());
 export { Markdown };
+export default Markdown;

@@ -1,7 +1,7 @@
 /// <reference types="node" />
 /** @internal */
 import * as FS from 'fs';
-import { IMarkdownPage, Markdown } from '.';
+import { IMarkdownPage, Markdown } from './markdown';
 /**
  * ORDBOK configuration
  */
@@ -107,3 +107,4 @@ export declare module Internals {
      */
     function writeFile(filePath: string, fileContent: string, options?: FS.WriteFileOptions): void;
 }
+export default Internals;

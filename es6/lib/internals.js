@@ -1,6 +1,8 @@
 import * as FS from 'fs';
 import * as Path from 'path';
-import { Dictionary, Markdown, Utilities } from '.';
+import Dictionary from './dictionary';
+import { Markdown } from './markdown';
+import Utilities from './utilities';
 export var Internals;
 (function (Internals) {
     var PACKAGE = require('../package.json');
@@ -108,3 +110,4 @@ export var Internals;
     }
     Internals.writeFile = writeFile;
 })(Internals || (Internals = {}));
+export default Internals;

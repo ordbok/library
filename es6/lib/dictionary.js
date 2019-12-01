@@ -11,8 +11,8 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import { Ajax } from './ajax';
-import { Utilities } from './utilities';
+import { AJAX } from './ajax';
+import Utilities from './utilities';
 var Dictionary = (function (_super) {
     __extends(Dictionary, _super);
     function Dictionary() {
@@ -80,5 +80,6 @@ var Dictionary = (function (_super) {
     Dictionary.PAIR_SEPARATOR = ':';
     Dictionary.VALUE_SEPARATOR = ';';
     return Dictionary;
-}(Ajax));
+}(AJAX));
 export { Dictionary };
+export default Dictionary;

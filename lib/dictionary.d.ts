@@ -1,4 +1,4 @@
-import { Ajax } from './ajax';
+import { AJAX } from './ajax';
 import { IMarkdownPage, IMarkdownSection } from './markdown';
 /**
  * Dictionary entry with sections
@@ -15,7 +15,7 @@ export interface IDictionarySection extends IMarkdownSection {
 /**
  * Manages dictionary communication with a server.
  */
-export declare class Dictionary extends Ajax {
+export declare class Dictionary extends AJAX {
     /**
      * File extension of dictionary entries.
      */
@@ -61,3 +61,4 @@ export declare class Dictionary extends Ajax {
      */
     loadEntry(baseName: string, pageIndex?: number): Promise<(IDictionaryEntry | undefined)>;
 }
+export default Dictionary;
