@@ -27,7 +27,7 @@ export interface IAjaxResponse {
 /**
  * Manages AJAX communication with a server.
  */
-export declare class Ajax {
+export declare class AJAX {
     /**
      * Creates a new managed AJAX instance.
      *
@@ -105,3 +105,4 @@ export declare class Ajax {
      */
     request(urlPath: string): Promise<IAjaxResponse>;
 }
+export default AJAX;

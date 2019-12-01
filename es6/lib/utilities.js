@@ -1,3 +1,4 @@
+var BRACKET_REGEXP = /\([^\)]*\)|\[[^\]]*\]|\{[^\}]*\}/g;
 var NON_CHARACTER_REGEXP = /[^0-9A-Za-z\u0080-\uFFFF -]/g;
 var PATH_REGEXP = /^(.*?)([^\.\/]*)([^\/]*)$/;
 var SPACE_REGEXP = /\s+/g;
@@ -34,6 +35,10 @@ export var Utilities;
         return (match && match[1] || '');
     }
     Utilities.getParentPath = getParentPath;
+    function removeBrackets(str) {
+        return str.replace(BRACKET_REGEXP, '').replace(SPACE_REGEXP, ' ').trim();
+    }
+    Utilities.removeBrackets = removeBrackets;
     function rotate(text) {
         var isDecode = text.indexOf('base64,') === 0;
         if (isDecode) {
@@ -70,4 +75,9 @@ export var Utilities;
         }
     }
     Utilities.splat = splat;
+    function trimSpaces(str) {
+        return str.replace(SPACE_REGEXP, ' ').trim();
+    }
+    Utilities.trimSpaces = trimSpaces;
 })(Utilities || (Utilities = {}));
+export default Utilities;

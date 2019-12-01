@@ -3,7 +3,7 @@
 /* Licensed under the MIT License. See the LICENSE file in the project root. */
 /*---------------------------------------------------------------------------*/
 
-import { Str } from './str';
+import Utilities from './utilities';
 
 /* *
  *
@@ -88,7 +88,7 @@ export class Markdown {
                 match = HEADLINE_REGEXP.exec(paragraph);
 
                 if (match) {
-                    page[Str.trimSpaces(match[1] || match[2])] = section = {};
+                    page[Utilities.trimSpaces(match[1] || match[2])] = section = {};
                 }
 
                 if (!section) {
@@ -100,7 +100,7 @@ export class Markdown {
                 if (match) {
                     section[match[1]] = match[2]
                         .split(';')
-                        .map(Str.trimSpaces);
+                        .map(Utilities.trimSpaces);
                 }
             })
 
@@ -178,3 +178,5 @@ export class Markdown {
             .forEach(page => pages.push(Markdown.parsePage(page)));
     }
 }
+
+export default Markdown;

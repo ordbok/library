@@ -52,3 +52,4 @@ export declare class Markdown {
      */
     private parse;
 }
+export default Markdown;
