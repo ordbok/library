@@ -10,6 +10,11 @@
  * */
 
 /**
+ * Inclusive brackets pattern
+ */
+const BRACKET_REGEXP = /\([^\)]*\)|\[[^\]]*\]|\{[^\}]*\}/g;
+
+/**
  * Non-character pattern
  */
 const NON_CHARACTER_REGEXP = /[^0-9A-Za-z\u0080-\uFFFF -]/g;
@@ -42,7 +47,7 @@ export module Utilities
      * Returns the extension of a file path.
      *
      * @param filePath
-     *        File path
+     * File path
      */
     export function getExtension (filePath: string): string
     {
@@ -55,7 +60,7 @@ export module Utilities
      * Returns the base name of a file path.
      *
      * @param filePath
-     *        File path
+     * File path
      */
     export function getBaseName (filePath: string): string
     {
@@ -68,7 +73,7 @@ export module Utilities
      * Returns the universal key for the given text.
      *
      * @param text
-     *        Text to generate key from
+     * Text to generate key from
      */
     export function getKey (text: string): string
     {
@@ -83,7 +88,7 @@ export module Utilities
      * Normalize a text to lower case characters and space only.
      *
      * @param text
-     *        Text to filter
+     * Text to filter
      */
     export function getNorm (text: string): string
     {
@@ -98,7 +103,7 @@ export module Utilities
      * Returns the parent part of the path.
      *
      * @param path
-     *        Path with parent
+     * Path with parent
      */
     export function getParentPath (path: string): string
     {
@@ -107,11 +112,23 @@ export module Utilities
         return (match && match[1] || '');
     }
 
+
+    /**
+     * Removes brackets and their content.
+     *
+     * @param str
+     *        String to filter.
+     */
+    export function removeBrackets (str: string): string
+    {
+        return str.replace(BRACKET_REGEXP, '').replace(SPACE_REGEXP, ' ').trim();
+    }
+
     /**
      * Binary rotation of a given text.
      *
      * @param text
-     *        Text to rotate
+     * Text to rotate
      */
     export function rotate (text: string): string
     {
@@ -145,7 +162,7 @@ export module Utilities
      * values.
      *
      * @param obj
-     *        Object to reduce
+     * Object to reduce
      */
     export function splat<T> (obj: object): Array<T>
     {
@@ -174,4 +191,17 @@ export module Utilities
             return splat<T>(Object.values(obj));
         }
     }
+
+    /**
+     * Trims all unnecessary spaces.
+     *
+     * @param str
+     * String to filter.
+     */
+    export function trimSpaces (str: string): string
+    {
+        return str.replace(SPACE_REGEXP, ' ').trim();
+    }
 }
+
+export default Utilities;

@@ -7,7 +7,9 @@
 
 import * as FS from 'fs';
 import * as Path from 'path';
-import { Dictionary, IMarkdownPage, Markdown, Utilities } from '.';
+import Dictionary from './dictionary';
+import { IMarkdownPage, Markdown } from './markdown';
+import Utilities from './utilities';
 
 /* *
  *
@@ -303,3 +305,5 @@ export module Internals {
         FS.writeFileSync(filePath, fileContent, options);
     }
 }
+
+export default Internals;

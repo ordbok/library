@@ -3,9 +3,9 @@
 /* Licensed under the MIT License. See the LICENSE file in the project root. */
 /*---------------------------------------------------------------------------*/
 
-import { Ajax, IAjaxResponse } from './ajax';
+import { AJAX, IAjaxResponse } from './ajax';
 import { IMarkdownPage, IMarkdownSection } from './markdown';
-import { Utilities } from './utilities';
+import Utilities from './utilities';
 
 /* *
  *
@@ -36,7 +36,7 @@ export interface IDictionarySection extends IMarkdownSection {
 /**
  * Manages dictionary communication with a server.
  */
-export class Dictionary extends Ajax {
+export class Dictionary extends AJAX {
 
     /* *
      *
@@ -191,3 +191,5 @@ export class Dictionary extends Ajax {
             });
     }
 }
+
+export default Dictionary;

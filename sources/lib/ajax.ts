@@ -13,7 +13,7 @@
  * Internal request context
  */
 interface IAjaxContext {
-    ajax: Ajax;
+    ajax: AJAX;
     isCountingRequest?: boolean;
     url: string;
     resolve(response: IAjaxResponse): void;
@@ -68,7 +68,7 @@ export interface IAjaxResponse {
 /**
  * Manages AJAX communication with a server.
  */
-export class Ajax {
+export class AJAX {
 
     /* *
      *
@@ -338,3 +338,5 @@ export class Ajax {
         });
     }
 }
+
+export default AJAX;
